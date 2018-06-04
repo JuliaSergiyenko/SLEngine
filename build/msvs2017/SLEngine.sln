@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bullet_con_app", "windows\bullet_con_app\bullet_con_app.vcxproj", "{2CD604CD-9659-4D49-BA3A-6EC13CC5F846}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{A01791DD-F5EE-4418-A424-8B7C3E218789}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "android", "android", "{C8F51894-0966-4D68-9A56-B2DB1056354A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{B6FE6023-C750-494A-95E6-76BA20DB4BAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CD604CD-9659-4D49-BA3A-6EC13CC5F846}.Debug|x64.ActiveCfg = Debug|x64
+		{2CD604CD-9659-4D49-BA3A-6EC13CC5F846}.Debug|x64.Build.0 = Debug|x64
+		{2CD604CD-9659-4D49-BA3A-6EC13CC5F846}.Debug|x86.ActiveCfg = Debug|Win32
+		{2CD604CD-9659-4D49-BA3A-6EC13CC5F846}.Debug|x86.Build.0 = Debug|Win32
+		{2CD604CD-9659-4D49-BA3A-6EC13CC5F846}.Release|x64.ActiveCfg = Release|x64
+		{2CD604CD-9659-4D49-BA3A-6EC13CC5F846}.Release|x64.Build.0 = Release|x64
+		{2CD604CD-9659-4D49-BA3A-6EC13CC5F846}.Release|x86.ActiveCfg = Release|Win32
+		{2CD604CD-9659-4D49-BA3A-6EC13CC5F846}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2CD604CD-9659-4D49-BA3A-6EC13CC5F846} = {A01791DD-F5EE-4418-A424-8B7C3E218789}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {738D5853-86F3-477F-AD59-EB575350571F}
+	EndGlobalSection
+EndGlobal
