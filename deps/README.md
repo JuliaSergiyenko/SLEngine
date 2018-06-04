@@ -1,2 +1,2 @@
 # Dependencies
-Thif folder containe all dependencies for SLEngine project
+This folder containe all dependencies for SLEngine project
