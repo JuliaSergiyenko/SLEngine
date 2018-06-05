@@ -7,3 +7,4 @@ This folder containe all dependencies for SLEngine project
 * [imgui](https://github.com/ocornut/imgui) - Dear ImGui is a bloat-free graphical user interface library for C++
 * [json](https://github.com/nlohmann/json) - There are myriads of JSON libraries out there, and each may even have its reason to exist
 * [stb](https://github.com/nothings/stb) - single-file public domain (or MIT licensed) libraries for C/C++
+* [tinyobjloader](https://github.com/syoyo/tinyobjloader) - Tiny but powerful single file wavefront obj loader written in C++
