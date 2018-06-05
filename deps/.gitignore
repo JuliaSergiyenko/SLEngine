@@ -1,2 +1,6 @@
 # ignore all sub-directories (NOT files)
-/*/
+bullet3/
+gli/
+glm/
+imgui/
+stb/
