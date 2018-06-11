@@ -23,7 +23,7 @@
     <ProjectGuid>{721206E3-0570-4968-BA5F-7C1786091E22}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>BulletDynamics</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
