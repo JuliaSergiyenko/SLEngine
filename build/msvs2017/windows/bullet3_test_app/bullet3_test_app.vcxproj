@@ -151,7 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="bullet3_test_app.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\shared\bullet3\BulletCollision\BulletCollision.vcxproj">
