@@ -1,5 +1,6 @@
 # ignore all sub-directories (NOT files)
 bullet3/
+glfw/
 gli/
 glm/
 imgui/
