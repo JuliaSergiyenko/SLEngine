@@ -2,6 +2,7 @@
 
 #include <glm/glm.hpp>
 
+// ISLRenderer
 class ISLRenderer;
 
 // SLTextureWrapMode

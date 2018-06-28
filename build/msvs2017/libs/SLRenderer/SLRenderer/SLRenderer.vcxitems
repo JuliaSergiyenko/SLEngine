@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <ItemsProjectGuid>{e48f2063-8319-4752-a12c-ee53463ff746}</ItemsProjectGuid>
+    <ItemsProjectGuid>{c7448e0b-d670-4feb-afce-4dad1da64b13}</ItemsProjectGuid>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -14,9 +14,9 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SLRenderer\SLRenderer.hpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SLRenderer\SLRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SLRenderer\SLRenderer.cpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SLRenderer\SLRenderer.hpp" />
   </ItemGroup>
 </Project>
