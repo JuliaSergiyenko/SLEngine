@@ -1,10 +1,36 @@
-#include <SLRenderer/SLRenderer.hpp>
-#include <glm/glm.hpp>
 #include <iostream>
+
+#include <SLRenderer/SLRenderer.hpp>
+#include <glfw/glfw3.h>
+#include <glm/glm.hpp>
 
 // main
 int main(int argc, char** argv)
 {
+	//////////////////////////////////////////////////////////////////////////
+
+	// init glfw
+	glfwInit();
+
+	// set glfw hints
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+
+	// create window
+	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGL3", nullptr, nullptr);
+
+	// set current context
+	glfwMakeContextCurrent(window);
+
+	// setup the scene ready for rendering
+	int width = 0, height = 0;
+	glfwGetFramebufferSize(window, &width, &height);
+
+	//////////////////////////////////////////////////////////////////////////
+
 	// create renderer
 	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL3);
 	std::cout << renderer->GetDescription() << std::endl;
@@ -38,8 +64,26 @@ int main(int argc, char** argv)
 	camera->SetNearPlane(0.1f);
 	camera->SetFarPlane(100.0f);
 
-	// render
-	while (true) renderer->Render(camera);
+	//////////////////////////////////////////////////////////////////////////
+	
+	// main loop
+	double dt = 0, last_update_time = 0;
+	while (!glfwWindowShouldClose(window))
+	{
+		// render!
+		renderer->Render(camera);
+
+		// display and process events through callbacks
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+
+		// get frame time
+		dt = glfwGetTime();
+		if ((dt - last_update_time) > 0.2)
+			last_update_time = dt;
+	}
+
+	//////////////////////////////////////////////////////////////////////////
 
 	// delete camera
 	renderer->DeleteCamera(camera);
@@ -58,5 +102,11 @@ int main(int argc, char** argv)
 	renderer->DeleteBuffer(noramlBuffer);
 	renderer->DeleteBuffer(positionBuffer);
 
-	return std::system("pause");
+	//////////////////////////////////////////////////////////////////////////
+
+	// exit
+	glfwTerminate();
+
+	// exit
+	return EXIT_SUCCESS;
 }
