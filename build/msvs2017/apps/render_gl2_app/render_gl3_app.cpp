@@ -6,7 +6,7 @@
 int main(int argc, char** argv)
 {
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL2);
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL3);
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create buffers

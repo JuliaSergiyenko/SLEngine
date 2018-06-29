@@ -1,125 +1,125 @@
-#include "SLRenderer_GLES2.hpp"
+#include "SLRenderer_GL3.hpp"
 #include <stdexcept>
 
-// SLRGL2
-namespace SLR_GLES2 {
-	// SLRenderer_GLES2
-	SLRenderer_GLES2::SLRenderer_GLES2()
+// SLRGL3
+namespace SLR_GL3 {
+	// SLRenderer_GL3
+	SLRenderer_GL3::SLRenderer_GL3()
 	{
 		// constructor
 	}
 
-	// ~SLRenderer_GLES2
-	SLRenderer_GLES2::~SLRenderer_GLES2()
+	// ~SLRenderer_GL3
+	SLRenderer_GL3::~SLRenderer_GL3()
 	{
 		// destructor
 	}
 
 	// CreateTexture2D
-	ISLTexture2D* SLRenderer_GLES2::CreateTexture2D(void * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	ISLTexture2D* SLRenderer_GL3::CreateTexture2D(void * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// UpdateTexture2D
-	void SLRenderer_GLES2::UpdateTexture2D(ISLTexture2D* texture2d, void * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	void SLRenderer_GL3::UpdateTexture2D(ISLTexture2D* texture2d, void * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// DeleteTexture2D
-	void SLRenderer_GLES2::DeleteTexture2D(ISLTexture2D* texture2d)
+	void SLRenderer_GL3::DeleteTexture2D(ISLTexture2D* texture2d)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// CreateBuffer
-	ISLBuffer* SLRenderer_GLES2::CreateBuffer(void* data, uint32_t size)
+	ISLBuffer* SLRenderer_GL3::CreateBuffer(void* data, uint32_t size)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// UpdateBuffer
-	void SLRenderer_GLES2::UpdateBuffer(ISLBuffer* buffer, void* data, uint32_t size)
+	void SLRenderer_GL3::UpdateBuffer(ISLBuffer* buffer, void* data, uint32_t size)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// DeleteBuffer
-	void SLRenderer_GLES2::DeleteBuffer(ISLBuffer* buffer)
+	void SLRenderer_GL3::DeleteBuffer(ISLBuffer* buffer)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// CreateIndexBuffer
-	ISLIndexBuffer* SLRenderer_GLES2::CreateIndexBuffer(uint16_t* data, uint32_t size)
+	ISLIndexBuffer* SLRenderer_GL3::CreateIndexBuffer(uint16_t* data, uint32_t size)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// UpdateIndexBuffer
-	void SLRenderer_GLES2::UpdateIndexBuffer(ISLIndexBuffer* buffer, uint16_t* data, uint32_t size)
+	void SLRenderer_GL3::UpdateIndexBuffer(ISLIndexBuffer* buffer, uint16_t* data, uint32_t size)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// DeleteIndexBuffer
-	void SLRenderer_GLES2::DeleteIndexBuffer(ISLIndexBuffer* buffer)
+	void SLRenderer_GL3::DeleteIndexBuffer(ISLIndexBuffer* buffer)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// CreateMesh
-	ISLMesh* SLRenderer_GLES2::CreateMesh()
+	ISLMesh* SLRenderer_GL3::CreateMesh()
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// DeleteMesh
-	void SLRenderer_GLES2::DeleteMesh(ISLMesh* mesh)
+	void SLRenderer_GL3::DeleteMesh(ISLMesh* mesh)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// CreateModel
-	ISLModel* SLRenderer_GLES2::CreateModel()
+	ISLModel* SLRenderer_GL3::CreateModel()
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// DeleteModel
-	void SLRenderer_GLES2::DeleteModel(ISLModel* model)
+	void SLRenderer_GL3::DeleteModel(ISLModel* model)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// CreateCamera
-	ISLCamera* SLRenderer_GLES2::CreateCamera()
+	ISLCamera* SLRenderer_GL3::CreateCamera()
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// DeleteCamera
-	void SLRenderer_GLES2::DeleteCamera(ISLCamera* camera)
+	void SLRenderer_GL3::DeleteCamera(ISLCamera* camera)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// Render
-	void SLRenderer_GLES2::Render(ISLCamera* camera)
+	void SLRenderer_GL3::Render(ISLCamera* camera)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// DeleteResources
-	void SLRenderer_GLES2::DeleteResources()
+	void SLRenderer_GL3::DeleteResources()
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// GetDescription
-	const char * SLRenderer_GLES2::GetDescription() const
+	const char * SLRenderer_GL3::GetDescription() const
 	{
-		return "SLRenderer OpenGL ES 2.0 implementation";
+		return "SLRenderer OpenGL 3.2 implementation";
 	}
 }

@@ -122,5 +122,4 @@ namespace SLR_GL2 {
 	{
 		return "SLRenderer OpenGL 2.0 implementation";
 	}
-
 }

@@ -1,17 +1,17 @@
 #pragma once
 
-#include "../SLRenderer.hpp"
 #include <GL/glcorearb.h>
+#include "../SLRenderer.hpp"
 
-// SLR_GLES2
-namespace SLR_GLES2 {
-	// SLRendererGL2
-	class SLRenderer_GLES2 : public ISLRenderer
+// SLRGL3
+namespace SLR_GL3 {
+	// SLRendererGL3
+	class SLRenderer_GL3 : public ISLRenderer
 	{
 	public:
 		// constructor and destructor
-		SLRenderer_GLES2();
-		~SLRenderer_GLES2();
+		SLRenderer_GL3();
+		~SLRenderer_GL3();
 
 		// texture functions
 		virtual ISLTexture2D* CreateTexture2D(void * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0);
