@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLBuffer_GLEL2.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLBuffer_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLCamera_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLIndexBuffer_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLMesh_GLES2.cpp" />
