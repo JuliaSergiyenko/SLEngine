@@ -1,10 +1,13 @@
 #include <SLRenderer/SLRenderer.hpp>
 #include <glm/glm.hpp>
+#include <iostream>
 
+// main
 int main(int argc, char** argv)
 {
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer();
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL2);
+	std::cout << renderer->GetDescription() << std::endl;
 
 	// create buffers
 	ISLBuffer* positionBuffer = renderer->CreateBuffer(nullptr, 1024);

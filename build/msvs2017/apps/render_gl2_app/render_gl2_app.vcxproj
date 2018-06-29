@@ -154,11 +154,11 @@
     <ClCompile Include="render_gl2_app.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRendererGL2\SLRendererGL2.vcxproj">
-      <Project>{7b6a180d-a770-4590-b25a-5319b5b74d06}</Project>
+    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.vcxproj">
+      <Project>{f0d7c786-a9bb-46d9-a3c4-1fa99aa8a169}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRendererGLES2\SLRendererGLES2.vcxproj">
-      <Project>{70076ffb-274b-45a1-b7e7-19fea6e62040}</Project>
+    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GLES2\SLRenderer_GLES2.vcxproj">
+      <Project>{c998581d-8242-4a73-a042-9e7e754fa9b1}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

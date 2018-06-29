@@ -250,6 +250,9 @@ public:
 
 	// delete resource
 	virtual void DeleteResources() = 0;
+
+	// get description
+	virtual const char * GetDescription() const = 0;
 };
 
 // SLRendererFabric
