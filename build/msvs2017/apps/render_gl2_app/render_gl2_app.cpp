@@ -1,4 +1,6 @@
 #include <SLRenderer/SLRenderer.hpp>
+#include <glm/glm.hpp>
+
 int main(int argc, char** argv)
 {
 	// create renderer
@@ -18,11 +20,13 @@ int main(int argc, char** argv)
 	mesh->SetNormalBuffer(noramlBuffer);
 	mesh->SetIndexBuffer(indexBuffer);
 	mesh->SetBaseTexture(baseTexture);
-	mesh->SetBaseColor(glm::vec4(1.0f));
+	mesh->SetBaseColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	// create model
+	glm::mat4 transform(1.0f);
 	ISLModel* model = renderer->CreateModel();
 	model->AddMesh(mesh);
+	model->SetTransform(&transform[0][0]);
 	model->SetVisibilityMode(SL_MESH_GROUP_VISIBILITY_MODE_VISIBLE);
 
 	// create camera

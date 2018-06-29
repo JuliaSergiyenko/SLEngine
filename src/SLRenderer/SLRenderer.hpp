@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include <cstdint>
 
 // ISLRenderer
 class ISLRenderer;
@@ -125,7 +125,7 @@ public:
 	virtual ISLRenderer* GetRenderer() = 0;
 
 	// set colors
-	virtual void SetBaseColor(glm::vec4 color) = 0;
+	virtual void SetBaseColor(float r, float g, float b, float a) = 0;
 
 	// set textures
 	virtual void SetBaseTexture(ISLTexture2D* texture) = 0;
@@ -147,7 +147,7 @@ public:
 	virtual void SetPrimitiveType(SLPrimitiveType primitiveType) = 0;
 
 	// get colors
-	virtual glm::vec4 GetBaseColor() = 0;
+	virtual void GetBaseColor(float& r, float& g, float& b, float& a) = 0;
 
 	// get textures
 	virtual ISLTexture2D* GetBaseTexture() const = 0;
@@ -188,8 +188,8 @@ public:
 	virtual void RemoveMesh(ISLMesh* mesh) = 0;
 
 	// transform matrix functions
-	virtual void SetTransform(glm::mat4 mat) = 0;
-	virtual glm::mat4 SetTransform() = 0;
+	virtual void SetTransform(float* mat) = 0;
+	virtual void GetTransform(float* mat) = 0;
 };
 
 // ISLCamera
