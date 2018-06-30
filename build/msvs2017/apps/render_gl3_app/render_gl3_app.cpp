@@ -3,21 +3,25 @@
 #include <SLRenderer/SLRenderer.hpp>
 #include <glfw/glfw3.h>
 #include <glm/glm.hpp>
+#include <GLES2/gl2.h>
 
 // main
 int main(int argc, char** argv)
 {
 	//////////////////////////////////////////////////////////////////////////
+	// set error handling
+	glfwSetErrorCallback([](int error, const char* description) {
+		std::cout << "Error: " << description << std::endl;
+	});
 
 	// init glfw
 	glfwInit();
 
-	// set glfw hints
-	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+	// select OpenGL version
+	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+	glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
 	// create window
 	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGL3", nullptr, nullptr);
@@ -30,7 +34,7 @@ int main(int argc, char** argv)
 	glfwGetFramebufferSize(window, &width, &height);
 
 	//////////////////////////////////////////////////////////////////////////
-
+	/*
 	// create renderer
 	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL3);
 	std::cout << renderer->GetDescription() << std::endl;
@@ -63,7 +67,7 @@ int main(int argc, char** argv)
 	camera->SetFOV(45.0f);
 	camera->SetNearPlane(0.1f);
 	camera->SetFarPlane(100.0f);
-
+	*/
 	//////////////////////////////////////////////////////////////////////////
 	
 	// main loop
@@ -71,7 +75,7 @@ int main(int argc, char** argv)
 	while (!glfwWindowShouldClose(window))
 	{
 		// render!
-		renderer->Render(camera);
+		//renderer->Render(camera);
 
 		// display and process events through callbacks
 		glfwSwapBuffers(window);
@@ -84,7 +88,7 @@ int main(int argc, char** argv)
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-
+	/*
 	// delete camera
 	renderer->DeleteCamera(camera);
 
@@ -101,7 +105,7 @@ int main(int argc, char** argv)
 	renderer->DeleteIndexBuffer(indexBuffer);
 	renderer->DeleteBuffer(noramlBuffer);
 	renderer->DeleteBuffer(positionBuffer);
-
+	*/
 	//////////////////////////////////////////////////////////////////////////
 
 	// exit
