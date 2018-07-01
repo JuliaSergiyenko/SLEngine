@@ -6,6 +6,9 @@
 #if defined(SL_RENDERER_GL3)
 #include "SLRenderer_GL3/SLRenderer_GL3.hpp"
 #endif
+#if defined(SL_RENDERER_GL4)
+#include "SLRenderer_GL4/SLRenderer_GL4.hpp"
+#endif
 #if defined(SL_RENDERER_GLES2)
 #include "SLRenderer_GLES2/SLRenderer_GLES2.hpp"
 #endif
@@ -23,6 +26,10 @@ ISLRenderer* SLRendererFabric::CreateRenderer(SLRendererType rendererType)
 #ifdef SL_RENDERER_GL3
 	if (rendererType == SL_RENDERER_TYPE_GL3)
 		return new SLR_GL3::SLRenderer_GL3();
+#endif
+#ifdef SL_RENDERER_GL4
+	if (rendererType == SL_RENDERER_TYPE_GL4)
+		return new SLR_GL4::SLRenderer_GL4();
 #endif
 #if defined(SL_RENDERER_GLES2)
 	if (rendererType == SL_RENDERER_TYPE_GLES2)
