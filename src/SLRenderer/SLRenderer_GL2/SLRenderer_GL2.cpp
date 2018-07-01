@@ -16,13 +16,13 @@ namespace SLR_GL2 {
 	}
 
 	// CreateTexture2D
-	ISLTexture2D* SLRenderer_GL2::CreateTexture2D(void * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	ISLTexture2D* SLRenderer_GL2::CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// UpdateTexture2D
-	void SLRenderer_GL2::UpdateTexture2D(ISLTexture2D* texture2d, void * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	void SLRenderer_GL2::UpdateTexture2D(ISLTexture2D* texture2d, uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
@@ -34,13 +34,13 @@ namespace SLR_GL2 {
 	}
 
 	// CreateBuffer
-	ISLBuffer* SLRenderer_GL2::CreateBuffer(void* data, uint32_t size)
+	ISLBuffer* SLRenderer_GL2::CreateBuffer(float* data, uint32_t size)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	// UpdateBuffer
-	void SLRenderer_GL2::UpdateBuffer(ISLBuffer* buffer, void* data, uint32_t size)
+	void SLRenderer_GL2::UpdateBuffer(ISLBuffer* buffer, float* data, uint32_t size)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}

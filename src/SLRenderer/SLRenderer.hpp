@@ -220,13 +220,13 @@ protected:
 	~ISLRenderer() {}
 public:
 	// texture functions
-	virtual ISLTexture2D* CreateTexture2D(void * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
-	virtual void UpdateTexture2D(ISLTexture2D* texture2d, void * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
+	virtual ISLTexture2D* CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
+	virtual void UpdateTexture2D(ISLTexture2D* texture2d, uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
 	virtual void DeleteTexture2D(ISLTexture2D* texture2d) = 0;
 
 	// buffer functions
-	virtual ISLBuffer* CreateBuffer(void* data, uint32_t size) = 0;
-	virtual void UpdateBuffer(ISLBuffer* buffer, void* data, uint32_t size) = 0;
+	virtual ISLBuffer* CreateBuffer(float* data, uint32_t size) = 0;
+	virtual void UpdateBuffer(ISLBuffer* buffer, float* data, uint32_t size) = 0;
 	virtual void DeleteBuffer(ISLBuffer* buffer) = 0;
 
 	// index buffer functions
