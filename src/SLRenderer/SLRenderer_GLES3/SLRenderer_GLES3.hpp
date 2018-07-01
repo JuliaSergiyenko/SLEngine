@@ -3,15 +3,15 @@
 #include "../SLRenderer.hpp"
 #include <GLES2/gl2.h>
 
-// SLR_GLES2
-namespace SLR_GLES2 {
+// SLR_GLES3
+namespace SLR_GLES3 {
 	// SLRendererGL2
-	class SLRenderer_GLES2 : public ISLRenderer
+	class SLRenderer_GLES3 : public ISLRenderer
 	{
 	public:
 		// constructor and destructor
-		SLRenderer_GLES2();
-		~SLRenderer_GLES2();
+		SLRenderer_GLES3();
+		~SLRenderer_GLES3();
 
 		// texture functions
 		virtual ISLTexture2D* CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0);

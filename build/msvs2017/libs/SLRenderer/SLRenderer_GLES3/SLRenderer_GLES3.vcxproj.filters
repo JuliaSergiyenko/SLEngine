@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLBuffer_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLCamera_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLIndexBuffer_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLMesh_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLModel_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLTexture2D_GLES3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLBuffer_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLCamera_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLIndexBuffer_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLMesh_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLModel_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLTexture2D_GLES3.hpp" />
+  </ItemGroup>
+</Project>

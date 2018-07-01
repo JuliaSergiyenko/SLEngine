@@ -12,6 +12,9 @@
 #if defined(SL_RENDERER_GLES2)
 #include "SLRenderer_GLES2/SLRenderer_GLES2.hpp"
 #endif
+#if defined(SL_RENDERER_GLES3)
+#include "SLRenderer_GLES3/SLRenderer_GLES3.hpp"
+#endif
 #if !defined(SL_RENDERER_GL2) && !defined(SL_RENDERER_GL3) && !defined(SL_RENDERER_GLES2)
 #error "Plese, define rendering type (SL_RENDERER_GL2, or SL_RENDERER_GL3, or SL_RENDERER_GLES2)"
 #endif
@@ -34,6 +37,10 @@ ISLRenderer* SLRendererFabric::CreateRenderer(SLRendererType rendererType)
 #if defined(SL_RENDERER_GLES2)
 	if (rendererType == SL_RENDERER_TYPE_GLES2)
 		return new SLR_GLES2::SLRenderer_GLES2();
+#endif
+#if defined(SL_RENDERER_GLES3)
+	if (rendererType == SL_RENDERER_TYPE_GLES3)
+		return new SLR_GLES3::SLRenderer_GLES3();
 #endif
 	return nullptr;
 }

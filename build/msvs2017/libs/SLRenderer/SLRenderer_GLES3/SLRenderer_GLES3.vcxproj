@@ -20,33 +20,33 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{2652CE5C-FFFD-41F5-8277-42474283C6E8}</ProjectGuid>
+    <ProjectGuid>{D970D931-879B-4D76-A6B7-084C6B0394F6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>rendergles2app</RootNamespace>
+    <RootNamespace>SLRendererGLES3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -56,7 +56,6 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
-    <Import Project="..\..\libs\SLRenderer\SLRenderer\SLRenderer.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -93,97 +92,89 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>SL_RENDERER_GLES2;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\deps\khronos;..\..\..\..\..\deps\glm;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>libGLESv2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\lib\GLES\windows\$(PlatformTarget);</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /Y $(SolutionDir)..\..\lib\GLES\windows\$(PlatformTarget)\*.dll $(OutDir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>SL_RENDERER_GLES2;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\deps\khronos;..\..\..\..\..\deps\glm;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>libGLESv2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\lib\GLES\windows\$(PlatformTarget);</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /Y $(SolutionDir)..\..\lib\GLES\windows\$(PlatformTarget)\*.dll $(OutDir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>SL_RENDERER_GLES2;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\deps\khronos;..\..\..\..\..\deps\glm;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>libGLESv2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\lib\GLES\windows\$(PlatformTarget);</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /Y $(SolutionDir)..\..\lib\GLES\windows\$(PlatformTarget)\*.dll $(OutDir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>SL_RENDERER_GLES2;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\deps\khronos;..\..\..\..\..\deps\glm;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>libGLESv2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\lib\GLES\windows\$(PlatformTarget);</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /Y $(SolutionDir)..\..\lib\GLES\windows\$(PlatformTarget)\*.dll $(OutDir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="render_gles2_app.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLBuffer_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLCamera_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLIndexBuffer_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLMesh_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLModel_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLTexture2D_GLES3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\glfw\glfw.vcxproj">
-      <Project>{cde7fc66-a90e-4475-9840-2d1b0f412b40}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GLES2\SLRenderer_GLES2.vcxproj">
-      <Project>{c998581d-8242-4a73-a042-9e7e754fa9b1}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.vcxproj">
-      <Project>{d970d931-879b-4d76-a6b7-084c6b0394f6}</Project>
-    </ProjectReference>
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLBuffer_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLCamera_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLIndexBuffer_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLMesh_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLModel_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLTexture2D_GLES3.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

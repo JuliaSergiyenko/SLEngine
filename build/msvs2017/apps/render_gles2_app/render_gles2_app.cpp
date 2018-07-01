@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 	//////////////////////////////////////////////////////////////////////////
 
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL3);
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GLES2);
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create buffers

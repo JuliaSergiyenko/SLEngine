@@ -96,7 +96,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>SL_RENDERER_GL4;SL_RENDERER_GL3;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SL_RENDERER_GL3;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -115,7 +115,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>SL_RENDERER_GL4;SL_RENDERER_GL3;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SL_RENDERER_GL3;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -136,7 +136,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>SL_RENDERER_GL4;SL_RENDERER_GL3;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SL_RENDERER_GL3;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -159,7 +159,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>SL_RENDERER_GL4;SL_RENDERER_GL3;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SL_RENDERER_GL3;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -183,9 +183,6 @@
     </ProjectReference>
     <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GL3\SLRenderer_GL3.vcxproj">
       <Project>{32ebb925-1af4-44e9-b848-0b67a81b27ff}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.vcxproj">
-      <Project>{6f62e277-9308-46c1-bbb0-ab977332f126}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
