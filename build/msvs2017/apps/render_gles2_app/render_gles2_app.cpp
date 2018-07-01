@@ -33,10 +33,10 @@ int main(int argc, char** argv)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
-// 	// select OpenGL version
-// 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+	// 	// select OpenGL version
+	// 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
 	// create window
 	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGL3", nullptr, nullptr);
@@ -84,7 +84,7 @@ int main(int argc, char** argv)
 	camera->SetFarPlane(100.0f);
 
 	//////////////////////////////////////////////////////////////////////////
-	
+
 	// main loop
 	double dt = 0, last_update_time = 0;
 	while (!glfwWindowShouldClose(window))
@@ -103,7 +103,7 @@ int main(int argc, char** argv)
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-	
+
 	// delete camera
 	renderer->DeleteCamera(camera);
 
@@ -120,7 +120,7 @@ int main(int argc, char** argv)
 	renderer->DeleteIndexBuffer(indexBuffer);
 	renderer->DeleteBuffer(noramlBuffer);
 	renderer->DeleteBuffer(positionBuffer);
-	
+
 	//////////////////////////////////////////////////////////////////////////
 
 	// exit

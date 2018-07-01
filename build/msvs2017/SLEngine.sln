@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{1C884535-E6C0-4443-9758-FCDAC22D9FFC}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SLRenderer_GL3", "libs\SLRenderer\SLRenderer_GL3\SLRenderer_GL3.vcxproj", "{32EBB925-1AF4-44E9-B848-0B67A81B27FF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gl3_app", "apps\render_gl3_app\render_gl3_app.vcxproj", "{574CB5D2-DAF5-4DE9-85ED-73391CE096BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gles2_app", "apps\render_gles2_app\render_gles2_app.vcxproj", "{2652CE5C-FFFD-41F5-8277-42474283C6E8}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -127,6 +129,14 @@ Global
 		{574CB5D2-DAF5-4DE9-85ED-73391CE096BF}.Release|x64.Build.0 = Release|x64
 		{574CB5D2-DAF5-4DE9-85ED-73391CE096BF}.Release|x86.ActiveCfg = Release|Win32
 		{574CB5D2-DAF5-4DE9-85ED-73391CE096BF}.Release|x86.Build.0 = Release|Win32
+		{2652CE5C-FFFD-41F5-8277-42474283C6E8}.Debug|x64.ActiveCfg = Debug|x64
+		{2652CE5C-FFFD-41F5-8277-42474283C6E8}.Debug|x64.Build.0 = Debug|x64
+		{2652CE5C-FFFD-41F5-8277-42474283C6E8}.Debug|x86.ActiveCfg = Debug|Win32
+		{2652CE5C-FFFD-41F5-8277-42474283C6E8}.Debug|x86.Build.0 = Debug|Win32
+		{2652CE5C-FFFD-41F5-8277-42474283C6E8}.Release|x64.ActiveCfg = Release|x64
+		{2652CE5C-FFFD-41F5-8277-42474283C6E8}.Release|x64.Build.0 = Release|x64
+		{2652CE5C-FFFD-41F5-8277-42474283C6E8}.Release|x86.ActiveCfg = Release|Win32
+		{2652CE5C-FFFD-41F5-8277-42474283C6E8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +155,7 @@ Global
 		{C998581D-8242-4A73-A042-9E7E754FA9B1} = {9FD5A1AD-7308-44AA-B97D-0FD5AB6E3025}
 		{32EBB925-1AF4-44E9-B848-0B67A81B27FF} = {9FD5A1AD-7308-44AA-B97D-0FD5AB6E3025}
 		{574CB5D2-DAF5-4DE9-85ED-73391CE096BF} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
+		{2652CE5C-FFFD-41F5-8277-42474283C6E8} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88118672-05E8-4C89-92C8-E3CB6E9192DC}
