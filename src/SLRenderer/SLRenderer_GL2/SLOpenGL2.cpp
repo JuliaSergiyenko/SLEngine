@@ -1,5 +1,6 @@
 #include "SLOpenGL2.hpp"
 
+// get procedure address
 #ifndef GetProcAddress
 	#if defined(_WIN32)
 		#define GetProcAddress(x) wglGetProcAddress(x)
@@ -9,7 +10,7 @@
 #endif
 
 
-// SLR_GL2::GL2
+// SLR_GL2
 namespace SLR_GL2
 {
 	// GL_VERSION_1_1

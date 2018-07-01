@@ -6,7 +6,7 @@ namespace SLR_GL3 {
 	// SLRenderer_GL3
 	SLRenderer_GL3::SLRenderer_GL3()
 	{
-		// constructor
+		InitOpenGL3();
 	}
 
 	// ~SLRenderer_GL3

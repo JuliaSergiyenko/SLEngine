@@ -24,6 +24,7 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLIndexBuffer_GL3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLMesh_GL3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLModel_GL3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLOpenGL3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLRenderer_GL3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLTexture2D_GL3.cpp" />
   </ItemGroup>
@@ -33,6 +34,7 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLIndexBuffer_GL3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLMesh_GL3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLModel_GL3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLOpenGL3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLRenderer_GL3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLTexture2D_GL3.hpp" />
   </ItemGroup>
