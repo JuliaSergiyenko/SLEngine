@@ -37,6 +37,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gles2_app", "apps\re
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "playgorund_app", "apps\playgorund_app\playgorund_app.vcxproj", "{8AA6A4A8-0342-46A9-AD52-C20A84792BA1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "windows_app", "apps\windows_app\windows_app.vcxproj", "{E782F27A-F963-4507-9D63-85CDAE78BDD9}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{32ebb925-1af4-44e9-b848-0b67a81b27ff}*SharedItemsImports = 4
@@ -147,6 +149,14 @@ Global
 		{8AA6A4A8-0342-46A9-AD52-C20A84792BA1}.Release|x64.Build.0 = Release|x64
 		{8AA6A4A8-0342-46A9-AD52-C20A84792BA1}.Release|x86.ActiveCfg = Release|Win32
 		{8AA6A4A8-0342-46A9-AD52-C20A84792BA1}.Release|x86.Build.0 = Release|Win32
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x64.ActiveCfg = Debug|x64
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x64.Build.0 = Debug|x64
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x86.ActiveCfg = Debug|Win32
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x86.Build.0 = Debug|Win32
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x64.ActiveCfg = Release|x64
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x64.Build.0 = Release|x64
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x86.ActiveCfg = Release|Win32
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,6 +177,7 @@ Global
 		{574CB5D2-DAF5-4DE9-85ED-73391CE096BF} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{2652CE5C-FFFD-41F5-8277-42474283C6E8} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{8AA6A4A8-0342-46A9-AD52-C20A84792BA1} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88118672-05E8-4C89-92C8-E3CB6E9192DC}
