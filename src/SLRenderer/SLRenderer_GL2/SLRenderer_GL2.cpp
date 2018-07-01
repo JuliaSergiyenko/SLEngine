@@ -1,4 +1,5 @@
 #include "SLRenderer_GL2.hpp"
+#include "SLOpenGL2.hpp"
 #include <stdexcept>
 
 // SLRGL2
@@ -6,7 +7,7 @@ namespace SLR_GL2 {
 	// SLRenderer_GL2
 	SLRenderer_GL2::SLRenderer_GL2()
 	{
-		// constructor
+		InitOpenGL2();
 	}
 
 	// ~SLRenderer_GL2

@@ -4,16 +4,6 @@
 #include <glfw/glfw3.h>
 #include <glm/glm.hpp>
 
-void bar(const char * str)
-{
-	std::cout << str << std::endl;
-}
-
-void func(void(*GetProcAddress)(const char *))
-{
-	GetProcAddress("hello!");
-}
-
 // main
 int main(int argc, char** argv)
 {
@@ -50,7 +40,7 @@ int main(int argc, char** argv)
 	//////////////////////////////////////////////////////////////////////////
 
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL3);
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL2);
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create buffers

@@ -41,10 +41,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "windows_app", "apps\windows
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{32ebb925-1af4-44e9-b848-0b67a81b27ff}*SharedItemsImports = 4
+		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{2652ce5c-fffd-41f5-8277-42474283c6e8}*SharedItemsImports = 4
+		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{574cb5d2-daf5-4de9-85ed-73391ce096bf}*SharedItemsImports = 4
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{c7448e0b-d670-4feb-afce-4dad1da64b13}*SharedItemsImports = 9
-		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{c998581d-8242-4a73-a042-9e7e754fa9b1}*SharedItemsImports = 4
-		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{f0d7c786-a9bb-46d9-a3c4-1fa99aa8a169}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

@@ -8,6 +8,7 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLModel_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLTexture2D_GL2.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLOpenGL2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLBuffer_GL2.hpp" />
@@ -17,5 +18,6 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLModel_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLTexture2D_GL2.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLOpenGL2.hpp" />
   </ItemGroup>
 </Project>

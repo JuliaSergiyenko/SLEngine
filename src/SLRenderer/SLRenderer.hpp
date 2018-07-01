@@ -204,11 +204,13 @@ public:
 	virtual void SetFOV(float fov) = 0;
 	virtual void SetNearPlane(float nearPlane) = 0;
 	virtual void SetFarPlane(float farPlane) = 0;
+	virtual void SetViewport(size_t width, size_t height) = 0;
 
 	// set properties
 	virtual float GetFOV() = 0;
 	virtual float GetNearPlane() = 0;
 	virtual float GetFarPlane() = 0;
+	virtual void GetViewport(size_t& width, size_t& height) = 0;
 };
 
 // ISLRenderer

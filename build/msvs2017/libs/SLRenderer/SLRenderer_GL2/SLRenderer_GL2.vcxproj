@@ -24,6 +24,7 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLIndexBuffer_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLMesh_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLModel_GL2.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLOpenGL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLTexture2D_GL2.cpp" />
   </ItemGroup>
@@ -33,6 +34,7 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLIndexBuffer_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLMesh_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLModel_GL2.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLOpenGL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLTexture2D_GL2.hpp" />
   </ItemGroup>
@@ -72,9 +74,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="Shared">
-    <Import Project="..\SLRenderer\SLRenderer.vcxitems" Label="Shared" />
-  </ImportGroup>
+  <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -110,7 +110,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>SL_RENDERER_GL2;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\..\deps\khronos;..\..\..\..\..\deps\glm;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -123,7 +123,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>SL_RENDERER_GL2;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\..\deps\khronos;..\..\..\..\..\deps\glm;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -138,7 +138,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>SL_RENDERER_GL2;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\..\deps\khronos;..\..\..\..\..\deps\glm;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -155,7 +155,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>SL_RENDERER_GL2;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\..\deps\khronos;..\..\..\..\..\deps\glm;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <GL/glcorearb.h>
 #include "../SLRenderer.hpp"
+#include "SLOpenGL2.hpp"
 
 // SLRGL2
 namespace SLR_GL2 {
