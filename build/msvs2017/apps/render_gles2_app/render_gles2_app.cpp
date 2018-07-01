@@ -3,7 +3,6 @@
 #include <SLRenderer/SLRenderer.hpp>
 #include <glfw/glfw3.h>
 #include <glm/glm.hpp>
-#include <GLES2/gl2.h>
 
 void bar(const char * str)
 {
