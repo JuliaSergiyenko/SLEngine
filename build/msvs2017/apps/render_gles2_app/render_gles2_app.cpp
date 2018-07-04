@@ -3,16 +3,8 @@
 #include <SLRenderer/SLRenderer.hpp>
 #include <glfw/glfw3.h>
 #include <glm/glm.hpp>
-
-void bar(const char * str)
-{
-	std::cout << str << std::endl;
-}
-
-void func(void(*GetProcAddress)(const char *))
-{
-	GetProcAddress("hello!");
-}
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 // main
 int main(int argc, char** argv)
@@ -27,15 +19,15 @@ int main(int argc, char** argv)
 	glfwInit();
 
 	// select OpenGL ES version
-	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
-	glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+		glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+		glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
-	// 	// select OpenGL version
-	// 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+// 	// select OpenGL version
+// 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
 	// create window
 	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGL3", nullptr, nullptr);
@@ -50,7 +42,7 @@ int main(int argc, char** argv)
 	//////////////////////////////////////////////////////////////////////////
 
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GLES2);
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL3);
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create buffers
@@ -77,10 +69,12 @@ int main(int argc, char** argv)
 	model->SetVisibilityMode(SL_MESH_GROUP_VISIBILITY_MODE_VISIBLE);
 
 	// create camera
+	glm::mat4 matProj = glm::lookAt(glm::vec3(0.0f, -10.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	ISLCamera* camera = renderer->CreateCamera();
-	camera->SetFOV(45.0f);
+	camera->SetProjection(glm::value_ptr(matProj));
 	camera->SetNearPlane(0.1f);
 	camera->SetFarPlane(100.0f);
+	camera->SetViewport(800, 600);
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -89,7 +83,7 @@ int main(int argc, char** argv)
 	while (!glfwWindowShouldClose(window))
 	{
 		// render!
-		renderer->Render(camera);
+		renderer->Render();
 
 		// display and process events through callbacks
 		glfwSwapBuffers(window);

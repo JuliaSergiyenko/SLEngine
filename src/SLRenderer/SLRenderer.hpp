@@ -203,16 +203,35 @@ protected:
 	~ISLCamera() {}
 public:
 	// set properties
-	virtual void SetFOV(float fov) = 0;
 	virtual void SetNearPlane(float nearPlane) = 0;
 	virtual void SetFarPlane(float farPlane) = 0;
 	virtual void SetViewport(size_t width, size_t height) = 0;
+	virtual void SetProjection(float* matProj) = 0;
 
 	// set properties
-	virtual float GetFOV() = 0;
 	virtual float GetNearPlane() = 0;
 	virtual float GetFarPlane() = 0;
 	virtual void GetViewport(size_t& width, size_t& height) = 0;
+	virtual void GetProjection(float* matProj) = 0;
+};
+
+// ISLModelGroup
+class ISLModelGroup
+{
+protected:
+	ISLModelGroup() {}
+	~ISLModelGroup() {}
+public:
+	// get device
+	virtual ISLRenderer* GetRenderer() = 0;
+
+	// camera functions
+	virtual void SetCamera(ISLCamera* camera) = 0;
+	virtual ISLCamera* GetCamera() = 0;
+
+	// model functions
+	virtual void AddModel(ISLModel* model) = 0;
+	virtual void RemoveModel(ISLModel* model) = 0;
 };
 
 // ISLRenderer
@@ -250,8 +269,12 @@ public:
 	virtual ISLCamera* CreateCamera() = 0;
 	virtual void DeleteCamera(ISLCamera* camera) = 0;
 
+	// model group functions
+	virtual ISLModelGroup* CreateModelGroup() = 0;
+	virtual void DeleteModelGroup(ISLModelGroup* modelGroup) = 0;
+
 	// render
-	virtual void Render(ISLCamera* camera) = 0;
+	virtual void Render() = 0;
 
 	// delete resource
 	virtual void DeleteResources() = 0;

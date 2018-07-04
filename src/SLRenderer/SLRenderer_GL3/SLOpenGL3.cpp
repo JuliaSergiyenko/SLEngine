@@ -4,6 +4,7 @@
 	#if defined(_WIN32)
 		#define GetProcAddress(x) wglGetProcAddress(x)
 	#elif defined(__linux__)
+		#include <GL/glx.h>
 		#define GetProcAddress(x) glxGetProcAddress((const GLubyte *)x);
 	#endif
 #endif

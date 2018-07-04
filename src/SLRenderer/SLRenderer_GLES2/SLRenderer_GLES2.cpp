@@ -105,8 +105,20 @@ namespace SLR_GLES2 {
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
+	// CreateModelGroup
+	ISLModelGroup* SLRenderer_GLES2::CreateModelGroup()
+	{
+		throw std::logic_error("The method or operation is not implemented.");
+	}
+
+	// DeleteModelGroup
+	void SLRenderer_GLES2::DeleteModelGroup(ISLModelGroup* modelGroup)
+	{
+		throw std::logic_error("The method or operation is not implemented.");
+	}
+
 	// Render
-	void SLRenderer_GLES2::Render(ISLCamera* camera)
+	void SLRenderer_GLES2::Render()
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}

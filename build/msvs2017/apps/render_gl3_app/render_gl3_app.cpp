@@ -3,6 +3,8 @@
 #include <SLRenderer/SLRenderer.hpp>
 #include <glfw/glfw3.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 // main
 int main(int argc, char** argv)
@@ -67,10 +69,12 @@ int main(int argc, char** argv)
 	model->SetVisibilityMode(SL_MESH_GROUP_VISIBILITY_MODE_VISIBLE);
 
 	// create camera
+	glm::mat4 matProj = glm::lookAt(glm::vec3(0.0f, -10.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	ISLCamera* camera = renderer->CreateCamera();
-	camera->SetFOV(45.0f);
+	camera->SetProjection(glm::value_ptr(matProj));
 	camera->SetNearPlane(0.1f);
 	camera->SetFarPlane(100.0f);
+	camera->SetViewport(800, 600);
 
 	//////////////////////////////////////////////////////////////////////////
 	
@@ -79,7 +83,7 @@ int main(int argc, char** argv)
 	while (!glfwWindowShouldClose(window))
 	{
 		// render!
-		renderer->Render(camera);
+		renderer->Render();
 
 		// display and process events through callbacks
 		glfwSwapBuffers(window);

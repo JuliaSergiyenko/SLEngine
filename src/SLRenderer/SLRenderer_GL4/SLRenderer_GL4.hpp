@@ -40,8 +40,12 @@ namespace SLR_GL4 {
 		virtual ISLCamera* CreateCamera();
 		virtual void DeleteCamera(ISLCamera* camera);
 
+		// model group functions
+		virtual ISLModelGroup* CreateModelGroup();
+		virtual void DeleteModelGroup(ISLModelGroup* modelGroup);
+
 		// render
-		virtual void Render(ISLCamera* camera);
+		virtual void Render();
 
 		// delete resource
 		virtual void DeleteResources();

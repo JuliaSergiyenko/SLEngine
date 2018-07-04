@@ -15,8 +15,8 @@
 #if defined(SL_RENDERER_GLES3)
 #include "SLRenderer_GLES3/SLRenderer_GLES3.hpp"
 #endif
-#if !defined(SL_RENDERER_GL2) && !defined(SL_RENDERER_GL3) && !defined(SL_RENDERER_GLES2)
-#error "Plese, define rendering type (SL_RENDERER_GL2, or SL_RENDERER_GL3, or SL_RENDERER_GLES2)"
+#if !defined(SL_RENDERER_GL2) && !defined(SL_RENDERER_GL3) && !defined(SL_RENDERER_GL4) && !defined(SL_RENDERER_GLES2) && !defined(SL_RENDERER_GLES3)
+#error "Plese, define rendering type (SL_RENDERER_GL2, SL_RENDERER_GL3, SL_RENDERER_GL4, SL_RENDERER_GLES2 or SL_RENDERER_GLES3)"
 #endif
 
 // CreateRenderer
