@@ -140,8 +140,7 @@ public:
 	virtual void SetColorBuffer(ISLBuffer* buffer) = 0;
 	virtual void SetNormalBuffer(ISLBuffer* buffer) = 0;
 	virtual void SetTangentBuffer(ISLBuffer* buffer) = 0;
-	virtual void SetBaseTexCoordBuffer(ISLBuffer* buffer) = 0;
-	virtual void SetNormalTexCoordBuffer(ISLBuffer* buffer) = 0;
+	virtual void SetTexCoordBuffer(ISLBuffer* buffer) = 0;
 	virtual void SetWeightsBuffer(ISLBuffer* buffer) = 0;
 	virtual void SetIndexBuffer(ISLIndexBuffer* buffer) = 0;
 
@@ -162,8 +161,7 @@ public:
 	virtual ISLBuffer* GetColorBuffer() const = 0;
 	virtual ISLBuffer* GetNormalBuffer() const = 0;
 	virtual ISLBuffer* GetTangentBuffer() const = 0;
-	virtual ISLBuffer* GetBaseTexCoordBuffer() const = 0;
-	virtual ISLBuffer* GetNormalTexCoordBuffer() const = 0;
+	virtual ISLBuffer* GetTexCoordBuffer() const = 0;
 	virtual ISLBuffer* GetWeightsBuffer() const = 0;
 	virtual ISLIndexBuffer* GetIndexBuffer() const = 0;
 

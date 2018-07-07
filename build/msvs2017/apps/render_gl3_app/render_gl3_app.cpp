@@ -76,6 +76,11 @@ int main(int argc, char** argv)
 	camera->SetFarPlane(100.0f);
 	camera->SetViewport(800, 600);
 
+	// create scene
+	ISLScene* scene = renderer->CreateScene();
+	scene->AddModel(model);
+	scene->SetCamera(camera);
+
 	//////////////////////////////////////////////////////////////////////////
 	
 	// main loop
