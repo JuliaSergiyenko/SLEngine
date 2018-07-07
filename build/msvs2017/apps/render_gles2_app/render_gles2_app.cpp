@@ -19,10 +19,10 @@ int main(int argc, char** argv)
 	glfwInit();
 
 	// select OpenGL ES version
-		glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
-		glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+	glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
 // 	// select OpenGL version
 // 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -75,6 +75,11 @@ int main(int argc, char** argv)
 	camera->SetNearPlane(0.1f);
 	camera->SetFarPlane(100.0f);
 	camera->SetViewport(800, 600);
+
+	// create scene
+	ISLScene* scene = renderer->CreateScene();
+	scene->AddModel(model);
+	scene->SetCamera(camera);
 
 	//////////////////////////////////////////////////////////////////////////
 
