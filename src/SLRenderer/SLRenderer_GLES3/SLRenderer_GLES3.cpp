@@ -105,14 +105,14 @@ namespace SLR_GLES3 {
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
-	// CreateModelGroup
-	ISLModelGroup* SLRenderer_GLES3::CreateModelGroup()
+	// CreateScene
+	ISLScene* SLRenderer_GLES3::CreateScene()
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
-	// DeleteModelGroup
-	void SLRenderer_GLES3::DeleteModelGroup(ISLModelGroup* modelGroup)
+	// DeleteScene
+	void SLRenderer_GLES3::DeleteScene(ISLScene* scene)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}

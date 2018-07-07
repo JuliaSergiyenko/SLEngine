@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 	// set current context
 	glfwMakeContextCurrent(window);
 
-	// setup the scene ready for rendering
+	// setup thescene ready for rendering
 	int width = 0, height = 0;
 	glfwGetFramebufferSize(window, &width, &height);
 

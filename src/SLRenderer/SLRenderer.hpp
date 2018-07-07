@@ -215,12 +215,12 @@ public:
 	virtual void GetProjection(float* matProj) = 0;
 };
 
-// ISLModelGroup
-class ISLModelGroup
+// ISLScene
+class ISLScene
 {
 protected:
-	ISLModelGroup() {}
-	~ISLModelGroup() {}
+	ISLScene() {}
+	~ISLScene() {}
 public:
 	// get device
 	virtual ISLRenderer* GetRenderer() = 0;
@@ -269,9 +269,9 @@ public:
 	virtual ISLCamera* CreateCamera() = 0;
 	virtual void DeleteCamera(ISLCamera* camera) = 0;
 
-	// model group functions
-	virtual ISLModelGroup* CreateModelGroup() = 0;
-	virtual void DeleteModelGroup(ISLModelGroup* modelGroup) = 0;
+	// scene functions
+	virtual ISLScene* CreateScene() = 0;
+	virtual void DeleteScene(ISLScene* scene) = 0;
 
 	// render
 	virtual void Render() = 0;

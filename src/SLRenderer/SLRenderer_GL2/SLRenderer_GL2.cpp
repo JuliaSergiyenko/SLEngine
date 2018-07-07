@@ -106,14 +106,14 @@ namespace SLR_GL2 {
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
-	// CreateModelGroup
-	ISLModelGroup* SLRenderer_GL2::CreateModelGroup()
+	// CreateScene
+	ISLScene* SLRenderer_GL2::CreateScene()
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 
-	// DeleteModelGroup
-	void SLRenderer_GL2::DeleteModelGroup(ISLModelGroup* modelGroup)
+	// DeleteScene
+	void SLRenderer_GL2::DeleteScene(ISLScene* scene)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}

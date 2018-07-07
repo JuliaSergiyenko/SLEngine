@@ -40,9 +40,9 @@ namespace SLR_GL3 {
 		virtual ISLCamera* CreateCamera();
 		virtual void DeleteCamera(ISLCamera* camera);
 
-		// model group functions
-		virtual ISLModelGroup* CreateModelGroup();
-		virtual void DeleteModelGroup(ISLModelGroup* modelGroup);
+		// scene functions
+		virtual ISLScene* CreateScene();
+		virtual void DeleteScene(ISLScene* scene);
 
 		// render
 		virtual void Render();
