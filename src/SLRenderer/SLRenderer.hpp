@@ -55,12 +55,12 @@ enum SLRendererType
 	SL_RENDERER_TYPE_DEFAULT = 0x7fffffff,
 };
 
-// SLMeshGroupVisibilityMode
-enum SLMeshGroupVisibilityMode
+// SLModelVisibilityMode
+enum SLModelVisibilityMode
 {
-	SL_MESH_GROUP_VISIBILITY_MODE_VISIBLE     = 0,
-	SL_MESH_GROUP_VISIBILITY_MODE_HIDE        = 1,
-	SL_MESH_GROUP_VISIBILITY_MODE_TRANSPARENT = 2,
+	SL_MODEL_VISIBILITY_MODE_VISIBLE     = 0,
+	SL_MODEL_VISIBILITY_MODE_HIDE        = 1,
+	SL_MODEL_VISIBILITY_MODE_TRANSPARENT = 2,
 
 };
 
@@ -181,8 +181,8 @@ public:
 	virtual ISLRenderer* GetRenderer() = 0;
 
 	// visibility functions
-	virtual void SetVisibilityMode(SLMeshGroupVisibilityMode visibilityMode) = 0;
-	virtual SLMeshGroupVisibilityMode SetVisibilityMode() = 0;
+	virtual void SetVisibilityMode(SLModelVisibilityMode visibilityMode) = 0;
+	virtual SLModelVisibilityMode SetVisibilityMode() = 0;
 
 	// mesh functions
 	virtual void AddMesh(ISLMesh* mesh) = 0;

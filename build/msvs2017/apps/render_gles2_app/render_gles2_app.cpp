@@ -66,7 +66,7 @@ int main(int argc, char** argv)
 	ISLModel* model = renderer->CreateModel();
 	model->AddMesh(mesh);
 	model->SetTransform(&transform[0][0]);
-	model->SetVisibilityMode(SL_MESH_GROUP_VISIBILITY_MODE_VISIBLE);
+	model->SetVisibilityMode(SL_MODEL_VISIBILITY_MODE_VISIBLE);
 
 	// create camera
 	glm::mat4 matProj = glm::lookAt(glm::vec3(0.0f, -10.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
