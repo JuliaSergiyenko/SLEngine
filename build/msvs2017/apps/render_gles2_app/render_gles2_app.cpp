@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 // 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
 	// create window
-	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGL3", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGLES2", nullptr, nullptr);
 
 	// set current context
 	glfwMakeContextCurrent(window);
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
 	//////////////////////////////////////////////////////////////////////////
 
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL3);
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GLES2);
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create buffers
