@@ -131,7 +131,7 @@ namespace SLR_GL2 {
 	}
 
 	// GetDescription
-	const char * SLRenderer_GL2::GetDescription() const
+	const char* SLRenderer_GL2::GetDescription() const
 	{
 		return "SLRenderer OpenGL 2.0 implementation";
 	}

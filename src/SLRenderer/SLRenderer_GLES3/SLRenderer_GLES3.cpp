@@ -130,7 +130,7 @@ namespace SLR_GLES3 {
 	}
 
 	// GetDescription
-	const char * SLRenderer_GLES3::GetDescription() const
+	const char* SLRenderer_GLES3::GetDescription() const
 	{
 		return "SLRenderer OpenGL ES 3.2 implementation";
 	}

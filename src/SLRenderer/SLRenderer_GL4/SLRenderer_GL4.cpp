@@ -16,7 +16,7 @@ namespace SLR_GL4 {
 	}
 
 	// CreateTexture2D
-	ISLTexture2D* SLRenderer_GL4::CreateTexture2D(uint8_t * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	ISLTexture2D* SLRenderer_GL4::CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
 	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
@@ -130,7 +130,7 @@ namespace SLR_GL4 {
 	}
 
 	// GetDescription
-	const char * SLRenderer_GL4::GetDescription() const
+	const char* SLRenderer_GL4::GetDescription() const
 	{
 		return "SLRenderer OpenGL 4.6 implementation";
 	}

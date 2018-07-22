@@ -130,7 +130,7 @@ namespace SLR_GLES2 {
 	}
 
 	// GetDescription
-	const char * SLRenderer_GLES2::GetDescription() const
+	const char* SLRenderer_GLES2::GetDescription() const
 	{
 		return "SLRenderer OpenGL ES 2.0 implementation";
 	}

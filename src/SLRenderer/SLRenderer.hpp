@@ -95,7 +95,7 @@ protected:
 	~ISLBuffer() {}
 public:
 	// get device
-	virtual ISLRenderer* GetRenderer() = 0;
+	virtual ISLRenderer* GetRenderer() const = 0;
 
 	// get buffer size
 	virtual uint32_t GetSize() = 0;
@@ -110,7 +110,7 @@ protected:
 	~ISLIndexBuffer() {};
 public:
 	// get device
-	virtual ISLRenderer* GetRenderer() = 0;
+	virtual ISLRenderer* GetRenderer() const = 0;
 
 	// get buffer size
 	virtual uint32_t GetSize() = 0;
@@ -125,7 +125,7 @@ protected:
 	~ISLMesh() {};
 public:
 	// get device
-	virtual ISLRenderer* GetRenderer() = 0;
+	virtual ISLRenderer* GetRenderer() const = 0;
 
 	// set colors
 	virtual void SetBaseColor(float r, float g, float b, float a) = 0;
@@ -178,15 +178,16 @@ protected:
 	~ISLModel() {}
 public:
 	// get device
-	virtual ISLRenderer* GetRenderer() = 0;
+	virtual ISLRenderer* GetRenderer() const = 0;
 
 	// visibility functions
 	virtual void SetVisibilityMode(SLModelVisibilityMode visibilityMode) = 0;
-	virtual SLModelVisibilityMode SetVisibilityMode() = 0;
+	virtual SLModelVisibilityMode GetVisibilityMode() = 0;
 
 	// mesh functions
 	virtual void AddMesh(ISLMesh* mesh) = 0;
 	virtual void RemoveMesh(ISLMesh* mesh) = 0;
+	virtual bool IsMeshExists(ISLMesh* mesh) = 0;
 
 	// transform matrix functions
 	virtual void SetTransform(float* mat) = 0;
@@ -194,12 +195,19 @@ public:
 };
 
 // ISLCamera
-class ISLCamera : public ISLModel
+class ISLCamera
 {
 protected:
 	ISLCamera() {}
 	~ISLCamera() {}
 public:
+	// get device
+	virtual ISLRenderer* GetRenderer() const = 0;
+
+	// transform matrix functions
+	virtual void SetTransform(float* mat) = 0;
+	virtual void GetTransform(float* mat) = 0;
+
 	// set properties
 	virtual void SetNearPlane(float nearPlane) = 0;
 	virtual void SetFarPlane(float farPlane) = 0;
@@ -221,7 +229,7 @@ protected:
 	~ISLScene() {}
 public:
 	// get device
-	virtual ISLRenderer* GetRenderer() = 0;
+	virtual ISLRenderer* GetRenderer() const = 0;
 
 	// camera functions
 	virtual void SetCamera(ISLCamera* camera) = 0;
@@ -230,6 +238,7 @@ public:
 	// model functions
 	virtual void AddModel(ISLModel* model) = 0;
 	virtual void RemoveModel(ISLModel* model) = 0;
+	virtual bool IsModelExists(ISLModel* model) = 0;
 };
 
 // ISLRenderer
@@ -244,32 +253,39 @@ public:
 	virtual ISLTexture2D* CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
 	virtual void UpdateTexture2D(ISLTexture2D* texture2d, uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
 	virtual void DeleteTexture2D(ISLTexture2D* texture2d) = 0;
+	virtual bool IsTexture2DExists(ISLTexture2D* texture2d) = 0;
 
 	// buffer functions
 	virtual ISLBuffer* CreateBuffer(float* data, uint32_t size) = 0;
 	virtual void UpdateBuffer(ISLBuffer* buffer, float* data, uint32_t size) = 0;
 	virtual void DeleteBuffer(ISLBuffer* buffer) = 0;
+	virtual bool IsBufferExists(ISLBuffer* buffer) = 0;
 
 	// index buffer functions
 	virtual ISLIndexBuffer* CreateIndexBuffer(uint16_t* data, uint32_t size) = 0;
 	virtual void UpdateIndexBuffer(ISLIndexBuffer* buffer, uint16_t* data, uint32_t size) = 0;
 	virtual void DeleteIndexBuffer(ISLIndexBuffer* buffer) = 0;
+	virtual bool IsIndexBufferExists(ISLIndexBuffer* buffer) = 0;
 
 	// mesh functions
 	virtual ISLMesh* CreateMesh() = 0;
 	virtual void DeleteMesh(ISLMesh* mesh) = 0;
+	virtual bool IsMeshExists(ISLMesh* mesh) = 0;
 
 	// model functions
 	virtual ISLModel* CreateModel() = 0;
 	virtual void DeleteModel(ISLModel* model) = 0;
+	virtual bool IsModelExists(ISLModel* model) = 0;
 
 	// camera functions
 	virtual ISLCamera* CreateCamera() = 0;
 	virtual void DeleteCamera(ISLCamera* camera) = 0;
+	virtual bool IsCameraExists(ISLCamera* camera) = 0;
 
 	// scene functions
 	virtual ISLScene* CreateScene() = 0;
 	virtual void DeleteScene(ISLScene* scene) = 0;
+	virtual bool IsSceneExists(ISLScene* scene) = 0;
 
 	// render
 	virtual void Render() = 0;
@@ -278,7 +294,7 @@ public:
 	virtual void DeleteResources() = 0;
 
 	// get description
-	virtual const char * GetDescription() const = 0;
+	virtual const char* GetDescription() const = 0;
 };
 
 // SLRendererFabric

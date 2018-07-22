@@ -52,6 +52,7 @@ int main(int argc, char** argv)
 
 	// create texture 
 	ISLTexture2D* baseTexture = renderer->CreateTexture2D(nullptr, 0, 1, 1, SL_PIXEL_DATA_TYPE_RGRA);
+	std::cout << baseTexture->GetRenderer()->GetDescription();
 
 	// create mesh and setup buffers
 	ISLMesh* mesh = renderer->CreateMesh();
@@ -118,6 +119,8 @@ int main(int argc, char** argv)
 	renderer->DeleteIndexBuffer(indexBuffer);
 	renderer->DeleteBuffer(noramlBuffer);
 	renderer->DeleteBuffer(positionBuffer);
+
+	renderer->DeleteResources();
 	
 	//////////////////////////////////////////////////////////////////////////
 

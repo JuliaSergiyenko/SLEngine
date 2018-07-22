@@ -51,6 +51,6 @@ namespace SLR_GLES2 {
 		virtual void DeleteResources();
 
 		// get description
-		virtual const char * GetDescription() const;
+		virtual const char* GetDescription() const;
 	};
 }

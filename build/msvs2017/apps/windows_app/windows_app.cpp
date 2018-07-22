@@ -70,7 +70,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			DispatchMessage(&msg);
 		}
 
-		// query performance info (Frequency.QuadPart * (1.0f / Elapsed.QuadPart))
+		// query performance info (Frequency.QuadPart* (1.0f / Elapsed.QuadPart))
 		QueryPerformanceCounter(&EndingTime);
 		Elapsed.QuadPart = EndingTime.QuadPart - StartingTime.QuadPart;
 	}
