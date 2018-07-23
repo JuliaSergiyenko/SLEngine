@@ -188,9 +188,6 @@
     <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GL3\SLRenderer_GL3.vcxproj">
       <Project>{32ebb925-1af4-44e9-b848-0b67a81b27ff}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.vcxproj">
-      <Project>{6f62e277-9308-46c1-bbb0-ab977332f126}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
