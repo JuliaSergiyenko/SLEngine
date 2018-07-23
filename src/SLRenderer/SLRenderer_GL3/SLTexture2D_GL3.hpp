@@ -23,14 +23,14 @@ namespace SLR_GL3 {
 		// get render device
 		virtual ISLRenderer* GetRenderer() const;
 
-		// get texture wrap mode S and T
-		virtual SLTextureWrapMode GetWrapModeS() const;
-		virtual SLTextureWrapMode GetWrapModeT() const;
-		virtual SLTextureFilterimgMode GetFilterimgMode() const;
-
 		// set texture wrap mode S and T
 		virtual void SetWrapModeS(SLTextureWrapMode wrapMode);
 		virtual void SetWrapModeT(SLTextureWrapMode wrapMode);
 		virtual void SetFilterimgMode(SLTextureFilterimgMode filterimgMode);
+
+		// get texture wrap mode S and T
+		virtual SLTextureWrapMode GetWrapModeS() const;
+		virtual SLTextureWrapMode GetWrapModeT() const;
+		virtual SLTextureFilterimgMode GetFilterimgMode() const;
 	};
 }

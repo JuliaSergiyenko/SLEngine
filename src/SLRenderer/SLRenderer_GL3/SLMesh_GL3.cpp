@@ -101,7 +101,7 @@ namespace SLR_GL3
 	}
 
 	// GetBaseColor
-	void SLMesh_GL3::GetBaseColor(float& r, float& g, float& b, float& a)
+	void SLMesh_GL3::GetBaseColor(float& r, float& g, float& b, float& a) const
 	{
 		r = mBaseColor[0];
 		g = mBaseColor[1];

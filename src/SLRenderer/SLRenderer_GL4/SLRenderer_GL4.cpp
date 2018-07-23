@@ -1,5 +1,7 @@
 #include "SLRenderer_GL4.hpp"
-#include <stdexcept>
+
+#include <iostream>
+#include <algorithm>
 
 // SLRGL4
 namespace SLR_GL4 {
@@ -15,118 +17,308 @@ namespace SLR_GL4 {
 		// destructor
 	}
 
+	//////////////////////////////////////////////////////////////////////////
+	// Texture2D
+	//////////////////////////////////////////////////////////////////////////
+
 	// CreateTexture2D
 	ISLTexture2D* SLRenderer_GL4::CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// create new texture
+		SLTexture2D_GL4* texture2D = new SLTexture2D_GL4(this);
+		mTexture2Ds.push_back(texture2D);
+		return texture2D;
 	}
 
 	// UpdateTexture2D
 	void SLRenderer_GL4::UpdateTexture2D(ISLTexture2D* texture2d, uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsTexture2DExists(texture2d))
+			return;
 	}
 
 	// DeleteTexture2D
 	void SLRenderer_GL4::DeleteTexture2D(ISLTexture2D* texture2d)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsTexture2DExists(texture2d))
+			return;
+
+		// remove existing textures
+		mTexture2Ds.erase(std::remove_if(mTexture2Ds.begin(), mTexture2Ds.end(), [&](SLTexture2D_GL4* item) {
+			return item == texture2d;
+		}), mTexture2Ds.end());
+
+		// delete texture
+		delete (SLTexture2D_GL4 *)texture2d;
 	}
+
+	// IsTexture2DExist
+	bool SLRenderer_GL4::IsTexture2DExists(ISLTexture2D* texture2d) const
+	{
+		return (std::find(mTexture2Ds.begin(), mTexture2Ds.end(), texture2d) != mTexture2Ds.end());
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// Buffer
+	//////////////////////////////////////////////////////////////////////////
 
 	// CreateBuffer
 	ISLBuffer* SLRenderer_GL4::CreateBuffer(float* data, uint32_t size)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// create new buffer
+		SLBuffer_GL4* buffer = new SLBuffer_GL4(this);
+		mBuffers.push_back(buffer);
+		return buffer;
 	}
 
 	// UpdateBuffer
 	void SLRenderer_GL4::UpdateBuffer(ISLBuffer* buffer, float* data, uint32_t size)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsBufferExists(buffer))
+			return;
 	}
 
 	// DeleteBuffer
 	void SLRenderer_GL4::DeleteBuffer(ISLBuffer* buffer)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsBufferExists(buffer))
+			return;
+
+		// remove existing buffers
+		mBuffers.erase(std::remove_if(mBuffers.begin(), mBuffers.end(), [&](SLBuffer_GL4* item) {
+			return item == buffer;
+		}), mBuffers.end());
+
+		// delete buffer
+		delete (SLBuffer_GL4 *)buffer;
 	}
+
+	// IsBufferExist
+	bool SLRenderer_GL4::IsBufferExists(ISLBuffer* buffer) const
+	{
+		return (std::find(mBuffers.begin(), mBuffers.end(), buffer) != mBuffers.end());
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// Index Buffer
+	//////////////////////////////////////////////////////////////////////////
 
 	// CreateIndexBuffer
 	ISLIndexBuffer* SLRenderer_GL4::CreateIndexBuffer(uint16_t* data, uint32_t size)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// create new buffer
+		SLIndexBuffer_GL4* buffer = new SLIndexBuffer_GL4(this);
+		mIndexBuffers.push_back(buffer);
+		return buffer;
 	}
 
 	// UpdateIndexBuffer
 	void SLRenderer_GL4::UpdateIndexBuffer(ISLIndexBuffer* buffer, uint16_t* data, uint32_t size)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsIndexBufferExists(buffer))
+			return;
 	}
 
 	// DeleteIndexBuffer
 	void SLRenderer_GL4::DeleteIndexBuffer(ISLIndexBuffer* buffer)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsIndexBufferExists(buffer))
+			return;
+
+		// remove existing index buffers
+		mIndexBuffers.erase(std::remove_if(mIndexBuffers.begin(), mIndexBuffers.end(), [&](SLIndexBuffer_GL4* item) {
+			return item == buffer;
+		}), mIndexBuffers.end());
+
+		// delete buffer
+		delete (SLIndexBuffer_GL4 *)buffer;
 	}
+
+	// IsIndexBufferExists
+	bool SLRenderer_GL4::IsIndexBufferExists(ISLIndexBuffer* buffer) const
+	{
+		return (std::find(mIndexBuffers.begin(), mIndexBuffers.end(), buffer) != mIndexBuffers.end());
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// Mesh
+	//////////////////////////////////////////////////////////////////////////
 
 	// CreateMesh
 	ISLMesh* SLRenderer_GL4::CreateMesh()
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// create new buffer
+		SLMesh_GL4* mesh = new SLMesh_GL4(this);
+		mMeshes.push_back(mesh);
+		return mesh;
 	}
 
 	// DeleteMesh
 	void SLRenderer_GL4::DeleteMesh(ISLMesh* mesh)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsMeshExists(mesh))
+			return;
+
+		// remove existing meshes
+		mMeshes.erase(std::remove_if(mMeshes.begin(), mMeshes.end(), [&](SLMesh_GL4* item) {
+			return item == mesh;
+		}), mMeshes.end());
+
+		// delete mesh
+		delete (SLMesh_GL4 *)mesh;
 	}
+
+	// IsMeshExists
+	bool SLRenderer_GL4::IsMeshExists(ISLMesh* mesh) const
+	{
+		return (std::find(mMeshes.begin(), mMeshes.end(), mesh) != mMeshes.end());
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// Model
+	//////////////////////////////////////////////////////////////////////////
 
 	// CreateModel
 	ISLModel* SLRenderer_GL4::CreateModel()
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// create new buffer
+		SLModel_GL4* model = new SLModel_GL4(this);
+		mModels.push_back(model);
+		return model;
 	}
 
 	// DeleteModel
 	void SLRenderer_GL4::DeleteModel(ISLModel* model)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsModelExists(model))
+			return;
+
+		// remove existing models
+		mModels.erase(std::remove_if(mModels.begin(), mModels.end(), [&](SLModel_GL4* item) {
+			return item == model;
+		}), mModels.end());
+
+		// delete model
+		delete (SLModel_GL4 *)model;
 	}
+
+	// IsModelExists
+	bool SLRenderer_GL4::IsModelExists(ISLModel* model) const
+	{
+		return (std::find(mModels.begin(), mModels.end(), model) != mModels.end());
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// Camera
+	//////////////////////////////////////////////////////////////////////////
 
 	// CreateCamera
 	ISLCamera* SLRenderer_GL4::CreateCamera()
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// create new buffer
+		SLCamera_GL4* camera = new SLCamera_GL4(this);
+		mCameras.push_back(camera);
+		return camera;
 	}
 
 	// DeleteCamera
 	void SLRenderer_GL4::DeleteCamera(ISLCamera* camera)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsCameraExists(camera))
+			return;
+
+		// remove existing cameras
+		mCameras.erase(std::remove_if(mCameras.begin(), mCameras.end(), [&](SLCamera_GL4* item) {
+			return item == camera;
+		}), mCameras.end());
+
+		// delete camera
+		delete (SLCamera_GL4 *)camera;
 	}
+
+	// IsCameraExists
+	bool SLRenderer_GL4::IsCameraExists(ISLCamera* camera) const
+	{
+		return (std::find(mCameras.begin(), mCameras.end(), camera) != mCameras.end());
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// Scene
+	//////////////////////////////////////////////////////////////////////////
 
 	// CreateScene
 	ISLScene* SLRenderer_GL4::CreateScene()
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// create new buffer
+		SLScene_GL4* scene = new SLScene_GL4(this);
+		mScenes.push_back(scene);
+		return scene;
 	}
 
 	// DeleteScene
 	void SLRenderer_GL4::DeleteScene(ISLScene* scene)
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// check if exists
+		if (!IsSceneExists(scene))
+			return;
+
+		// remove existing cameras
+		mScenes.erase(std::remove_if(mScenes.begin(), mScenes.end(), [&](SLScene_GL4* item) {
+			return item == scene;
+		}), mScenes.end());
+
+		// delete scene
+		delete (SLScene_GL4 *)scene;
+	}
+
+	// IsSceneExists
+	bool SLRenderer_GL4::IsSceneExists(ISLScene* scene) const
+	{
+		return (std::find(mScenes.begin(), mScenes.end(), scene) != mScenes.end());
 	}
 
 	// Render
 	void SLRenderer_GL4::Render()
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// temporary output renderer info
+		std::cout << mTexture2Ds.size() << std::endl;
+		std::cout << mBuffers.size() << std::endl;
+		std::cout << mIndexBuffers.size() << std::endl;
+		std::cout << mMeshes.size() << std::endl;
+		std::cout << mModels.size() << std::endl;
+		std::cout << mCameras.size() << std::endl;
+		std::cout << mScenes.size() << std::endl;
 	}
 
 	// DeleteResources
 	void SLRenderer_GL4::DeleteResources()
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		// delete all items
+		std::for_each(mTexture2Ds.begin(),   mTexture2Ds.end(),   [](SLTexture2D_GL4* item)   { delete item; });
+		std::for_each(mBuffers.begin(),      mBuffers.end(),      [](SLBuffer_GL4* item)      { delete item; });
+		std::for_each(mIndexBuffers.begin(), mIndexBuffers.end(), [](SLIndexBuffer_GL4* item) { delete item; });
+		std::for_each(mMeshes.begin(),       mMeshes.end(),       [](SLMesh_GL4* item)        { delete item; });
+		std::for_each(mModels.begin(),       mModels.end(),       [](SLModel_GL4* item)       { delete item; });
+		std::for_each(mCameras.begin(),      mCameras.end(),      [](SLCamera_GL4* item)      { delete item; });
+		std::for_each(mScenes.begin(),       mScenes.end(),       [](SLScene_GL4* item)       { delete item; });
+
+		// clear lists
+		mTexture2Ds.clear();
+		mBuffers.clear();
+		mIndexBuffers.clear();
+		mMeshes.clear();
+		mModels.clear();
+		mCameras.clear();
+		mScenes.clear();
 	}
 
 	// GetDescription

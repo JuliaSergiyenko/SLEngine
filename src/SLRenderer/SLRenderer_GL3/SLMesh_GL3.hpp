@@ -61,7 +61,7 @@ namespace SLR_GL3 {
 		virtual void SetPrimitiveType(SLPrimitiveType primitiveType);
 
 		// get colors
-		virtual void GetBaseColor(float& r, float& g, float& b, float& a);
+		virtual void GetBaseColor(float& r, float& g, float& b, float& a) const;
 
 		// get textures
 		virtual ISLTexture2D* GetBaseTexture() const;

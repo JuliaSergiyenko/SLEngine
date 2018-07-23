@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 // 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
 	// create window
-	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGLES2", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGL ES", nullptr, nullptr);
 
 	// set current context
 	glfwMakeContextCurrent(window);
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
 	//////////////////////////////////////////////////////////////////////////
 
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GLES2);
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GLES3);
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create buffers
@@ -52,6 +52,7 @@ int main(int argc, char** argv)
 
 	// create texture 
 	ISLTexture2D* baseTexture = renderer->CreateTexture2D(nullptr, 0, 1, 1, SL_PIXEL_DATA_TYPE_RGRA);
+	std::cout << baseTexture->GetRenderer()->GetDescription();
 
 	// create mesh and setup buffers
 	ISLMesh* mesh = renderer->CreateMesh();
@@ -65,15 +66,14 @@ int main(int argc, char** argv)
 	glm::mat4 transform(1.0f);
 	ISLModel* model = renderer->CreateModel();
 	model->AddMesh(mesh);
-	model->SetTransform(&transform[0][0]);
+	model->SetTransform(glm::value_ptr(transform));
 	model->SetVisibilityMode(SL_MODEL_VISIBILITY_MODE_VISIBLE);
 
 	// create camera
-	glm::mat4 matProj = glm::lookAt(glm::vec3(0.0f, -10.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+	glm::mat4 projection = glm::lookAt(glm::vec3(0.0f, -10.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	ISLCamera* camera = renderer->CreateCamera();
-	camera->SetProjection(glm::value_ptr(matProj));
-	camera->SetNearPlane(0.1f);
-	camera->SetFarPlane(100.0f);
+	camera->SetTransform(glm::value_ptr(transform));
+	camera->SetProjection(glm::value_ptr(projection));
 	camera->SetViewport(800, 600);
 
 	// create scene
@@ -118,6 +118,8 @@ int main(int argc, char** argv)
 	renderer->DeleteIndexBuffer(indexBuffer);
 	renderer->DeleteBuffer(noramlBuffer);
 	renderer->DeleteBuffer(positionBuffer);
+
+	renderer->DeleteResources();
 
 	//////////////////////////////////////////////////////////////////////////
 

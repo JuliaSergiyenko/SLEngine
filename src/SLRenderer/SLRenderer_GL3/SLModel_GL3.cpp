@@ -27,7 +27,7 @@ namespace SLR_GL3
 	}
 
 	// SetVisibilityMode
-	SLModelVisibilityMode SLModel_GL3::GetVisibilityMode()
+	SLModelVisibilityMode SLModel_GL3::GetVisibilityMode() const
 	{
 		return mVisibilityMode;
 	}
@@ -58,13 +58,9 @@ namespace SLR_GL3
 	}
 
 	// IsMeshExists
-	bool SLModel_GL3::IsMeshExists(ISLMesh* mesh)
+	bool SLModel_GL3::IsMeshExists(ISLMesh* mesh) const
 	{
-		// iterate items
-		for (auto item : mMeshes)
-			if (item == mesh)
-				return true;
-		return false;
+		return (std::find(mMeshes.begin(), mMeshes.end(), mesh) != mMeshes.end());
 	}
 
 	// SetTransform
@@ -76,7 +72,7 @@ namespace SLR_GL3
 	}
 
 	// GetTransform
-	void SLModel_GL3::GetTransform(float* mat)
+	void SLModel_GL3::GetTransform(float* mat) const
 	{
 		// check for null
 		if (mat != nullptr)

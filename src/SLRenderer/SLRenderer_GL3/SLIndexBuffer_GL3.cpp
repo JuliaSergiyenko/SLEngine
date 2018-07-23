@@ -20,7 +20,7 @@ namespace SLR_GL3
 	}
 
 	// GetSize
-	uint32_t SLIndexBuffer_GL3::GetSize()
+	uint32_t SLIndexBuffer_GL3::GetSize() const
 	{
 		return mSize;
 	}

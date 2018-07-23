@@ -20,18 +20,6 @@ namespace SLR_GL3
 		return mRenderer;
 	}
 
-	// SetNearPlane
-	void SLCamera_GL3::SetNearPlane(float nearPlane)
-	{
-		mNearPlane = nearPlane;
-	}
-
-	// SetFarPlane
-	void SLCamera_GL3::SetFarPlane(float farPlane)
-	{
-		mFarPlane = farPlane;
-	}
-
 	// SetViewport
 	void SLCamera_GL3::SetViewport(size_t width, size_t height)
 	{
@@ -40,11 +28,11 @@ namespace SLR_GL3
 	}
 
 	// SetProjection
-	void SLCamera_GL3::SetProjection(float* matProj)
+	void SLCamera_GL3::SetProjection(float* mat)
 	{
 		// check for null
-		if (matProj != nullptr)
-			std::memcpy(mMatProj, matProj, sizeof(mMatProj));
+		if (mat != nullptr)
+			std::memcpy(mProjection, mat, sizeof(mProjection));
 	}
 
 	// SetTransform
@@ -55,35 +43,23 @@ namespace SLR_GL3
 			std::memcpy(mTransform, mat, sizeof(mTransform));
 	}
 
-	// GetNearPlane
-	float SLCamera_GL3::GetNearPlane()
-	{
-		return mNearPlane;
-	}
-
-	// GetFarPlane
-	float SLCamera_GL3::GetFarPlane()
-	{
-		return mFarPlane;
-	}
-
 	// GetViewport
-	void SLCamera_GL3::GetViewport(size_t& width, size_t& height)
+	void SLCamera_GL3::GetViewport(size_t& width, size_t& height) const
 	{
 		width = mViewportWidth;
 		height = mViewportHeight;
 	}
 
 	// GetProjection
-	void SLCamera_GL3::GetProjection(float* matProj)
+	void SLCamera_GL3::GetProjection(float* mat) const
 	{
 		// check for null
-		if (matProj != nullptr)
-			std::memcpy(matProj, mMatProj, sizeof(mMatProj));
+		if (mat != nullptr)
+			std::memcpy(mat, mProjection, sizeof(mProjection));
 	}
 
 	// GetTransform
-	void SLCamera_GL3::GetTransform(float* mat)
+	void SLCamera_GL3::GetTransform(float* mat) const
 	{
 		// check for null
 		if (mat != nullptr)

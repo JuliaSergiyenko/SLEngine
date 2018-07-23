@@ -18,6 +18,9 @@ namespace SLR_GL3 {
 
 		// models
 		std::vector<SLModel_GL3 *> mModels;
+
+		// properties
+		SLSceneVisibilityMode mVisibilityMode = SL_SCENE_VISIBILITY_MODE_VISIBLE;
 	public:
 		// constructor and destructor
 		SLScene_GL3(ISLRenderer* renderer);
@@ -28,11 +31,15 @@ namespace SLR_GL3 {
 
 		// camera functions
 		virtual void SetCamera(ISLCamera* camera);
-		virtual ISLCamera* GetCamera();
+		virtual ISLCamera* GetCamera() const;
 
 		// model functions
 		virtual void AddModel(ISLModel* model);
 		virtual void RemoveModel(ISLModel* model);
-		virtual bool IsModelExists(ISLModel* model);
+		virtual bool IsModelExists(ISLModel* model) const;
+
+		// properties
+		virtual void SetVisibilityMode(SLSceneVisibilityMode visibilityMode);
+		virtual SLSceneVisibilityMode GetVisibilityMode() const;
 	};
 }

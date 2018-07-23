@@ -30,15 +30,15 @@ namespace SLR_GL3 {
 
 		// visibility functions
 		void SetVisibilityMode(SLModelVisibilityMode visibilityMode);
-		SLModelVisibilityMode GetVisibilityMode();
+		SLModelVisibilityMode GetVisibilityMode() const;
 
 		// mesh functions
 		void AddMesh(ISLMesh* mesh);
 		void RemoveMesh(ISLMesh* mesh);
-		bool IsMeshExists(ISLMesh* mesh);
+		bool IsMeshExists(ISLMesh* mesh) const;
 
 		// transform matrix functions
 		void SetTransform(float* mat);
-		void GetTransform(float* mat);
+		void GetTransform(float* mat) const;
 	};
 }

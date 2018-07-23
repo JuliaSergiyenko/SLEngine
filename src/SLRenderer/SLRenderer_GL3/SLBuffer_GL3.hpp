@@ -22,6 +22,6 @@ namespace SLR_GL3 {
 		virtual ISLRenderer* GetRenderer() const;
 
 		// get buffer size
-		virtual uint32_t GetSize();
+		virtual uint32_t GetSize() const;
 	};
 }

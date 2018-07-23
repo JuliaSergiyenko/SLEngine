@@ -18,24 +18,6 @@ namespace SLR_GL3
 		return mRenderer;
 	}
 
-	// GetWrapModeS
-	SLTextureWrapMode SLTexture2D_GL3::GetWrapModeS() const
-	{
-		return mWrapModeS;
-	}
-
-	// GetWrapModeT
-	SLTextureWrapMode SLTexture2D_GL3::GetWrapModeT() const
-	{
-		return mWrapModeT;
-	}
-
-	// GetFilterimgMode
-	SLTextureFilterimgMode SLTexture2D_GL3::GetFilterimgMode() const
-	{
-		return mFilterimgMode;
-	}
-
 	// SetWrapModeS
 	void SLTexture2D_GL3::SetWrapModeS(SLTextureWrapMode wrapMode)
 	{
@@ -52,5 +34,23 @@ namespace SLR_GL3
 	void SLTexture2D_GL3::SetFilterimgMode(SLTextureFilterimgMode filterimgMode)
 	{
 		mFilterimgMode = filterimgMode;
+	}
+
+	// GetWrapModeS
+	SLTextureWrapMode SLTexture2D_GL3::GetWrapModeS() const
+	{
+		return mWrapModeS;
+	}
+
+	// GetWrapModeT
+	SLTextureWrapMode SLTexture2D_GL3::GetWrapModeT() const
+	{
+		return mWrapModeT;
+	}
+
+	// GetFilterimgMode
+	SLTextureFilterimgMode SLTexture2D_GL3::GetFilterimgMode() const
+	{
+		return mFilterimgMode;
 	}
 }

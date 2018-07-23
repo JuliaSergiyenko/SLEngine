@@ -35,39 +35,39 @@ namespace SLR_GL3 {
 		virtual ISLTexture2D* CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0);
 		virtual void UpdateTexture2D(ISLTexture2D* texture2d, uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0);
 		virtual void DeleteTexture2D(ISLTexture2D* texture2d);
-		virtual bool IsTexture2DExists(ISLTexture2D* texture2d);
+		virtual bool IsTexture2DExists(ISLTexture2D* texture2d) const;
 
 		// buffer functions
 		virtual ISLBuffer* CreateBuffer(float* data, uint32_t size);
 		virtual void UpdateBuffer(ISLBuffer* buffer, float* data, uint32_t size);
 		virtual void DeleteBuffer(ISLBuffer* buffer);
-		virtual bool IsBufferExists(ISLBuffer* buffer);
+		virtual bool IsBufferExists(ISLBuffer* buffer) const;
 
 		// index buffer functions
 		virtual ISLIndexBuffer* CreateIndexBuffer(uint16_t* data, uint32_t size);
 		virtual void UpdateIndexBuffer(ISLIndexBuffer* buffer, uint16_t* data, uint32_t size);
 		virtual void DeleteIndexBuffer(ISLIndexBuffer* buffer);
-		virtual bool IsIndexBufferExists(ISLIndexBuffer* buffer);
+		virtual bool IsIndexBufferExists(ISLIndexBuffer* buffer) const;
 
 		// mesh functions
 		virtual ISLMesh* CreateMesh();
 		virtual void DeleteMesh(ISLMesh* mesh);
-		virtual bool IsMeshExists(ISLMesh* mesh);
+		virtual bool IsMeshExists(ISLMesh* mesh) const;
 
 		// model functions
 		virtual ISLModel* CreateModel();
 		virtual void DeleteModel(ISLModel* model);
-		virtual bool IsModelExists(ISLModel* model);
+		virtual bool IsModelExists(ISLModel* model) const;
 
 		// camera functions
 		virtual ISLCamera* CreateCamera();
 		virtual void DeleteCamera(ISLCamera* camera);
-		virtual bool IsCameraExists(ISLCamera* camera);
+		virtual bool IsCameraExists(ISLCamera* camera) const;
 
 		// scene functions
 		virtual ISLScene* CreateScene();
 		virtual void DeleteScene(ISLScene* scene);
-		virtual bool IsSceneExists(ISLScene* scene);
+		virtual bool IsSceneExists(ISLScene* scene) const;
 
 		// render
 		virtual void Render();

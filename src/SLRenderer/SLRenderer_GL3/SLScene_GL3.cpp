@@ -29,7 +29,7 @@ namespace SLR_GL3
 	}
 
 	// GetCamera
-	ISLCamera* SLScene_GL3::GetCamera()
+	ISLCamera* SLScene_GL3::GetCamera() const
 	{
 		return mCamera;
 	}
@@ -58,12 +58,20 @@ namespace SLR_GL3
 	}
 
 	// IsModelExists
-	bool SLScene_GL3::IsModelExists(ISLModel* model)
+	bool SLScene_GL3::IsModelExists(ISLModel* model) const
 	{
-		// iterate items
-		for (auto item : mModels)
-			if (item == model)
-				return true;
-		return false;
+		return (std::find(mModels.begin(), mModels.end(), model) != mModels.end());
+	}
+
+	// SetVisibilityMode
+	void SLScene_GL3::SetVisibilityMode(SLSceneVisibilityMode visibilityMode)
+	{
+		mVisibilityMode = visibilityMode;
+	}
+
+	// GetVisibilityMode
+	SLSceneVisibilityMode SLScene_GL3::GetVisibilityMode() const
+	{
+		return mVisibilityMode;
 	}
 }

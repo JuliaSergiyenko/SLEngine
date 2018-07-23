@@ -66,15 +66,14 @@ int main(int argc, char** argv)
 	glm::mat4 transform(1.0f);
 	ISLModel* model = renderer->CreateModel();
 	model->AddMesh(mesh);
-	model->SetTransform(&transform[0][0]);
+	model->SetTransform(glm::value_ptr(transform));
 	model->SetVisibilityMode(SL_MODEL_VISIBILITY_MODE_VISIBLE);
 
 	// create camera
-	glm::mat4 matProj = glm::lookAt(glm::vec3(0.0f, -10.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+	glm::mat4 projection = glm::lookAt(glm::vec3(0.0f, -10.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	ISLCamera* camera = renderer->CreateCamera();
-	camera->SetProjection(glm::value_ptr(matProj));
-	camera->SetNearPlane(0.1f);
-	camera->SetFarPlane(100.0f);
+	camera->SetTransform(glm::value_ptr(transform));
+	camera->SetProjection(glm::value_ptr(projection));
 	camera->SetViewport(800, 600);
 
 	// create scene

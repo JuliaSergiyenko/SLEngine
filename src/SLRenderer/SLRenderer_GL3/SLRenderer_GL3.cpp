@@ -49,16 +49,15 @@ namespace SLR_GL3 {
 		mTexture2Ds.erase(std::remove_if(mTexture2Ds.begin(), mTexture2Ds.end(), [&](SLTexture2D_GL3* item) {
 			return item == texture2d;
 		}), mTexture2Ds.end());
+
+		// delete texture
+		delete (SLTexture2D_GL3 *)texture2d;
 	}
 
 	// IsTexture2DExist
-	bool SLRenderer_GL3::IsTexture2DExists(ISLTexture2D* texture2d)
+	bool SLRenderer_GL3::IsTexture2DExists(ISLTexture2D* texture2d) const
 	{
-		// iterate items
-		for (auto item : mTexture2Ds)
-			if (item == texture2d)
-				return true;
-		return false;
+		return (std::find(mTexture2Ds.begin(), mTexture2Ds.end(), texture2d) != mTexture2Ds.end());
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -93,16 +92,15 @@ namespace SLR_GL3 {
 		mBuffers.erase(std::remove_if(mBuffers.begin(), mBuffers.end(), [&](SLBuffer_GL3* item) {
 			return item == buffer;
 		}), mBuffers.end());
+
+		// delete buffer
+		delete (SLBuffer_GL3 *)buffer;
 	}
 
 	// IsBufferExist
-	bool SLRenderer_GL3::IsBufferExists(ISLBuffer* buffer)
+	bool SLRenderer_GL3::IsBufferExists(ISLBuffer* buffer) const
 	{
-		// iterate items
-		for (auto item : mBuffers)
-			if (item == buffer)
-				return true;
-		return false;
+		return (std::find(mBuffers.begin(), mBuffers.end(), buffer) != mBuffers.end());
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -137,16 +135,15 @@ namespace SLR_GL3 {
 		mIndexBuffers.erase(std::remove_if(mIndexBuffers.begin(), mIndexBuffers.end(), [&](SLIndexBuffer_GL3* item) {
 			return item == buffer;
 		}), mIndexBuffers.end());
+
+		// delete buffer
+		delete (SLIndexBuffer_GL3 *)buffer;
 	}
 
 	// IsIndexBufferExists
-	bool SLRenderer_GL3::IsIndexBufferExists(ISLIndexBuffer* buffer)
+	bool SLRenderer_GL3::IsIndexBufferExists(ISLIndexBuffer* buffer) const
 	{
-		// iterate items
-		for (auto item : mIndexBuffers)
-			if (item == buffer)
-				return true;
-		return false;
+		return (std::find(mIndexBuffers.begin(), mIndexBuffers.end(), buffer) != mIndexBuffers.end());
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -173,16 +170,15 @@ namespace SLR_GL3 {
 		mMeshes.erase(std::remove_if(mMeshes.begin(), mMeshes.end(), [&](SLMesh_GL3* item) {
 			return item == mesh;
 		}), mMeshes.end());
+
+		// delete mesh
+		delete (SLMesh_GL3 *)mesh;
 	}
 
 	// IsMeshExists
-	bool SLRenderer_GL3::IsMeshExists(ISLMesh* mesh)
+	bool SLRenderer_GL3::IsMeshExists(ISLMesh* mesh) const
 	{
-		// iterate items
-		for (auto item : mMeshes)
-			if (item == mesh)
-				return true;
-		return false;
+		return (std::find(mMeshes.begin(), mMeshes.end(), mesh) != mMeshes.end());
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -209,16 +205,15 @@ namespace SLR_GL3 {
 		mModels.erase(std::remove_if(mModels.begin(), mModels.end(), [&](SLModel_GL3* item) {
 			return item == model;
 		}), mModels.end());
+
+		// delete model
+		delete (SLModel_GL3 *)model;
 	}
 
 	// IsModelExists
-	bool SLRenderer_GL3::IsModelExists(ISLModel* model)
+	bool SLRenderer_GL3::IsModelExists(ISLModel* model) const
 	{
-		// iterate items
-		for (auto item : mModels)
-			if (item == model)
-				return true;
-		return false;
+		return (std::find(mModels.begin(), mModels.end(), model) != mModels.end());
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -245,16 +240,15 @@ namespace SLR_GL3 {
 		mCameras.erase(std::remove_if(mCameras.begin(), mCameras.end(), [&](SLCamera_GL3* item) {
 			return item == camera;
 		}), mCameras.end());
+
+		// delete camera
+		delete (SLCamera_GL3 *)camera;
 	}
 
 	// IsCameraExists
-	bool SLRenderer_GL3::IsCameraExists(ISLCamera* camera)
+	bool SLRenderer_GL3::IsCameraExists(ISLCamera* camera) const
 	{
-		// iterate items
-		for (auto item : mCameras)
-			if (item == camera)
-				return true;
-		return false;
+		return (std::find(mCameras.begin(), mCameras.end(), camera) != mCameras.end());
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -281,16 +275,15 @@ namespace SLR_GL3 {
 		mScenes.erase(std::remove_if(mScenes.begin(), mScenes.end(), [&](SLScene_GL3* item) {
 			return item == scene;
 		}), mScenes.end());
+
+		// delete scene
+		delete (SLScene_GL3 *)scene;
 	}
 
 	// IsSceneExists
-	bool SLRenderer_GL3::IsSceneExists(ISLScene* scene)
+	bool SLRenderer_GL3::IsSceneExists(ISLScene* scene) const
 	{
-		// iterate items
-		for (auto item : mScenes)
-			if (item == scene)
-				return true;
-		return false;
+		return (std::find(mScenes.begin(), mScenes.end(), scene) != mScenes.end());
 	}
 
 	// Render
@@ -331,6 +324,6 @@ namespace SLR_GL3 {
 	// GetDescription
 	const char* SLRenderer_GL3::GetDescription() const
 	{
-		return "SLRenderer OpenGL 3.2 implementation";
+		return "SLRenderer OpenGL 3.3 implementation";
 	}
 }
