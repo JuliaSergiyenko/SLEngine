@@ -14,7 +14,7 @@ namespace SLR_GLES2 {
 		// properties
 		SLTextureWrapMode mWrapModeS = SL_TEXTURE_WRAP_MODE_REPEAT;
 		SLTextureWrapMode mWrapModeT = SL_TEXTURE_WRAP_MODE_REPEAT;
-		SLTextureFilterimgMode mFilterimgMode = SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR;
+		SLTextureFilterimgMode mFilteringMode = SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR;
 	public:
 		// constructor and destructor
 		SLTexture2D_GLES2(ISLRenderer* renderer);
@@ -29,7 +29,7 @@ namespace SLR_GLES2 {
 		// set texture wrap mode S and T
 		virtual void SetWrapModeS(SLTextureWrapMode wrapMode);
 		virtual void SetWrapModeT(SLTextureWrapMode wrapMode);
-		virtual void SetFilterimgMode(SLTextureFilterimgMode filterimgMode);
+		virtual void SetFilteringMode(SLTextureFilterimgMode filterimgMode);
 
 		// get texture wrap mode S and T
 		virtual SLTextureWrapMode GetWrapModeS() const;

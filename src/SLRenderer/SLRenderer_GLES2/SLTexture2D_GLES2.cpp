@@ -35,10 +35,10 @@ namespace SLR_GLES2
 		mWrapModeT = wrapMode;
 	}
 
-	// SetFilterimgMode
-	void SLTexture2D_GLES2::SetFilterimgMode(SLTextureFilterimgMode filterimgMode)
+	// SetFilteringMode
+	void SLTexture2D_GLES2::SetFilteringMode(SLTextureFilterimgMode filterimgMode)
 	{
-		mFilterimgMode = filterimgMode;
+		mFilteringMode = filterimgMode;
 	}
 
 	// GetWrapModeS
@@ -56,6 +56,6 @@ namespace SLR_GLES2
 	// GetFilterimgMode
 	SLTextureFilterimgMode SLTexture2D_GLES2::GetFilterimgMode() const
 	{
-		return mFilterimgMode;
+		return mFilteringMode;
 	}
 }

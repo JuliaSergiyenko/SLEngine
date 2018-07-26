@@ -87,7 +87,7 @@ public:
 	// set texture wrap mode S and T
 	virtual void SetWrapModeS(SLTextureWrapMode wrapMode) = 0;
 	virtual void SetWrapModeT(SLTextureWrapMode wrapMode) = 0;
-	virtual void SetFilterimgMode(SLTextureFilterimgMode filterimgMode) = 0;
+	virtual void SetFilteringMode(SLTextureFilterimgMode filterimgMode) = 0;
 
 	// get texture wrap mode S and T
 	virtual SLTextureWrapMode GetWrapModeS() const = 0;

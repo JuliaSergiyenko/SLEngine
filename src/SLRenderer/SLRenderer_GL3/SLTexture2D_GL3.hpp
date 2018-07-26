@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../SLRenderer.hpp"
+#include "SLOpenGL3.hpp"
 
 // SLRGL3
 namespace SLR_GL3 {
@@ -14,7 +15,14 @@ namespace SLR_GL3 {
 		// properties
 		SLTextureWrapMode mWrapModeS = SL_TEXTURE_WRAP_MODE_REPEAT;
 		SLTextureWrapMode mWrapModeT = SL_TEXTURE_WRAP_MODE_REPEAT;
-		SLTextureFilterimgMode mFilterimgMode = SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR;
+		SLTextureFilterimgMode mFilteringMode = SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR;
+	public:
+		// OpenGL handles and settings
+		GLuint mTextureHadle = 0;
+		GLint mGLWrapModeS = GL_REPEAT;
+		GLint mGLWrapModeT = GL_REPEAT;
+		GLint mGLMinFilteringMode = GL_LINEAR_MIPMAP_LINEAR;
+		GLint mGLMagFilteringMode = GL_LINEAR;
 	public:
 		// constructor and destructor
 		SLTexture2D_GL3(ISLRenderer* renderer);
@@ -29,7 +37,7 @@ namespace SLR_GL3 {
 		// set texture wrap mode S and T
 		virtual void SetWrapModeS(SLTextureWrapMode wrapMode);
 		virtual void SetWrapModeT(SLTextureWrapMode wrapMode);
-		virtual void SetFilterimgMode(SLTextureFilterimgMode filterimgMode);
+		virtual void SetFilteringMode(SLTextureFilterimgMode filterimgMode);
 
 		// get texture wrap mode S and T
 		virtual SLTextureWrapMode GetWrapModeS() const;

@@ -35,10 +35,10 @@ namespace SLR_GL4
 		mWrapModeT = wrapMode;
 	}
 
-	// SetFilterimgMode
-	void SLTexture2D_GL4::SetFilterimgMode(SLTextureFilterimgMode filterimgMode)
+	// SetFilteringMode
+	void SLTexture2D_GL4::SetFilteringMode(SLTextureFilterimgMode filterimgMode)
 	{
-		mFilterimgMode = filterimgMode;
+		mFilteringMode = filterimgMode;
 	}
 
 	// GetWrapModeS
@@ -56,6 +56,6 @@ namespace SLR_GL4
 	// GetFilterimgMode
 	SLTextureFilterimgMode SLTexture2D_GL4::GetFilterimgMode() const
 	{
-		return mFilterimgMode;
+		return mFilteringMode;
 	}
 }
