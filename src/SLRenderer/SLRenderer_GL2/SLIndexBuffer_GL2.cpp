@@ -19,6 +19,11 @@ namespace SLR_GL2
 		return mRenderer;
 	}
 
+	// UpdateData
+	void SLIndexBuffer_GL2::UpdateData(uint16_t * data, uint32_t size)
+	{
+	}
+
 	// GetSize
 	uint32_t SLIndexBuffer_GL2::GetSize() const
 	{

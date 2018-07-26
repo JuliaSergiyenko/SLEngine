@@ -19,6 +19,11 @@ namespace SLR_GLES2
 		return mRenderer;
 	}
 
+	// update data
+	void SLBuffer_GLES2::UpdateData(float* data, uint32_t size)
+	{
+	}
+
 	// GetSize
 	uint32_t SLBuffer_GLES2::GetSize() const
 	{

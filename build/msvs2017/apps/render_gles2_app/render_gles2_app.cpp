@@ -27,10 +27,10 @@ int main(int argc, char** argv)
 // 	// select OpenGL version
 // 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 // 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
 	// create window
-	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGL ES", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGL3", nullptr, nullptr);
 
 	// set current context
 	glfwMakeContextCurrent(window);
@@ -42,16 +42,19 @@ int main(int argc, char** argv)
 	//////////////////////////////////////////////////////////////////////////
 
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GLES3);
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GLES2);
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create buffers
-	ISLBuffer* positionBuffer = renderer->CreateBuffer(nullptr, 1024);
-	ISLBuffer* noramlBuffer = renderer->CreateBuffer(nullptr, 1024);
-	ISLIndexBuffer* indexBuffer = renderer->CreateIndexBuffer(nullptr, 1024);
+	ISLBuffer* positionBuffer = renderer->CreateBuffer();
+	positionBuffer->UpdateData(nullptr, 1024);
+	ISLBuffer* noramlBuffer = renderer->CreateBuffer();
+	noramlBuffer->UpdateData(nullptr, 1024);
+	ISLIndexBuffer* indexBuffer = renderer->CreateIndexBuffer();
+	indexBuffer->UpdateData(nullptr, 1024);
 
 	// create texture 
-	ISLTexture2D* baseTexture = renderer->CreateTexture2D(nullptr, 0, 1, 1, SL_PIXEL_DATA_TYPE_RGRA);
+	ISLTexture2D* baseTexture = renderer->CreateTexture2D();
 	std::cout << baseTexture->GetRenderer()->GetDescription();
 
 	// create mesh and setup buffers

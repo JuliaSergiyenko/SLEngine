@@ -46,12 +46,15 @@ int main(int argc, char** argv)
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create buffers
-	ISLBuffer* positionBuffer = renderer->CreateBuffer(nullptr, 1024);
-	ISLBuffer* noramlBuffer = renderer->CreateBuffer(nullptr, 1024);
-	ISLIndexBuffer* indexBuffer = renderer->CreateIndexBuffer(nullptr, 1024);
+	ISLBuffer* positionBuffer = renderer->CreateBuffer();
+	positionBuffer->UpdateData(nullptr, 1024);
+	ISLBuffer* noramlBuffer = renderer->CreateBuffer();
+	noramlBuffer->UpdateData(nullptr, 1024);
+	ISLIndexBuffer* indexBuffer = renderer->CreateIndexBuffer();
+	indexBuffer->UpdateData(nullptr, 1024);
 
 	// create texture 
-	ISLTexture2D* baseTexture = renderer->CreateTexture2D(nullptr, 0, 1, 1, SL_PIXEL_DATA_TYPE_RGRA);
+	ISLTexture2D* baseTexture = renderer->CreateTexture2D();
 	std::cout << baseTexture->GetRenderer()->GetDescription();
 
 	// create mesh and setup buffers

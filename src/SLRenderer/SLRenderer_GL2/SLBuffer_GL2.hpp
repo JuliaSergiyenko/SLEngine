@@ -21,6 +21,9 @@ namespace SLR_GL2 {
 		// get render device
 		virtual ISLRenderer* GetRenderer() const;
 
+		// update data
+		virtual void UpdateData(float* data, uint32_t size);
+
 		// get buffer size
 		virtual uint32_t GetSize() const;
 	};

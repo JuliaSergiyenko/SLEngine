@@ -19,6 +19,11 @@ namespace SLR_GLES3
 		return mRenderer;
 	}
 
+	// UpdateData
+	void SLIndexBuffer_GLES3::UpdateData(uint16_t* data, uint32_t size)
+	{
+	}
+
 	// GetSize
 	uint32_t SLIndexBuffer_GLES3::GetSize() const
 	{

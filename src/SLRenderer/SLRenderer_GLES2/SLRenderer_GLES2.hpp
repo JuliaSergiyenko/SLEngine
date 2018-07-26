@@ -31,20 +31,17 @@ namespace SLR_GLES2 {
 		~SLRenderer_GLES2();
 
 		// texture functions
-		virtual ISLTexture2D* CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0);
-		virtual void UpdateTexture2D(ISLTexture2D* texture2d, uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0);
+		virtual ISLTexture2D* CreateTexture2D();
 		virtual void DeleteTexture2D(ISLTexture2D* texture2d);
 		virtual bool IsTexture2DExists(ISLTexture2D* texture2d) const;
 
 		// buffer functions
-		virtual ISLBuffer* CreateBuffer(float* data, uint32_t size);
-		virtual void UpdateBuffer(ISLBuffer* buffer, float* data, uint32_t size);
+		virtual ISLBuffer* CreateBuffer();
 		virtual void DeleteBuffer(ISLBuffer* buffer);
 		virtual bool IsBufferExists(ISLBuffer* buffer) const;
 
 		// index buffer functions
-		virtual ISLIndexBuffer* CreateIndexBuffer(uint16_t* data, uint32_t size);
-		virtual void UpdateIndexBuffer(ISLIndexBuffer* buffer, uint16_t* data, uint32_t size);
+		virtual ISLIndexBuffer* CreateIndexBuffer();
 		virtual void DeleteIndexBuffer(ISLIndexBuffer* buffer);
 		virtual bool IsIndexBufferExists(ISLIndexBuffer* buffer) const;
 

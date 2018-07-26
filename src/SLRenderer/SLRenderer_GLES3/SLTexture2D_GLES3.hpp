@@ -23,6 +23,9 @@ namespace SLR_GLES3 {
 		// get render device
 		virtual ISLRenderer* GetRenderer() const;
 
+		// update image
+		virtual void UpdateImage(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0);
+
 		// set texture wrap mode S and T
 		virtual void SetWrapModeS(SLTextureWrapMode wrapMode);
 		virtual void SetWrapModeT(SLTextureWrapMode wrapMode);

@@ -18,6 +18,11 @@ namespace SLR_GL3
 		return mRenderer;
 	}
 
+	// UpdateImage
+	void SLTexture2D_GL3::UpdateImage(uint8_t * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	{
+	}
+
 	// SetWrapModeS
 	void SLTexture2D_GL3::SetWrapModeS(SLTextureWrapMode wrapMode)
 	{

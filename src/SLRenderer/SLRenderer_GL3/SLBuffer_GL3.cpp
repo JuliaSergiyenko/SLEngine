@@ -19,6 +19,11 @@ namespace SLR_GL3
 		return mRenderer;
 	}
 
+	// UpdateData
+	void SLBuffer_GL3::UpdateData(float* data, uint32_t size)
+	{
+	}
+
 	// GetSize
 	uint32_t SLBuffer_GL3::GetSize() const
 	{

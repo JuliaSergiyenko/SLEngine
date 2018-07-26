@@ -81,6 +81,9 @@ public:
 	// get render device
 	virtual ISLRenderer* GetRenderer() const = 0;
 
+	// update image
+	virtual void UpdateImage(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
+
 	// set texture wrap mode S and T
 	virtual void SetWrapModeS(SLTextureWrapMode wrapMode) = 0;
 	virtual void SetWrapModeT(SLTextureWrapMode wrapMode) = 0;
@@ -103,6 +106,9 @@ public:
 	// get device
 	virtual ISLRenderer* GetRenderer() const = 0;
 
+	// update data
+	virtual void UpdateData(float* data, uint32_t size) = 0;
+
 	// get buffer size
 	virtual uint32_t GetSize() const = 0;
 };
@@ -117,6 +123,9 @@ protected:
 public:
 	// get device
 	virtual ISLRenderer* GetRenderer() const = 0;
+
+	// update data
+	virtual void UpdateData(uint16_t* data, uint32_t size) = 0;
 
 	// get buffer size
 	virtual uint32_t GetSize() const = 0;
@@ -254,20 +263,17 @@ protected:
 	~ISLRenderer() {}
 public:
 	// texture functions
-	virtual ISLTexture2D* CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
-	virtual void UpdateTexture2D(ISLTexture2D* texture2d, uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
+	virtual ISLTexture2D* CreateTexture2D() = 0;
 	virtual void DeleteTexture2D(ISLTexture2D* texture2d) = 0;
 	virtual bool IsTexture2DExists(ISLTexture2D* texture2d) const = 0;
 
 	// buffer functions
-	virtual ISLBuffer* CreateBuffer(float* data, uint32_t size) = 0;
-	virtual void UpdateBuffer(ISLBuffer* buffer, float* data, uint32_t size) = 0;
+	virtual ISLBuffer* CreateBuffer() = 0;
 	virtual void DeleteBuffer(ISLBuffer* buffer) = 0;
 	virtual bool IsBufferExists(ISLBuffer* buffer) const = 0;
 
 	// index buffer functions
-	virtual ISLIndexBuffer* CreateIndexBuffer(uint16_t* data, uint32_t size) = 0;
-	virtual void UpdateIndexBuffer(ISLIndexBuffer* buffer, uint16_t* data, uint32_t size) = 0;
+	virtual ISLIndexBuffer* CreateIndexBuffer() = 0;
 	virtual void DeleteIndexBuffer(ISLIndexBuffer* buffer) = 0;
 	virtual bool IsIndexBufferExists(ISLIndexBuffer* buffer) const = 0;
 

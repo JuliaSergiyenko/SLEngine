@@ -22,20 +22,12 @@ namespace SLR_GL3 {
 	//////////////////////////////////////////////////////////////////////////
 
 	// CreateTexture2D
-	ISLTexture2D* SLRenderer_GL3::CreateTexture2D(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	ISLTexture2D* SLRenderer_GL3::CreateTexture2D()
 	{
 		// create new texture
 		SLTexture2D_GL3* texture2D = new SLTexture2D_GL3(this);
 		mTexture2Ds.push_back(texture2D);
 		return texture2D;
-	}
-
-	// UpdateTexture2D
-	void SLRenderer_GL3::UpdateTexture2D(ISLTexture2D* texture2d, uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
-	{
-		// check if exists
-		if (!IsTexture2DExists(texture2d))
-			return;
 	}
 
 	// DeleteTexture2D
@@ -65,20 +57,12 @@ namespace SLR_GL3 {
 	//////////////////////////////////////////////////////////////////////////
 
 	// CreateBuffer
-	ISLBuffer* SLRenderer_GL3::CreateBuffer(float* data, uint32_t size)
+	ISLBuffer* SLRenderer_GL3::CreateBuffer()
 	{
 		// create new buffer
 		SLBuffer_GL3* buffer = new SLBuffer_GL3(this);
 		mBuffers.push_back(buffer);
 		return buffer;
-	}
-
-	// UpdateBuffer
-	void SLRenderer_GL3::UpdateBuffer(ISLBuffer* buffer, float* data, uint32_t size)
-	{
-		// check if exists
-		if (!IsBufferExists(buffer))
-			return;
 	}
 
 	// DeleteBuffer
@@ -108,20 +92,12 @@ namespace SLR_GL3 {
 	//////////////////////////////////////////////////////////////////////////
 
 	// CreateIndexBuffer
-	ISLIndexBuffer* SLRenderer_GL3::CreateIndexBuffer(uint16_t* data, uint32_t size)
+	ISLIndexBuffer* SLRenderer_GL3::CreateIndexBuffer()
 	{
 		// create new buffer
 		SLIndexBuffer_GL3* buffer = new SLIndexBuffer_GL3(this);
 		mIndexBuffers.push_back(buffer);
 		return buffer;
-	}
-
-	// UpdateIndexBuffer
-	void SLRenderer_GL3::UpdateIndexBuffer(ISLIndexBuffer* buffer, uint16_t* data, uint32_t size)
-	{
-		// check if exists
-		if (!IsIndexBufferExists(buffer))
-			return;
 	}
 
 	// DeleteIndexBuffer

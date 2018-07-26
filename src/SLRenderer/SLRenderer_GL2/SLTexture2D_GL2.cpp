@@ -18,6 +18,11 @@ namespace SLR_GL2
 		return mRenderer;
 	}
 
+	// UpdateImage
+	void SLTexture2D_GL2::UpdateImage(uint8_t * data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	{
+	}
+
 	// SetWrapModeS
 	void SLTexture2D_GL2::SetWrapModeS(SLTextureWrapMode wrapMode)
 	{
