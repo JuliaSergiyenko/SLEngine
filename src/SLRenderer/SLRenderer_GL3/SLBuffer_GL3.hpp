@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../SLRenderer.hpp"
+#include "SLOpenGL3.hpp"
 
 // SLRGL3
 namespace SLR_GL3 {
@@ -13,6 +14,9 @@ namespace SLR_GL3 {
 
 		// properties
 		uint32_t mSize = 0;
+	public:
+		// OpenGL handles and settings
+		GLuint mGLBufferHandle = 0;
 	public:
 		// constructor and destructor
 		SLBuffer_GL3(ISLRenderer* renderer);

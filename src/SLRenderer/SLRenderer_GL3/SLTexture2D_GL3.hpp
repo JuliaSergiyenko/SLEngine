@@ -18,7 +18,8 @@ namespace SLR_GL3 {
 		SLTextureFilterimgMode mFilteringMode = SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR;
 	public:
 		// OpenGL handles and settings
-		GLuint mTextureHadle = 0;
+		GLuint mGLTextureHadle = 0;
+		GLuint mGLSamplerHadle = 0;
 		GLint mGLWrapModeS = GL_REPEAT;
 		GLint mGLWrapModeT = GL_REPEAT;
 		GLint mGLMinFilteringMode = GL_LINEAR_MIPMAP_LINEAR;
