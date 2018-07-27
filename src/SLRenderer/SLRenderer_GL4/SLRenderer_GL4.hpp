@@ -12,6 +12,7 @@
 
 // standard library
 #include <vector>
+#include <string>
 
 // SLRGL4
 namespace SLR_GL4 {
@@ -19,6 +20,7 @@ namespace SLR_GL4 {
 	class SLRenderer_GL4 : public ISLRenderer
 	{
 	private:
+		// object vectors
 		std::vector<SLTexture2D_GL4 *>   mTexture2Ds;
 		std::vector<SLBuffer_GL4 *>      mBuffers;
 		std::vector<SLIndexBuffer_GL4 *> mIndexBuffers;
@@ -26,6 +28,13 @@ namespace SLR_GL4 {
 		std::vector<SLModel_GL4 *>       mModels;
 		std::vector<SLCamera_GL4 *>      mCameras;
 		std::vector<SLScene_GL4 *>       mScenes;
+
+		// renderer info
+		std::string mGLVendor;
+		std::string mGLRenderer;
+		std::string mGLVersion;
+		std::string mGLSLVersion;
+		std::string mDescription;
 	public:
 		// constructor and destructor
 		SLRenderer_GL4();

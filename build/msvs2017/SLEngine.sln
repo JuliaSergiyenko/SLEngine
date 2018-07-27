@@ -43,9 +43,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SLRenderer_GL4", "libs\SLRe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SLRenderer_GLES3", "libs\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.vcxproj", "{D970D931-879B-4D76-A6B7-084C6B0394F6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gl4_app", "apps\render_gl4_app\render_gl4_app.vcxproj", "{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gles3_app", "apps\render_gles3_app\render_gles3_app.vcxproj", "{3ADB401A-8338-4ACD-BC47-1329EE6761CB}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{1f99c092-1ddf-43e9-a3ff-ad9d396c67db}*SharedItemsImports = 4
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{2652ce5c-fffd-41f5-8277-42474283c6e8}*SharedItemsImports = 4
+		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{3adb401a-8338-4acd-bc47-1329ee6761cb}*SharedItemsImports = 4
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{574cb5d2-daf5-4de9-85ed-73391ce096bf}*SharedItemsImports = 4
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{c7448e0b-d670-4feb-afce-4dad1da64b13}*SharedItemsImports = 9
 	EndGlobalSection
@@ -176,6 +182,22 @@ Global
 		{D970D931-879B-4D76-A6B7-084C6B0394F6}.Release|x64.Build.0 = Release|x64
 		{D970D931-879B-4D76-A6B7-084C6B0394F6}.Release|x86.ActiveCfg = Release|Win32
 		{D970D931-879B-4D76-A6B7-084C6B0394F6}.Release|x86.Build.0 = Release|Win32
+		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB}.Debug|x64.ActiveCfg = Debug|x64
+		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB}.Debug|x64.Build.0 = Debug|x64
+		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB}.Debug|x86.ActiveCfg = Debug|Win32
+		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB}.Debug|x86.Build.0 = Debug|Win32
+		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB}.Release|x64.ActiveCfg = Release|x64
+		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB}.Release|x64.Build.0 = Release|x64
+		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB}.Release|x86.ActiveCfg = Release|Win32
+		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB}.Release|x86.Build.0 = Release|Win32
+		{3ADB401A-8338-4ACD-BC47-1329EE6761CB}.Debug|x64.ActiveCfg = Debug|x64
+		{3ADB401A-8338-4ACD-BC47-1329EE6761CB}.Debug|x64.Build.0 = Debug|x64
+		{3ADB401A-8338-4ACD-BC47-1329EE6761CB}.Debug|x86.ActiveCfg = Debug|Win32
+		{3ADB401A-8338-4ACD-BC47-1329EE6761CB}.Debug|x86.Build.0 = Debug|Win32
+		{3ADB401A-8338-4ACD-BC47-1329EE6761CB}.Release|x64.ActiveCfg = Release|x64
+		{3ADB401A-8338-4ACD-BC47-1329EE6761CB}.Release|x64.Build.0 = Release|x64
+		{3ADB401A-8338-4ACD-BC47-1329EE6761CB}.Release|x86.ActiveCfg = Release|Win32
+		{3ADB401A-8338-4ACD-BC47-1329EE6761CB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,6 +221,8 @@ Global
 		{E782F27A-F963-4507-9D63-85CDAE78BDD9} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{6F62E277-9308-46C1-BBB0-AB977332F126} = {9FD5A1AD-7308-44AA-B97D-0FD5AB6E3025}
 		{D970D931-879B-4D76-A6B7-084C6B0394F6} = {9FD5A1AD-7308-44AA-B97D-0FD5AB6E3025}
+		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
+		{3ADB401A-8338-4ACD-BC47-1329EE6761CB} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88118672-05E8-4C89-92C8-E3CB6E9192DC}

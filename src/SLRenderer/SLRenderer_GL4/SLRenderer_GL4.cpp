@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 
 // SLRGL4
 namespace SLR_GL4 {
@@ -9,6 +10,22 @@ namespace SLR_GL4 {
 	SLRenderer_GL4::SLRenderer_GL4()
 	{
 		InitOpenGL4();
+
+		// get opengl info
+		mGLVendor = (const char *)glGetString(GL_VENDOR);
+		mGLRenderer = (const char *)glGetString(GL_RENDERER);
+		mGLVersion = (const char *)glGetString(GL_VERSION);
+		mGLSLVersion = (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION);
+
+		// create description
+		std::stringstream lines;
+		lines <<
+			"SLRenderer OpenGL 4.x implementation" << std::endl <<
+			"GL Vendor    : " << mGLVendor << std::endl <<
+			"GL Renderer  : " << mGLRenderer << std::endl <<
+			"GL Version   : " << mGLVersion << std::endl <<
+			"GLSL Version : " << mGLSLVersion << std::endl;
+		mDescription = lines.str();
 	}
 
 	// ~SLRenderer_GL4
@@ -265,14 +282,14 @@ namespace SLR_GL4 {
 	// Render
 	void SLRenderer_GL4::Render()
 	{
-		// temporary output renderer info
-		std::cout << mTexture2Ds.size() << std::endl;
-		std::cout << mBuffers.size() << std::endl;
-		std::cout << mIndexBuffers.size() << std::endl;
-		std::cout << mMeshes.size() << std::endl;
-		std::cout << mModels.size() << std::endl;
-		std::cout << mCameras.size() << std::endl;
-		std::cout << mScenes.size() << std::endl;
+// 		// temporary output renderer info
+// 		std::cout << mTexture2Ds.size() << std::endl;
+// 		std::cout << mBuffers.size() << std::endl;
+// 		std::cout << mIndexBuffers.size() << std::endl;
+// 		std::cout << mMeshes.size() << std::endl;
+// 		std::cout << mModels.size() << std::endl;
+// 		std::cout << mCameras.size() << std::endl;
+// 		std::cout << mScenes.size() << std::endl;
 	}
 
 	// DeleteResources
@@ -300,6 +317,6 @@ namespace SLR_GL4 {
 	// GetDescription
 	const char* SLRenderer_GL4::GetDescription() const
 	{
-		return "SLRenderer OpenGL 4.6 implementation";
+		return mDescription.c_str();
 	}
 }

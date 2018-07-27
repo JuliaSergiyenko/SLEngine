@@ -2,13 +2,29 @@
 
 #include <iostream>
 #include <algorithm>
+#include <sstream>
+#include <GLES3/gl3.h>
 
-// SLRGLES3
+// SLRGL4
 namespace SLR_GLES3 {
 	// SLRenderer_GLES3
 	SLRenderer_GLES3::SLRenderer_GLES3()
 	{
-		// constructor
+		// get opengl info
+		mGLVendor = (const char *)glGetString(GL_VENDOR);
+		mGLRenderer = (const char *)glGetString(GL_RENDERER);
+		mGLVersion = (const char *)glGetString(GL_VERSION);
+		mGLSLVersion = (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION);
+
+		// create description
+		std::stringstream lines;
+		lines <<
+			"SLRenderer OpenGL ES 3.x implementation" << std::endl <<
+			"GL Vendor    : " << mGLVendor << std::endl <<
+			"GL Renderer  : " << mGLRenderer << std::endl <<
+			"GL Version   : " << mGLVersion << std::endl <<
+			"GLSL Version : " << mGLSLVersion << std::endl;
+		mDescription = lines.str();
 	}
 
 	// ~SLRenderer_GLES3
@@ -265,27 +281,27 @@ namespace SLR_GLES3 {
 	// Render
 	void SLRenderer_GLES3::Render()
 	{
-		// temporary output renderer info
-		std::cout << mTexture2Ds.size() << std::endl;
-		std::cout << mBuffers.size() << std::endl;
-		std::cout << mIndexBuffers.size() << std::endl;
-		std::cout << mMeshes.size() << std::endl;
-		std::cout << mModels.size() << std::endl;
-		std::cout << mCameras.size() << std::endl;
-		std::cout << mScenes.size() << std::endl;
+		// 		// temporary output renderer info
+		// 		std::cout << mTexture2Ds.size() << std::endl;
+		// 		std::cout << mBuffers.size() << std::endl;
+		// 		std::cout << mIndexBuffers.size() << std::endl;
+		// 		std::cout << mMeshes.size() << std::endl;
+		// 		std::cout << mModels.size() << std::endl;
+		// 		std::cout << mCameras.size() << std::endl;
+		// 		std::cout << mScenes.size() << std::endl;
 	}
 
 	// DeleteResources
 	void SLRenderer_GLES3::DeleteResources()
 	{
 		// delete all items
-		std::for_each(mTexture2Ds.begin(),   mTexture2Ds.end(),   [](SLTexture2D_GLES3* item)   { delete item; });
-		std::for_each(mBuffers.begin(),      mBuffers.end(),      [](SLBuffer_GLES3* item)      { delete item; });
+		std::for_each(mTexture2Ds.begin(), mTexture2Ds.end(), [](SLTexture2D_GLES3* item) { delete item; });
+		std::for_each(mBuffers.begin(), mBuffers.end(), [](SLBuffer_GLES3* item) { delete item; });
 		std::for_each(mIndexBuffers.begin(), mIndexBuffers.end(), [](SLIndexBuffer_GLES3* item) { delete item; });
-		std::for_each(mMeshes.begin(),       mMeshes.end(),       [](SLMesh_GLES3* item)        { delete item; });
-		std::for_each(mModels.begin(),       mModels.end(),       [](SLModel_GLES3* item)       { delete item; });
-		std::for_each(mCameras.begin(),      mCameras.end(),      [](SLCamera_GLES3* item)      { delete item; });
-		std::for_each(mScenes.begin(),       mScenes.end(),       [](SLScene_GLES3* item)       { delete item; });
+		std::for_each(mMeshes.begin(), mMeshes.end(), [](SLMesh_GLES3* item) { delete item; });
+		std::for_each(mModels.begin(), mModels.end(), [](SLModel_GLES3* item) { delete item; });
+		std::for_each(mCameras.begin(), mCameras.end(), [](SLCamera_GLES3* item) { delete item; });
+		std::for_each(mScenes.begin(), mScenes.end(), [](SLScene_GLES3* item) { delete item; });
 
 		// clear lists
 		mTexture2Ds.clear();
@@ -300,6 +316,6 @@ namespace SLR_GLES3 {
 	// GetDescription
 	const char* SLRenderer_GLES3::GetDescription() const
 	{
-		return "SLRenderer OpenGL ES 3.2 implementation";
+		return mDescription.c_str();
 	}
 }

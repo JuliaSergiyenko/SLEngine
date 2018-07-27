@@ -56,7 +56,6 @@ int main(int argc, char** argv)
 	// create texture 
 	ISLTexture2D* baseTexture = renderer->CreateTexture2D();
 	baseTexture->UpdateImage(nullptr, 0, 1024, 1024, SL_PIXEL_DATA_TYPE_RGRA);
-	std::cout << baseTexture->GetRenderer()->GetDescription();
 
 	// create mesh and setup buffers
 	ISLMesh* mesh = renderer->CreateMesh();

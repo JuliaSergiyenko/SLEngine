@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GL/glcorearb.h>
+#include <GL/GL.h>
 
 // SLR_GL4
 namespace SLR_GL4

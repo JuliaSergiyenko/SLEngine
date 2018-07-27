@@ -11,13 +11,15 @@
 
 // standard library
 #include <vector>
+#include <string>
 
-// SLRGLES2
+// SLRGL4
 namespace SLR_GLES2 {
-	// SLRendererGLES2
+	// SLRendererGL4
 	class SLRenderer_GLES2 : public ISLRenderer
 	{
 	private:
+		// object vectors
 		std::vector<SLTexture2D_GLES2 *>   mTexture2Ds;
 		std::vector<SLBuffer_GLES2 *>      mBuffers;
 		std::vector<SLIndexBuffer_GLES2 *> mIndexBuffers;
@@ -25,6 +27,13 @@ namespace SLR_GLES2 {
 		std::vector<SLModel_GLES2 *>       mModels;
 		std::vector<SLCamera_GLES2 *>      mCameras;
 		std::vector<SLScene_GLES2 *>       mScenes;
+
+		// renderer info
+		std::string mGLVendor;
+		std::string mGLRenderer;
+		std::string mGLVersion;
+		std::string mGLSLVersion;
+		std::string mDescription;
 	public:
 		// constructor and destructor
 		SLRenderer_GLES2();
