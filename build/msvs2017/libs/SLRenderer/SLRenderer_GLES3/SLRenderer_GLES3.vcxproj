@@ -163,6 +163,7 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLCamera_GLES3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLIndexBuffer_GLES3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLMesh_GLES3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLOpenGLES3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLScene_GLES3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLModel_GLES3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLCamera_GLES3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLIndexBuffer_GLES3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLMesh_GLES3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLOpenGLES3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLScene_GLES3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLModel_GLES3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.hpp" />

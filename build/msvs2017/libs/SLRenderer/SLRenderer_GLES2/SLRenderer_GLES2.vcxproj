@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLCamera_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLIndexBuffer_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLMesh_GLES2.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLOpenGLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLScene_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLModel_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLRenderer_GLES2.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLCamera_GLES2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLIndexBuffer_GLES2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLMesh_GLES2.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLOpenGLES2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLScene_GLES2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLModel_GLES2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLRenderer_GLES2.hpp" />
