@@ -27,7 +27,7 @@ namespace SLR_GLES3 {
 		std::vector<SLMesh_GLES3 *>        mMeshes;
 		std::vector<SLModel_GLES3 *>       mModels;
 		std::vector<SLCamera_GLES3 *>      mCameras;
-		std::vector<SLRenderScene_GLES3 *>       mScenes;
+		std::vector<SLRenderScene_GLES3 *>       mRenderScenes;
 
 		// renderer info
 		std::string mGLVendor;

@@ -27,7 +27,7 @@ namespace SLR_GL4 {
 		std::vector<SLMesh_GL4 *>        mMeshes;
 		std::vector<SLModel_GL4 *>       mModels;
 		std::vector<SLCamera_GL4 *>      mCameras;
-		std::vector<SLRenderScene_GL4 *>       mScenes;
+		std::vector<SLRenderScene_GL4 *>       mRenderScenes;
 
 		// renderer info
 		std::string mGLVendor;

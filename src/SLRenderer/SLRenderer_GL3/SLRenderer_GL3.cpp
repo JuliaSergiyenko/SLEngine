@@ -11,7 +11,26 @@ namespace SLR_GL3 {
 	{
 		// init opengl extensions
 		InitOpenGL3();
+		CreateDescription();
+		CreateShaders();
+	}
 
+	// ~SLRenderer_GL3
+	SLRenderer_GL3::~SLRenderer_GL3()
+	{
+		// destructor
+	}
+
+	// CreateShaders
+	void SLRenderer_GL3::CreateShaders()
+	{
+		// create shader with position and color
+		mShader_PositionColor.CreateShader(cVSShaderSource_PositionColor, cFSShaderSource_PositionColor);
+	}
+
+	// CreateDescription
+	void SLRenderer_GL3::CreateDescription()
+	{
 		// get opengl info
 		mGLVendor = (const char *)glGetString(GL_VENDOR);
 		mGLRenderer = (const char *)glGetString(GL_RENDERER);
@@ -20,19 +39,13 @@ namespace SLR_GL3 {
 
 		// create description
 		std::stringstream lines;
-		lines << 
+		lines <<
 			"SLRenderer OpenGL 3.x implementation" << std::endl <<
-			"GL Vendor    : " << mGLVendor << std::endl << 
+			"GL Vendor    : " << mGLVendor << std::endl <<
 			"GL Renderer  : " << mGLRenderer << std::endl <<
 			"GL Version   : " << mGLVersion << std::endl <<
 			"GLSL Version : " << mGLSLVersion << std::endl;
 		mDescription = lines.str();
-	}
-
-	// ~SLRenderer_GL3
-	SLRenderer_GL3::~SLRenderer_GL3()
-	{
-		// destructor
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -254,7 +267,7 @@ namespace SLR_GL3 {
 	{
 		// create new buffer
 		SLRenderScene_GL3* scene = new SLRenderScene_GL3(this);
-		mScenes.push_back(scene);
+		mRenderScenes.push_back(scene);
 		return scene;
 	}
 
@@ -266,9 +279,9 @@ namespace SLR_GL3 {
 			return;
 
 		// remove existing cameras
-		mScenes.erase(std::remove_if(mScenes.begin(), mScenes.end(), [&](SLRenderScene_GL3* item) {
+		mRenderScenes.erase(std::remove_if(mRenderScenes.begin(), mRenderScenes.end(), [&](SLRenderScene_GL3* item) {
 			return item == scene;
-		}), mScenes.end());
+		}), mRenderScenes.end());
 
 		// delete scene
 		delete (SLRenderScene_GL3 *)scene;
@@ -277,7 +290,7 @@ namespace SLR_GL3 {
 	// IsRenderSceneExists
 	bool SLRenderer_GL3::IsRenderSceneExists(ISLRenderScene* scene) const
 	{
-		return (std::find(mScenes.begin(), mScenes.end(), scene) != mScenes.end());
+		return (std::find(mRenderScenes.begin(), mRenderScenes.end(), scene) != mRenderScenes.end());
 	}
 
 	// Render
@@ -289,7 +302,7 @@ namespace SLR_GL3 {
 		GL_CHECK(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
 		// iterate by all meshes
-		for (auto scene : mScenes)
+		for (auto scene : mRenderScenes)
 			if (scene->mVisibilityMode == SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE)
 				for (auto model : scene->mModels)
 					for (auto mesh : model->mMeshes)
@@ -306,7 +319,7 @@ namespace SLR_GL3 {
 		std::for_each(mMeshes.begin(),       mMeshes.end(),       [](SLMesh_GL3* item)        { delete item; });
 		std::for_each(mModels.begin(),       mModels.end(),       [](SLModel_GL3* item)       { delete item; });
 		std::for_each(mCameras.begin(),      mCameras.end(),      [](SLCamera_GL3* item)      { delete item; });
-		std::for_each(mScenes.begin(),       mScenes.end(),       [](SLRenderScene_GL3* item) { delete item; });
+		std::for_each(mRenderScenes.begin(),       mRenderScenes.end(),       [](SLRenderScene_GL3* item) { delete item; });
 
 		// clear lists
 		mTexture2Ds.clear();
@@ -315,7 +328,7 @@ namespace SLR_GL3 {
 		mMeshes.clear();
 		mModels.clear();
 		mCameras.clear();
-		mScenes.clear();
+		mRenderScenes.clear();
 	}
 
 	// GetDescription

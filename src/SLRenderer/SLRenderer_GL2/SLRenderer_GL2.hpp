@@ -25,7 +25,7 @@ namespace SLR_GL2 {
 		std::vector<SLMesh_GL2 *>        mMeshes;
 		std::vector<SLModel_GL2 *>       mModels;
 		std::vector<SLCamera_GL2 *>      mCameras;
-		std::vector<SLRenderScene_GL2 *>       mScenes;
+		std::vector<SLRenderScene_GL2 *>       mRenderScenes;
 	public:
 		// constructor and destructor
 		SLRenderer_GL2();

@@ -253,7 +253,7 @@ namespace SLR_GL4 {
 	{
 		// create new buffer
 		SLRenderScene_GL4* scene = new SLRenderScene_GL4(this);
-		mScenes.push_back(scene);
+		mRenderScenes.push_back(scene);
 		return scene;
 	}
 
@@ -265,9 +265,9 @@ namespace SLR_GL4 {
 			return;
 
 		// remove existing cameras
-		mScenes.erase(std::remove_if(mScenes.begin(), mScenes.end(), [&](SLRenderScene_GL4* item) {
+		mRenderScenes.erase(std::remove_if(mRenderScenes.begin(), mRenderScenes.end(), [&](SLRenderScene_GL4* item) {
 			return item == scene;
-		}), mScenes.end());
+		}), mRenderScenes.end());
 
 		// delete scene
 		delete (SLRenderScene_GL4 *)scene;
@@ -276,7 +276,7 @@ namespace SLR_GL4 {
 	// IsRenderSceneExists
 	bool SLRenderer_GL4::IsRenderSceneExists(ISLRenderScene* scene) const
 	{
-		return (std::find(mScenes.begin(), mScenes.end(), scene) != mScenes.end());
+		return (std::find(mRenderScenes.begin(), mRenderScenes.end(), scene) != mRenderScenes.end());
 	}
 
 	// Render
@@ -289,7 +289,7 @@ namespace SLR_GL4 {
 // 		std::cout << mMeshes.size() << std::endl;
 // 		std::cout << mModels.size() << std::endl;
 // 		std::cout << mCameras.size() << std::endl;
-// 		std::cout << mScenes.size() << std::endl;
+// 		std::cout << mRenderScenes.size() << std::endl;
 	}
 
 	// DeleteResources
@@ -302,7 +302,7 @@ namespace SLR_GL4 {
 		std::for_each(mMeshes.begin(),       mMeshes.end(),       [](SLMesh_GL4* item)        { delete item; });
 		std::for_each(mModels.begin(),       mModels.end(),       [](SLModel_GL4* item)       { delete item; });
 		std::for_each(mCameras.begin(),      mCameras.end(),      [](SLCamera_GL4* item)      { delete item; });
-		std::for_each(mScenes.begin(),       mScenes.end(),       [](SLRenderScene_GL4* item)       { delete item; });
+		std::for_each(mRenderScenes.begin(),       mRenderScenes.end(),       [](SLRenderScene_GL4* item)       { delete item; });
 
 		// clear lists
 		mTexture2Ds.clear();
@@ -311,7 +311,7 @@ namespace SLR_GL4 {
 		mMeshes.clear();
 		mModels.clear();
 		mCameras.clear();
-		mScenes.clear();
+		mRenderScenes.clear();
 	}
 
 	// GetDescription

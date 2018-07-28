@@ -8,7 +8,8 @@
 #include "SLModel_GL3.hpp"
 #include "SLCamera_GL3.hpp"
 #include "SLRenderScene_GL3.hpp"
-#include "SLOpenGL3.hpp"
+#include "SLShader_GL3.hpp"
+#include "SLShaderSources_GL3.hpp"
 
 // standard library
 #include <vector>
@@ -27,7 +28,10 @@ namespace SLR_GL3 {
 		std::vector<SLMesh_GL3 *>        mMeshes;
 		std::vector<SLModel_GL3 *>       mModels;
 		std::vector<SLCamera_GL3 *>      mCameras;
-		std::vector<SLRenderScene_GL3 *>       mScenes;
+		std::vector<SLRenderScene_GL3 *> mRenderScenes;
+
+		// internal resources
+		SLShader_GL3 mShader_PositionColor;
 
 		// renderer info
 		std::string mGLVendor;
@@ -35,6 +39,10 @@ namespace SLR_GL3 {
 		std::string mGLVersion;
 		std::string mGLSLVersion;
 		std::string mDescription;
+	private:
+		// helper function
+		void CreateShaders();
+		void CreateDescription();
 	public:
 		// constructor and destructor
 		SLRenderer_GL3();
