@@ -24,12 +24,10 @@ enum SLTextureFilterimgMode
 // SLPixelDataType
 enum SLPixelDataType
 {
-	SL_PIXEL_DATA_TYPE_R    = 0,
-	SL_PIXEL_DATA_TYPE_RG   = 1,
-	SL_PIXEL_DATA_TYPE_RGB  = 2,
-	SL_PIXEL_DATA_TYPE_BGR  = 3,
-	SL_PIXEL_DATA_TYPE_RGRA = 4,
-	SL_PIXEL_DATA_TYPE_BGRA = 5,
+	SL_PIXEL_DATA_TYPE_RGB  = 0,
+	SL_PIXEL_DATA_TYPE_BGR  = 1,
+	SL_PIXEL_DATA_TYPE_RGRA = 2,
+	SL_PIXEL_DATA_TYPE_BGRA = 3,
 };
 
 // SLPrimitiveType
@@ -63,11 +61,11 @@ enum SLModelVisibilityMode
 	SL_MODEL_VISIBILITY_MODE_TRANSPARENT = 2,
 };
 
-// SLSceneVisibilityMode
-enum SLSceneVisibilityMode
+// SLRenderSceneVisibilityMode
+enum SLRenderSceneVisibilityMode
 {
-	SL_SCENE_VISIBILITY_MODE_VISIBLE = 0,
-	SL_SCENE_VISIBILITY_MODE_HIDE = 1,
+	SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE = 0,
+	SL_RENDER_SCENE_VISIBILITY_MODE_HIDE = 1,
 };
 
 // ISLTexture2D
@@ -230,12 +228,12 @@ public:
 	virtual void GetProjection(float* mat) const = 0;
 };
 
-// ISLScene
-class ISLScene
+// ISLRenderScene
+class ISLRenderScene
 {
 protected:
-	ISLScene() {}
-	~ISLScene() {}
+	ISLRenderScene() {}
+	~ISLRenderScene() {}
 public:
 	// get device
 	virtual ISLRenderer* GetRenderer() const = 0;
@@ -250,8 +248,8 @@ public:
 	virtual bool IsModelExists(ISLModel* model) const = 0;
 
 	// properties
-	virtual void SetVisibilityMode(SLSceneVisibilityMode visibilityMode) = 0;
-	virtual SLSceneVisibilityMode GetVisibilityMode() const = 0;
+	virtual void SetVisibilityMode(SLRenderSceneVisibilityMode visibilityMode) = 0;
+	virtual SLRenderSceneVisibilityMode GetVisibilityMode() const = 0;
 };
 
 // ISLRenderer
@@ -292,10 +290,10 @@ public:
 	virtual void DeleteCamera(ISLCamera* camera) = 0;
 	virtual bool IsCameraExists(ISLCamera* camera) const = 0;
 
-	// scene functions
-	virtual ISLScene* CreateScene() = 0;
-	virtual void DeleteScene(ISLScene* scene) = 0;
-	virtual bool IsSceneExists(ISLScene* scene) const = 0;
+	// render scene functions
+	virtual ISLRenderScene* CreateScene() = 0;
+	virtual void DeleteRenderScene(ISLRenderScene* scene) = 0;
+	virtual bool IsRenderSceneExists(ISLRenderScene* scene) const = 0;
 
 	// render
 	virtual void Render() = 0;

@@ -3,13 +3,15 @@
 #include <iostream>
 #include <algorithm>
 #include <sstream>
-#include <GLES2/gl2.h>
 
 // SLRGL4
 namespace SLR_GLES2 {
 	// SLRenderer_GLES2
 	SLRenderer_GLES2::SLRenderer_GLES2()
 	{
+		// init opengl extensions
+		InitOpenGLES2();
+
 		// get opengl info
 		mGLVendor = (const char *)glGetString(GL_VENDOR);
 		mGLRenderer = (const char *)glGetString(GL_RENDERER);
@@ -248,32 +250,32 @@ namespace SLR_GLES2 {
 	//////////////////////////////////////////////////////////////////////////
 
 	// CreateScene
-	ISLScene* SLRenderer_GLES2::CreateScene()
+	ISLRenderScene* SLRenderer_GLES2::CreateScene()
 	{
 		// create new buffer
-		SLScene_GLES2* scene = new SLScene_GLES2(this);
+		SLRenderScene_GLES2* scene = new SLRenderScene_GLES2(this);
 		mScenes.push_back(scene);
 		return scene;
 	}
 
 	// DeleteScene
-	void SLRenderer_GLES2::DeleteScene(ISLScene* scene)
+	void SLRenderer_GLES2::DeleteRenderScene(ISLRenderScene* scene)
 	{
 		// check if exists
-		if (!IsSceneExists(scene))
+		if (!IsRenderSceneExists(scene))
 			return;
 
 		// remove existing cameras
-		mScenes.erase(std::remove_if(mScenes.begin(), mScenes.end(), [&](SLScene_GLES2* item) {
+		mScenes.erase(std::remove_if(mScenes.begin(), mScenes.end(), [&](SLRenderScene_GLES2* item) {
 			return item == scene;
 		}), mScenes.end());
 
 		// delete scene
-		delete (SLScene_GLES2 *)scene;
+		delete (SLRenderScene_GLES2 *)scene;
 	}
 
-	// IsSceneExists
-	bool SLRenderer_GLES2::IsSceneExists(ISLScene* scene) const
+	// IsRenderSceneExists
+	bool SLRenderer_GLES2::IsRenderSceneExists(ISLRenderScene* scene) const
 	{
 		return (std::find(mScenes.begin(), mScenes.end(), scene) != mScenes.end());
 	}
@@ -301,7 +303,7 @@ namespace SLR_GLES2 {
 		std::for_each(mMeshes.begin(), mMeshes.end(), [](SLMesh_GLES2* item) { delete item; });
 		std::for_each(mModels.begin(), mModels.end(), [](SLModel_GLES2* item) { delete item; });
 		std::for_each(mCameras.begin(), mCameras.end(), [](SLCamera_GLES2* item) { delete item; });
-		std::for_each(mScenes.begin(), mScenes.end(), [](SLScene_GLES2* item) { delete item; });
+		std::for_each(mScenes.begin(), mScenes.end(), [](SLRenderScene_GLES2* item) { delete item; });
 
 		// clear lists
 		mTexture2Ds.clear();

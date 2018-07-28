@@ -42,13 +42,13 @@ void CreateScene(ISLRenderer* renderer)
 	camera->SetViewport(800, 600);
 
 	// create scene
-	ISLScene* scene = renderer->CreateScene();
+	ISLRenderScene* scene = renderer->CreateScene();
 	scene->AddModel(model);
 	scene->SetCamera(camera);
 }
 
 // DeleteScene
-void DeleteScene(ISLRenderer* renderer)
+void DeleteRenderScene(ISLRenderer* renderer)
 {
 	renderer->DeleteResources();
 }

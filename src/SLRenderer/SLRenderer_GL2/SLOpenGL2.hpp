@@ -1,10 +1,44 @@
 #pragma once
 
+#include <cassert>
 #include <GL/glcorearb.h>
+#include <GL/GL.h>
+#include "../SLRenderer.hpp"
 
-// SLR_GL2
+// OpenGL check error defines
+#ifdef _DEBUG
+#define GL_CHECK(stmt) stmt; assert(glGetError() == GL_NO_ERROR);
+#else
+#define GL_CHECK(stmt) stmt
+#endif
+
+// SLR_GL3
 namespace SLR_GL2
 {
+	// SLPixelDataType to OpenGL format converter
+	static const GLenum cSLPixelDataTypeToGLFormat[] = {
+		GL_RGB,  // SL_PIXEL_DATA_TYPE_RGB  = 0,
+		GL_BGR,  // SL_PIXEL_DATA_TYPE_BGR  = 1,
+		GL_RGBA, // SL_PIXEL_DATA_TYPE_RGRA = 2,
+		GL_BGRA, // SL_PIXEL_DATA_TYPE_BGRA = 3,
+	};
+
+	// SLTextureWrapMode to OpenGL wrap mode converter
+	static const GLenum cSLTextureWrapModeToGLWrapMode[] =
+	{
+		GL_CLAMP_TO_EDGE, // SL_TEXTURE_WRAP_MODE_CLAMP  = 0,
+		GL_REPEAT,        // SL_TEXTURE_WRAP_MODE_REPEAT = 1,
+	};
+
+	// SLTextureFilterimgMode to OpenGL filtering mode
+	static const GLenum cSLTextureFilterimgModeToGLFilteringMode[] =
+	{
+		GL_NEAREST,               // SL_TEXTURE_FILTERING_MODE_NEAREST        = 0,
+		GL_LINEAR,                // SL_TEXTURE_FILTERING_MODE_LINEAR         = 1,
+		GL_LINEAR_MIPMAP_NEAREST, // SL_TEXTURE_FILTERING_MODE_MIPMAP_NEAREST = 2,
+		GL_LINEAR_MIPMAP_LINEAR,  // SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR  = 3,
+	};
+
 	// GL_VERSION_1_1
 	extern PFNGLDRAWARRAYSPROC        glDrawArrays;
 	extern PFNGLDRAWELEMENTSPROC      glDrawElements;
@@ -27,7 +61,7 @@ namespace SLR_GL2
 	extern PFNGLTEXSUBIMAGE3DPROC     glTexSubImage3D;
 	extern PFNGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D;
 
-	// GL_VERSION_1_3 1
+	// GL_VERSION_1_3
 	extern PFNGLACTIVETEXTUREPROC           glActiveTexture;
 	extern PFNGLSAMPLECOVERAGEPROC          glSampleCoverage;
 	extern PFNGLCOMPRESSEDTEXIMAGE3DPROC    glCompressedTexImage3D;

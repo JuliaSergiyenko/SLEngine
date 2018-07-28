@@ -6,8 +6,8 @@
 
 // SLR_GLES2
 namespace SLR_GLES2 {
-	// SLScene_GLES2
-	class SLScene_GLES2 : public ISLScene
+	// SLRenderScene_GLES2
+	class SLRenderScene_GLES2 : public ISLRenderScene
 	{
 	private:
 		// renderer
@@ -20,11 +20,11 @@ namespace SLR_GLES2 {
 		std::vector<SLModel_GLES2 *> mModels;
 
 		// properties
-		SLSceneVisibilityMode mVisibilityMode = SL_SCENE_VISIBILITY_MODE_VISIBLE;
+		SLRenderSceneVisibilityMode mVisibilityMode = SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE;
 	public:
 		// constructor and destructor
-		SLScene_GLES2(ISLRenderer* renderer);
-		~SLScene_GLES2();
+		SLRenderScene_GLES2(ISLRenderer* renderer);
+		~SLRenderScene_GLES2();
 
 		// get render device
 		ISLRenderer* GetRenderer() const;
@@ -39,7 +39,7 @@ namespace SLR_GLES2 {
 		virtual bool IsModelExists(ISLModel* model) const;
 
 		// properties
-		virtual void SetVisibilityMode(SLSceneVisibilityMode visibilityMode);
-		virtual SLSceneVisibilityMode GetVisibilityMode() const;
+		virtual void SetVisibilityMode(SLRenderSceneVisibilityMode visibilityMode);
+		virtual SLRenderSceneVisibilityMode GetVisibilityMode() const;
 	};
 }

@@ -7,7 +7,7 @@
 #include "SLMesh_GL4.hpp"
 #include "SLModel_GL4.hpp"
 #include "SLCamera_GL4.hpp"
-#include "SLScene_GL4.hpp"
+#include "SLRenderScene_GL4.hpp"
 #include "SLOpenGL4.hpp"
 
 // standard library
@@ -27,7 +27,7 @@ namespace SLR_GL4 {
 		std::vector<SLMesh_GL4 *>        mMeshes;
 		std::vector<SLModel_GL4 *>       mModels;
 		std::vector<SLCamera_GL4 *>      mCameras;
-		std::vector<SLScene_GL4 *>       mScenes;
+		std::vector<SLRenderScene_GL4 *>       mScenes;
 
 		// renderer info
 		std::string mGLVendor;
@@ -70,10 +70,10 @@ namespace SLR_GL4 {
 		virtual void DeleteCamera(ISLCamera* camera);
 		virtual bool IsCameraExists(ISLCamera* camera) const;
 
-		// scene functions
-		virtual ISLScene* CreateScene();
-		virtual void DeleteScene(ISLScene* scene);
-		virtual bool IsSceneExists(ISLScene* scene) const;
+		// render scene functions
+		virtual ISLRenderScene* CreateScene();
+		virtual void DeleteRenderScene(ISLRenderScene* scene);
+		virtual bool IsRenderSceneExists(ISLRenderScene* scene) const;
 
 		// render
 		virtual void Render();

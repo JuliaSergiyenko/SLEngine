@@ -1,27 +1,27 @@
-#include "SLScene_GL4.hpp"
+#include "SLRenderScene_GL4.hpp"
 #include <algorithm>
 
 // SLR_GL4
 namespace SLR_GL4
 {
-	// SLScene_GL4
-	SLScene_GL4::SLScene_GL4(ISLRenderer* renderer) : mRenderer(renderer)
+	// SLRenderScene_GL4
+	SLRenderScene_GL4::SLRenderScene_GL4(ISLRenderer* renderer) : mRenderer(renderer)
 	{
 	}
 
-	// ~SLScene_GL4
-	SLScene_GL4::~SLScene_GL4()
+	// ~SLRenderScene_GL4
+	SLRenderScene_GL4::~SLRenderScene_GL4()
 	{
 	}
 
 	// GetRenderer
-	ISLRenderer* SLScene_GL4::GetRenderer() const
+	ISLRenderer* SLRenderScene_GL4::GetRenderer() const
 	{
 		return mRenderer;
 	}
 
 	// SetCamera
-	void SLScene_GL4::SetCamera(ISLCamera* camera)
+	void SLRenderScene_GL4::SetCamera(ISLCamera* camera)
 	{
 		// check if exists
 		if (mRenderer->IsCameraExists(camera))
@@ -29,13 +29,13 @@ namespace SLR_GL4
 	}
 
 	// GetCamera
-	ISLCamera* SLScene_GL4::GetCamera() const
+	ISLCamera* SLRenderScene_GL4::GetCamera() const
 	{
 		return mCamera;
 	}
 
 	// AddModel
-	void SLScene_GL4::AddModel(ISLModel* model)
+	void SLRenderScene_GL4::AddModel(ISLModel* model)
 	{
 		// check if exists in renderer
 		if (mRenderer->IsModelExists(model))
@@ -43,7 +43,7 @@ namespace SLR_GL4
 	}
 
 	// RemoveModel
-	void SLScene_GL4::RemoveModel(ISLModel* model)
+	void SLRenderScene_GL4::RemoveModel(ISLModel* model)
 	{
 		// check if exists
 		if (IsModelExists(model))
@@ -58,19 +58,19 @@ namespace SLR_GL4
 	}
 
 	// IsModelExists
-	bool SLScene_GL4::IsModelExists(ISLModel* model) const
+	bool SLRenderScene_GL4::IsModelExists(ISLModel* model) const
 	{
 		return (std::find(mModels.begin(), mModels.end(), model) != mModels.end());
 	}
 
 	// SetVisibilityMode
-	void SLScene_GL4::SetVisibilityMode(SLSceneVisibilityMode visibilityMode)
+	void SLRenderScene_GL4::SetVisibilityMode(SLRenderSceneVisibilityMode visibilityMode)
 	{
 		mVisibilityMode = visibilityMode;
 	}
 
 	// GetVisibilityMode
-	SLSceneVisibilityMode SLScene_GL4::GetVisibilityMode() const
+	SLRenderSceneVisibilityMode SLRenderScene_GL4::GetVisibilityMode() const
 	{
 		return mVisibilityMode;
 	}

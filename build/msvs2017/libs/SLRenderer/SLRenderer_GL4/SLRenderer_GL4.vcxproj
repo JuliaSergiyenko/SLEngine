@@ -163,7 +163,7 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLCamera_GL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLIndexBuffer_GL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLMesh_GL4.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLScene_GL4.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderScene_GL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLModel_GL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLOpenGL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.cpp" />
@@ -174,7 +174,7 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLCamera_GL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLIndexBuffer_GL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLMesh_GL4.hpp" />
-    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLScene_GL4.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderScene_GL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLModel_GL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLOpenGL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.hpp" />

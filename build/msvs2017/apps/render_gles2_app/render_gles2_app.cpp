@@ -18,7 +18,7 @@ int main(int argc, char** argv)
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
 	glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
 // 	// select OpenGL version
 // 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 	// set current context
 	glfwMakeContextCurrent(window);
 
-	// setup thescene ready for rendering
+	// setup therender scene ready for rendering
 	int width = 0, height = 0;
 	glfwGetFramebufferSize(window, &width, &height);
 
@@ -58,7 +58,7 @@ int main(int argc, char** argv)
 	}
 
 	// delete resource
-	DeleteScene(renderer);
+	DeleteRenderScene(renderer);
 	glfwTerminate();
 
 	// exit

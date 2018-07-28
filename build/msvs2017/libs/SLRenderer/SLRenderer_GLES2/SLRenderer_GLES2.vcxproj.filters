@@ -8,8 +8,8 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLRenderer_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLTexture2D_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLBuffer_GLES2.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLScene_GLES2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLOpenGLES2.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLRenderScene_GLES2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLBuffer_GLES2.hpp" />
@@ -19,7 +19,7 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLModel_GLES2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLRenderer_GLES2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLTexture2D_GLES2.hpp" />
-    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLScene_GLES2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLOpenGLES2.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GLES2\SLRenderScene_GLES2.hpp" />
   </ItemGroup>
 </Project>

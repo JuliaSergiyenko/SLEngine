@@ -7,7 +7,7 @@
 #include "SLMesh_GL2.hpp"
 #include "SLModel_GL2.hpp"
 #include "SLCamera_GL2.hpp"
-#include "SLScene_GL2.hpp"
+#include "SLRenderScene_GL2.hpp"
 #include "SLOpenGL2.hpp"
 
 // standard library
@@ -25,7 +25,7 @@ namespace SLR_GL2 {
 		std::vector<SLMesh_GL2 *>        mMeshes;
 		std::vector<SLModel_GL2 *>       mModels;
 		std::vector<SLCamera_GL2 *>      mCameras;
-		std::vector<SLScene_GL2 *>       mScenes;
+		std::vector<SLRenderScene_GL2 *>       mScenes;
 	public:
 		// constructor and destructor
 		SLRenderer_GL2();
@@ -61,10 +61,10 @@ namespace SLR_GL2 {
 		virtual void DeleteCamera(ISLCamera* camera);
 		virtual bool IsCameraExists(ISLCamera* camera) const;
 
-		// scene functions
-		virtual ISLScene* CreateScene();
-		virtual void DeleteScene(ISLScene* scene);
-		virtual bool IsSceneExists(ISLScene* scene) const;
+		// render scene functions
+		virtual ISLRenderScene* CreateScene();
+		virtual void DeleteRenderScene(ISLRenderScene* scene);
+		virtual bool IsRenderSceneExists(ISLRenderScene* scene) const;
 
 		// render
 		virtual void Render();

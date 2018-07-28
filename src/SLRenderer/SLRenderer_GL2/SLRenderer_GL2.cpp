@@ -232,32 +232,32 @@ namespace SLR_GL2 {
 	//////////////////////////////////////////////////////////////////////////
 
 	// CreateScene
-	ISLScene* SLRenderer_GL2::CreateScene()
+	ISLRenderScene* SLRenderer_GL2::CreateScene()
 	{
 		// create new buffer
-		SLScene_GL2* scene = new SLScene_GL2(this);
+		SLRenderScene_GL2* scene = new SLRenderScene_GL2(this);
 		mScenes.push_back(scene);
 		return scene;
 	}
 
 	// DeleteScene
-	void SLRenderer_GL2::DeleteScene(ISLScene* scene)
+	void SLRenderer_GL2::DeleteRenderScene(ISLRenderScene* scene)
 	{
 		// check if exists
-		if (!IsSceneExists(scene))
+		if (!IsRenderSceneExists(scene))
 			return;
 
 		// remove existing cameras
-		mScenes.erase(std::remove_if(mScenes.begin(), mScenes.end(), [&](SLScene_GL2* item) {
+		mScenes.erase(std::remove_if(mScenes.begin(), mScenes.end(), [&](SLRenderScene_GL2* item) {
 			return item == scene;
 		}), mScenes.end());
 
 		// delete scene
-		delete (SLScene_GL2 *)scene;
+		delete (SLRenderScene_GL2 *)scene;
 	}
 
-	// IsSceneExists
-	bool SLRenderer_GL2::IsSceneExists(ISLScene* scene) const
+	// IsRenderSceneExists
+	bool SLRenderer_GL2::IsRenderSceneExists(ISLRenderScene* scene) const
 	{
 		return (std::find(mScenes.begin(), mScenes.end(), scene) != mScenes.end());
 	}
@@ -285,7 +285,7 @@ namespace SLR_GL2 {
 		std::for_each(mMeshes.begin(), mMeshes.end(), [](SLMesh_GL2* item) { delete item; });
 		std::for_each(mModels.begin(), mModels.end(), [](SLModel_GL2* item) { delete item; });
 		std::for_each(mCameras.begin(), mCameras.end(), [](SLCamera_GL2* item) { delete item; });
-		std::for_each(mScenes.begin(), mScenes.end(), [](SLScene_GL2* item) { delete item; });
+		std::for_each(mScenes.begin(), mScenes.end(), [](SLRenderScene_GL2* item) { delete item; });
 
 		// clear lists
 		mTexture2Ds.clear();

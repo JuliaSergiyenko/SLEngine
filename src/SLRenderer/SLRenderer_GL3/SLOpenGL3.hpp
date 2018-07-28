@@ -5,17 +5,22 @@
 #include <GL/GL.h>
 #include "../SLRenderer.hpp"
 
+// OpenGL check error defines
+#ifdef _DEBUG
+#define GL_CHECK(stmt) stmt; assert(glGetError() == GL_NO_ERROR);
+#else
+#define GL_CHECK(stmt) stmt
+#endif
+
 // SLR_GL3
 namespace SLR_GL3
 {
 	// SLPixelDataType to OpenGL format converter
 	static const GLenum cSLPixelDataTypeToGLFormat[] = {
-		GL_R,    // SL_PIXEL_DATA_TYPE_R    = 0,
-		GL_RG,   // SL_PIXEL_DATA_TYPE_RG   = 1,
-		GL_RGB,  // SL_PIXEL_DATA_TYPE_RGB  = 2,
-		GL_BGR,  // SL_PIXEL_DATA_TYPE_BGR  = 3,
-		GL_RGBA, // SL_PIXEL_DATA_TYPE_RGRA = 4,
-		GL_BGRA, // SL_PIXEL_DATA_TYPE_BGRA = 5,
+		GL_RGB,  // SL_PIXEL_DATA_TYPE_RGB  = 0,
+		GL_BGR,  // SL_PIXEL_DATA_TYPE_BGR  = 1,
+		GL_RGBA, // SL_PIXEL_DATA_TYPE_RGRA = 2,
+		GL_BGRA, // SL_PIXEL_DATA_TYPE_BGRA = 3,
 	};
 
 	// SLTextureWrapMode to OpenGL wrap mode converter
@@ -357,10 +362,4 @@ namespace SLR_GL3
 
 	// init OpenGL 3.3
 	extern void InitOpenGL3();
-
-#ifdef _DEBUG
-	#define GL_CHECK(stmt) stmt; assert(glGetError() == GL_NO_ERROR);
-#else
-	#define GL_CHECK(stmt) stmt
-#endif
 }

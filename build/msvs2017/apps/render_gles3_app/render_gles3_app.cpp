@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 	// set current context
 	glfwMakeContextCurrent(window);
 
-	// setup thescene ready for rendering
+	// setup therender scene ready for rendering
 	int width = 0, height = 0;
 	glfwGetFramebufferSize(window, &width, &height);
 
@@ -58,7 +58,7 @@ int main(int argc, char** argv)
 	}
 
 	// delete resource
-	DeleteScene(renderer);
+	DeleteRenderScene(renderer);
 	glfwTerminate();
 
 	// exit

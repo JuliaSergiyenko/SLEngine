@@ -1,27 +1,27 @@
-#include "SLScene_GLES2.hpp"
+#include "SLRenderScene_GLES2.hpp"
 #include <algorithm>
 
 // SLR_GLES2
 namespace SLR_GLES2
 {
-	// SLScene_GLES2
-	SLScene_GLES2::SLScene_GLES2(ISLRenderer* renderer) : mRenderer(renderer)
+	// SLRenderScene_GLES2
+	SLRenderScene_GLES2::SLRenderScene_GLES2(ISLRenderer* renderer) : mRenderer(renderer)
 	{
 	}
 
-	// ~SLScene_GLES2
-	SLScene_GLES2::~SLScene_GLES2()
+	// ~SLRenderScene_GLES2
+	SLRenderScene_GLES2::~SLRenderScene_GLES2()
 	{
 	}
 
 	// GetRenderer
-	ISLRenderer* SLScene_GLES2::GetRenderer() const
+	ISLRenderer* SLRenderScene_GLES2::GetRenderer() const
 	{
 		return mRenderer;
 	}
 
 	// SetCamera
-	void SLScene_GLES2::SetCamera(ISLCamera* camera)
+	void SLRenderScene_GLES2::SetCamera(ISLCamera* camera)
 	{
 		// check if exists
 		if (mRenderer->IsCameraExists(camera))
@@ -29,13 +29,13 @@ namespace SLR_GLES2
 	}
 
 	// GetCamera
-	ISLCamera* SLScene_GLES2::GetCamera() const
+	ISLCamera* SLRenderScene_GLES2::GetCamera() const
 	{
 		return mCamera;
 	}
 
 	// AddModel
-	void SLScene_GLES2::AddModel(ISLModel* model)
+	void SLRenderScene_GLES2::AddModel(ISLModel* model)
 	{
 		// check if exists in renderer
 		if (mRenderer->IsModelExists(model))
@@ -43,7 +43,7 @@ namespace SLR_GLES2
 	}
 
 	// RemoveModel
-	void SLScene_GLES2::RemoveModel(ISLModel* model)
+	void SLRenderScene_GLES2::RemoveModel(ISLModel* model)
 	{
 		// check if exists
 		if (IsModelExists(model))
@@ -58,19 +58,19 @@ namespace SLR_GLES2
 	}
 
 	// IsModelExists
-	bool SLScene_GLES2::IsModelExists(ISLModel* model) const
+	bool SLRenderScene_GLES2::IsModelExists(ISLModel* model) const
 	{
 		return (std::find(mModels.begin(), mModels.end(), model) != mModels.end());
 	}
 
 	// SetVisibilityMode
-	void SLScene_GLES2::SetVisibilityMode(SLSceneVisibilityMode visibilityMode)
+	void SLRenderScene_GLES2::SetVisibilityMode(SLRenderSceneVisibilityMode visibilityMode)
 	{
 		mVisibilityMode = visibilityMode;
 	}
 
 	// GetVisibilityMode
-	SLSceneVisibilityMode SLScene_GLES2::GetVisibilityMode() const
+	SLRenderSceneVisibilityMode SLRenderScene_GLES2::GetVisibilityMode() const
 	{
 		return mVisibilityMode;
 	}

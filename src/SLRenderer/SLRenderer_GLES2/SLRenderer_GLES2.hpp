@@ -7,7 +7,8 @@
 #include "SLMesh_GLES2.hpp"
 #include "SLModel_GLES2.hpp"
 #include "SLCamera_GLES2.hpp"
-#include "SLScene_GLES2.hpp"
+#include "SLRenderScene_GLES2.hpp"
+#include "SLOpenGLES2.hpp"
 
 // standard library
 #include <vector>
@@ -26,7 +27,7 @@ namespace SLR_GLES2 {
 		std::vector<SLMesh_GLES2 *>        mMeshes;
 		std::vector<SLModel_GLES2 *>       mModels;
 		std::vector<SLCamera_GLES2 *>      mCameras;
-		std::vector<SLScene_GLES2 *>       mScenes;
+		std::vector<SLRenderScene_GLES2 *>       mScenes;
 
 		// renderer info
 		std::string mGLVendor;
@@ -69,10 +70,10 @@ namespace SLR_GLES2 {
 		virtual void DeleteCamera(ISLCamera* camera);
 		virtual bool IsCameraExists(ISLCamera* camera) const;
 
-		// scene functions
-		virtual ISLScene* CreateScene();
-		virtual void DeleteScene(ISLScene* scene);
-		virtual bool IsSceneExists(ISLScene* scene) const;
+		// render scene functions
+		virtual ISLRenderScene* CreateScene();
+		virtual void DeleteRenderScene(ISLRenderScene* scene);
+		virtual bool IsRenderSceneExists(ISLRenderScene* scene) const;
 
 		// render
 		virtual void Render();

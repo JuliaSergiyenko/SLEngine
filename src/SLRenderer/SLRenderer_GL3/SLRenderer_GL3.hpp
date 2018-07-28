@@ -7,7 +7,7 @@
 #include "SLMesh_GL3.hpp"
 #include "SLModel_GL3.hpp"
 #include "SLCamera_GL3.hpp"
-#include "SLScene_GL3.hpp"
+#include "SLRenderScene_GL3.hpp"
 #include "SLOpenGL3.hpp"
 
 // standard library
@@ -27,7 +27,7 @@ namespace SLR_GL3 {
 		std::vector<SLMesh_GL3 *>        mMeshes;
 		std::vector<SLModel_GL3 *>       mModels;
 		std::vector<SLCamera_GL3 *>      mCameras;
-		std::vector<SLScene_GL3 *>       mScenes;
+		std::vector<SLRenderScene_GL3 *>       mScenes;
 
 		// renderer info
 		std::string mGLVendor;
@@ -70,10 +70,10 @@ namespace SLR_GL3 {
 		virtual void DeleteCamera(ISLCamera* camera);
 		virtual bool IsCameraExists(ISLCamera* camera) const;
 
-		// scene functions
-		virtual ISLScene* CreateScene();
-		virtual void DeleteScene(ISLScene* scene);
-		virtual bool IsSceneExists(ISLScene* scene) const;
+		// render scene functions
+		virtual ISLRenderScene* CreateScene();
+		virtual void DeleteRenderScene(ISLRenderScene* scene);
+		virtual bool IsRenderSceneExists(ISLRenderScene* scene) const;
 
 		// render
 		virtual void Render();

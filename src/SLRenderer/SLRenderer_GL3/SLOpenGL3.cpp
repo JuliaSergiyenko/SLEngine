@@ -1,14 +1,14 @@
 #include "SLOpenGL3.hpp"
 
+// get opengl procedure address
 #ifndef GetProcAddress
-	#if defined(_WIN32)
-		#define GetProcAddress(x) wglGetProcAddress(x)
-	#elif defined(__linux__)
-		#include <GL/glx.h>
-		#define GetProcAddress(x) glxGetProcAddress((const GLubyte *)x);
-	#endif
+#if defined(_WIN32)
+#define GetProcAddress(x) wglGetProcAddress(x)
+#elif defined(__linux__)
+#include <GL/glx.h>
+#define GetProcAddress(x) glxGetProcAddress((const GLubyte *)x);
 #endif
-
+#endif
 
 // SLR_GL3
 namespace SLR_GL3
@@ -35,7 +35,7 @@ namespace SLR_GL3
 	PFNGLTEXSUBIMAGE3DPROC     glTexSubImage3D = nullptr;
 	PFNGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D = nullptr;
 
-	// GL_VERSION_1_3 1
+	// GL_VERSION_1_3
 	PFNGLACTIVETEXTUREPROC           glActiveTexture = nullptr;
 	PFNGLSAMPLECOVERAGEPROC          glSampleCoverage = nullptr;
 	PFNGLCOMPRESSEDTEXIMAGE3DPROC    glCompressedTexImage3D = nullptr;

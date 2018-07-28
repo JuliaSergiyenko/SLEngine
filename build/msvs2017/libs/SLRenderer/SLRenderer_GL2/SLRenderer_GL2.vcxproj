@@ -23,7 +23,7 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLCamera_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLIndexBuffer_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLMesh_GL2.cpp" />
-    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLScene_GL2.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderScene_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLModel_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLOpenGL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.cpp" />
@@ -34,7 +34,7 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLCamera_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLIndexBuffer_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLMesh_GL2.hpp" />
-    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLScene_GL2.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderScene_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLModel_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLOpenGL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.hpp" />
