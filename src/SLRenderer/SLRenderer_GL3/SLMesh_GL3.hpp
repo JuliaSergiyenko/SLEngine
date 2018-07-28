@@ -3,7 +3,7 @@
 #include "SLTexture2D_GL3.hpp"
 #include "SLBuffer_GL3.hpp"
 #include "SLIndexBuffer_GL3.hpp"
-#include "SLShaderManager_GL3.hpp"
+#include "SLShader_GL3.hpp"
 
 // SLRGL3
 namespace SLR_GL3 {
@@ -35,10 +35,14 @@ namespace SLR_GL3 {
 		float mBaseColor[4]            = { 0,0,0,0 };
 		uint32_t mPrimitiveCount       = 0;
 		SLPrimitiveType mPrimitiveType = SL_PRIMITIVE_TYPE_TRIANGLE;
+	private:
+		// utils
+		void UpdateElementsCount();
 	public:
 		// OpenGL handles and settings
 		GLuint mGLVertexArrayHandle = 0;
 		GLuint mGLPrimitiveMode = GL_TRIANGLES;
+		GLuint mGLElementsCount = GL_TRIANGLES;
 
 		// OpenGL attributes locations
 		GLuint mGLPositionAttrLoc = 0;
@@ -99,6 +103,6 @@ namespace SLR_GL3 {
 
 		// update mesh VAO
 		void UpdateVAO();
-		void Draw();
+		void Draw(ISLCamera* camera, ISLModel* model);
 	};
 }

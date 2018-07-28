@@ -1,5 +1,4 @@
 #pragma once
-#include "../SLRenderer.hpp"
 #include "SLShader_GL3.hpp"
 
 // SLR_GL3

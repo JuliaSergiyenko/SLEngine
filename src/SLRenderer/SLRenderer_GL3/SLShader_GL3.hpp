@@ -12,6 +12,11 @@ namespace SLR_GL3
 		GLuint mGLVertexShader = 0;
 		GLuint mGLFragmentShader = 0;
 		GLuint mGLProgram = 0;
+
+		// uniform locations
+		GLint mGLModelMatUniformLoc = -1;
+		GLint mGLViewMatUniformLoc = -1;
+		GLint mGLProjMatUniformLoc = -1;
 	public:
 		// constructor and destructor
 		SLShader_GL3();

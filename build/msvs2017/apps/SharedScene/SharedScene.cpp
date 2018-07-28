@@ -1,19 +1,37 @@
 #include "SharedScene.hpp"
 
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+// OpenGL attributes locations
+// GLuint mGLPositionAttrLoc = 0;
+// GLuint mGLColorAttrLoc = 1;
+// GLuint mGLNormalAttrLoc = 2;
+// GLuint mGLTangentAttrLoc = 3;
+// GLuint mGLTexCoordAttrLoc = 4;
+// GLuint mGLWeightsAttrLoc = 5;
+
+// simple triangle positions
+static const float positions[] =
+{
+	-0.6f, -0.4f, +0.0f,
+	+0.6f, -0.4f, +0.0f,
+	+0.0f, +0.6f, +0.0f,
+};
+
+// simple triangle colors
+static const float colors[] =
+{
+	+1.0f, +0.0f, +0.0f, +1.0f,
+	+0.0f, +1.0f, +0.0f, +1.0f,
+	+0.0f, +0.0f, +1.0f, +1.0f,
+};
 
 // CreateScene
-void CreateScene(ISLRenderer* renderer)
+void CreateScene(ISLRenderer* renderer, ISLModel** ppModel, ISLCamera** ppCamera)
 {
 	// create buffers
 	ISLBuffer* positionBuffer = renderer->CreateBuffer();
-	positionBuffer->UpdateData(nullptr, 1024);
-	ISLBuffer* noramlBuffer = renderer->CreateBuffer();
-	noramlBuffer->UpdateData(nullptr, 1024);
-	ISLIndexBuffer* indexBuffer = renderer->CreateIndexBuffer();
-	indexBuffer->UpdateData(nullptr, 1024);
+	positionBuffer->UpdateData((float *)positions, sizeof(positions));
+	ISLBuffer* colorBuffer = renderer->CreateBuffer();
+	colorBuffer->UpdateData((float *)colors, sizeof(colors));
 
 	// create texture 
 	ISLTexture2D* baseTexture = renderer->CreateTexture2D();
@@ -22,9 +40,12 @@ void CreateScene(ISLRenderer* renderer)
 	// create mesh and setup buffers
 	ISLMesh* mesh = renderer->CreateMesh();
 	mesh->SetPositionBuffer(positionBuffer);
-	mesh->SetNormalBuffer(noramlBuffer);
-	mesh->SetIndexBuffer(indexBuffer);
-	mesh->SetBaseTexture(baseTexture);
+	mesh->SetColorBuffer(colorBuffer);
+	//mesh->SetPrimitiveType(SL_PRIMITIVE_TYPE_POINT);
+	//mesh->SetPrimitiveType(SL_PRIMITIVE_TYPE_LINE);
+	//mesh->SetPrimitiveType(SL_PRIMITIVE_TYPE_LINE_STRIP);
+	mesh->SetPrimitiveType(SL_PRIMITIVE_TYPE_TRIANGLE);
+	mesh->SetPrimitiveCount(1);
 	mesh->SetBaseColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	// create model
@@ -45,6 +66,9 @@ void CreateScene(ISLRenderer* renderer)
 	ISLRenderScene* scene = renderer->CreateScene();
 	scene->AddModel(model);
 	scene->SetCamera(camera);
+
+	*ppModel = model;
+	*ppCamera = camera;
 }
 
 // DeleteScene

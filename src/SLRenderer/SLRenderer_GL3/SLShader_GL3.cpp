@@ -61,6 +61,11 @@ namespace SLR_GL3
 			return false;
 		}
 
+		// get attributes and uniforms location
+		mGLModelMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uModelMat"));
+		mGLViewMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uViewMat"));
+		mGLProjMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uProjMat"));
+
 		// TODO: add attributes and uniforms locations binding
 		return true;
 	}

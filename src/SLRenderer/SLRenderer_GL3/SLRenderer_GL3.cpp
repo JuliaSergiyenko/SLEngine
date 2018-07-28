@@ -1,7 +1,6 @@
 #include "SLRenderer_GL3.hpp"
 
 #include <iostream>
-#include <algorithm>
 #include <sstream>
 
 // SLRGL3
@@ -303,7 +302,7 @@ namespace SLR_GL3 {
 			if (scene->mVisibilityMode == SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE)
 				for (auto model : scene->mModels)
 					for (auto mesh : model->mMeshes)
-						mesh->Draw();
+						mesh->Draw(scene->GetCamera(), model);
 	}
 
 	// DeleteResources

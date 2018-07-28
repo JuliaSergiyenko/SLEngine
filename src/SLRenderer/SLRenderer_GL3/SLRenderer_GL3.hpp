@@ -1,14 +1,10 @@
 #pragma once
 
 // local components
-#include "SLTexture2D_GL3.hpp"
-#include "SLModel_GL3.hpp"
-#include "SLCamera_GL3.hpp"
 #include "SLRenderScene_GL3.hpp"
 #include "SLShaderManager_GL3.hpp"
 
 // standard library
-#include <vector>
 #include <string>
 
 // SLRGL3
