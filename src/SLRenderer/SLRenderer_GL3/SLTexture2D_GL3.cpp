@@ -19,7 +19,7 @@ namespace SLR_GL3
 	// ~SLTexture2D_GL3
 	SLTexture2D_GL3::~SLTexture2D_GL3()
 	{
-		// delete handlers
+		// delete handles
 		GL_CHECK(glDeleteSamplers(1, &mGLSamplerHadle));
 		GL_CHECK(glDeleteTextures(1, &mGLTextureHadle));
 	}

@@ -13,7 +13,7 @@ namespace SLR_GL3
 	// ~ISLIndexBuffer_GL3
 	SLIndexBuffer_GL3::~SLIndexBuffer_GL3()
 	{
-		// delete handlers
+		// delete handles
 		GL_CHECK(glDeleteBuffers(1, &mGLBufferHandle));
 	}
 

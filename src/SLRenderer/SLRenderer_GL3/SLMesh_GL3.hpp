@@ -32,6 +32,17 @@ namespace SLR_GL3 {
 		uint32_t mPrimitiveCount       = 0;
 		SLPrimitiveType mPrimitiveType = SL_PRIMITIVE_TYPE_TRIANGLE;
 	public:
+		// OpenGL handles and settings
+		GLuint mGLVertexArrayHandle = 0;
+
+		// OpenGL attributes locations
+		GLuint mGLPositionAttrLoc = 0;
+		GLuint mGLColorAttrLoc    = 1;
+		GLuint mGLNormalAttrLoc   = 2;
+		GLuint mGLTangentAttrLoc  = 3;
+		GLuint mGLTexCoordAttrLoc = 4;
+		GLuint mGLWeightsAttrLoc    = 5;
+	public:
 		// constructor and destructor
 		SLMesh_GL3(ISLRenderer* renderer);
 		~SLMesh_GL3();
@@ -80,5 +91,8 @@ namespace SLR_GL3 {
 		// get primitive info
 		virtual uint32_t GetPrimitiveCount() const;
 		virtual SLPrimitiveType GetPrimitiveType() const;
+
+		// update mesh VAO
+		void UpdateVAO();
 	};
 }
