@@ -1,5 +1,6 @@
 #include "SLMesh_GL3.hpp"
 
+// SLR_GL3
 namespace SLR_GL3
 {
 	// SLMesh_GL3
@@ -319,6 +320,7 @@ namespace SLR_GL3
 	// Draw
 	void SLMesh_GL3::Draw()
 	{
+		GL_CHECK(glUseProgram(mShader->mGLProgram));
 		GL_CHECK(glBindVertexArray(mGLVertexArrayHandle));
 		// draw not indexed
 		if (mIndexBuffer == nullptr)
@@ -327,5 +329,6 @@ namespace SLR_GL3
 		if (mIndexBuffer != nullptr)
 			GL_CHECK(glDrawElements(mGLPrimitiveMode, mPrimitiveCount, GL_UNSIGNED_SHORT, 0));
 		GL_CHECK(glBindVertexArray(0));
+		GL_CHECK(glUseProgram(0));
 	}
 }

@@ -12,20 +12,16 @@ namespace SLR_GL3 {
 		// init opengl extensions
 		InitOpenGL3();
 		CreateDescription();
-		CreateShaders();
+
+		// setup renderer
+		mShaderManager.SetRenderer(this);
+		mShaderManager.CreateShaders();
 	}
 
 	// ~SLRenderer_GL3
 	SLRenderer_GL3::~SLRenderer_GL3()
 	{
 		// destructor
-	}
-
-	// CreateShaders
-	void SLRenderer_GL3::CreateShaders()
-	{
-		// create shader with position and color
-		mShader_PositionColor.CreateShader(cVSShaderSource_PositionColor, cFSShaderSource_PositionColor);
 	}
 
 	// CreateDescription
@@ -162,6 +158,7 @@ namespace SLR_GL3 {
 	{
 		// create new buffer
 		SLMesh_GL3* mesh = new SLMesh_GL3(this);
+		mesh->mShader = mShaderManager.GetDefaultShader();
 		mMeshes.push_back(mesh);
 		return mesh;
 	}
@@ -312,6 +309,9 @@ namespace SLR_GL3 {
 	// DeleteResources
 	void SLRenderer_GL3::DeleteResources()
 	{
+		// delete shaders
+		mShaderManager.DeleteShaders();
+
 		// delete all items
 		std::for_each(mTexture2Ds.begin(),   mTexture2Ds.end(),   [](SLTexture2D_GL3* item)   { delete item; });
 		std::for_each(mBuffers.begin(),      mBuffers.end(),      [](SLBuffer_GL3* item)      { delete item; });
@@ -319,7 +319,7 @@ namespace SLR_GL3 {
 		std::for_each(mMeshes.begin(),       mMeshes.end(),       [](SLMesh_GL3* item)        { delete item; });
 		std::for_each(mModels.begin(),       mModels.end(),       [](SLModel_GL3* item)       { delete item; });
 		std::for_each(mCameras.begin(),      mCameras.end(),      [](SLCamera_GL3* item)      { delete item; });
-		std::for_each(mRenderScenes.begin(),       mRenderScenes.end(),       [](SLRenderScene_GL3* item) { delete item; });
+		std::for_each(mRenderScenes.begin(), mRenderScenes.end(), [](SLRenderScene_GL3* item) { delete item; });
 
 		// clear lists
 		mTexture2Ds.clear();

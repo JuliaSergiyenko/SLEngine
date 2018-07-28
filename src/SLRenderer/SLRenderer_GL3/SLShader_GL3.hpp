@@ -19,7 +19,9 @@ namespace SLR_GL3
 
 		// create shader
 		bool CreateShader(const char* vertexSource, const char* fragmentSource);
-
+		void DeleteShader();
+	
+		// status check functions
 		static bool ShaderStatusCheck(GLuint shader);
 		static bool ProgramStatusCheck(GLuint program);
 	};

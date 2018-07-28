@@ -14,10 +14,8 @@ namespace SLR_GL3
 	// ~SLShader_GL3()
 	SLShader_GL3::~SLShader_GL3()
 	{
-		// delete shaders and program handle
-		GL_CHECK(glDeleteProgram(mGLProgram));
-		GL_CHECK(glDeleteShader(mGLFragmentShader));
-		GL_CHECK(glDeleteShader(mGLVertexShader));
+		// simply delete shader
+		DeleteShader();
 	}
 
 	// create CreateShader
@@ -65,6 +63,17 @@ namespace SLR_GL3
 
 		// TODO: add attributes and uniforms locations binding
 		return true;
+	}
+
+	void SLShader_GL3::DeleteShader()
+	{
+		// delete shaders and program handle
+		GL_CHECK(glDeleteProgram(mGLProgram));
+		GL_CHECK(glDeleteShader(mGLFragmentShader));
+		GL_CHECK(glDeleteShader(mGLVertexShader));
+		mGLProgram = 0;
+		mGLFragmentShader = 0;
+		mGLVertexShader = 0;
 	}
 
 	// shader statuc check

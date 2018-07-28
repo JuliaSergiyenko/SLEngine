@@ -12,6 +12,7 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLRenderScene_GL3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLShader_GL3.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLShaderSources_GL3.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLShaderManager_GL3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLBuffer_GL3.hpp" />
@@ -25,5 +26,6 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLRenderScene_GL3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLShader_GL3.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLShaderSources_GL3.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL3\SLShaderManager_GL3.hpp" />
   </ItemGroup>
 </Project>

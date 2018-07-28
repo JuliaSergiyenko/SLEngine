@@ -3,6 +3,7 @@
 #include "SLTexture2D_GL3.hpp"
 #include "SLBuffer_GL3.hpp"
 #include "SLIndexBuffer_GL3.hpp"
+#include "SLShaderManager_GL3.hpp"
 
 // SLRGL3
 namespace SLR_GL3 {
@@ -26,6 +27,9 @@ namespace SLR_GL3 {
 		SLBuffer_GL3* mTexCoordBuffer = nullptr;
 		SLBuffer_GL3* mWeightsBuffer  = nullptr;
 		SLIndexBuffer_GL3* mIndexBuffer = nullptr;
+
+		// shader
+		SLShader_GL3* mShader = nullptr;
 
 		// properties
 		float mBaseColor[4]            = { 0,0,0,0 };

@@ -2,14 +2,10 @@
 
 // local components
 #include "SLTexture2D_GL3.hpp"
-#include "SLBuffer_GL3.hpp"
-#include "SLIndexBuffer_GL3.hpp"
-#include "SLMesh_GL3.hpp"
 #include "SLModel_GL3.hpp"
 #include "SLCamera_GL3.hpp"
 #include "SLRenderScene_GL3.hpp"
-#include "SLShader_GL3.hpp"
-#include "SLShaderSources_GL3.hpp"
+#include "SLShaderManager_GL3.hpp"
 
 // standard library
 #include <vector>
@@ -30,9 +26,6 @@ namespace SLR_GL3 {
 		std::vector<SLCamera_GL3 *>      mCameras;
 		std::vector<SLRenderScene_GL3 *> mRenderScenes;
 
-		// internal resources
-		SLShader_GL3 mShader_PositionColor;
-
 		// renderer info
 		std::string mGLVendor;
 		std::string mGLRenderer;
@@ -41,8 +34,10 @@ namespace SLR_GL3 {
 		std::string mDescription;
 	private:
 		// helper function
-		void CreateShaders();
 		void CreateDescription();
+	public:
+		// internal resources
+		SLShaderManager_GL3 mShaderManager;
 	public:
 		// constructor and destructor
 		SLRenderer_GL3();
