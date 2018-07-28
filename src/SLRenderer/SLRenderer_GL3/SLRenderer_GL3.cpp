@@ -283,14 +283,17 @@ namespace SLR_GL3 {
 	// Render
 	void SLRenderer_GL3::Render()
 	{
-// 		// temporary output renderer info
-// 		std::cout << mTexture2Ds.size() << std::endl;
-// 		std::cout << mBuffers.size() << std::endl;
-// 		std::cout << mIndexBuffers.size() << std::endl;
-// 		std::cout << mMeshes.size() << std::endl;
-// 		std::cout << mModels.size() << std::endl;
-// 		std::cout << mCameras.size() << std::endl;
-// 		std::cout << mScenes.size() << std::endl;
+		// clear buffer
+		GL_CHECK(glClearColor(1.0f / 255.0f, 36.0f / 255, 86.0f / 255.0f, 1.0f));
+		GL_CHECK(glClearDepth(1.0));
+		GL_CHECK(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+
+		// iterate by all meshes
+		for (auto scene : mScenes)
+			if (scene->mVisibilityMode == SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE)
+				for (auto model : scene->mModels)
+					for (auto mesh : model->mMeshes)
+						mesh->Draw();
 	}
 
 	// DeleteResources
@@ -303,7 +306,7 @@ namespace SLR_GL3 {
 		std::for_each(mMeshes.begin(),       mMeshes.end(),       [](SLMesh_GL3* item)        { delete item; });
 		std::for_each(mModels.begin(),       mModels.end(),       [](SLModel_GL3* item)       { delete item; });
 		std::for_each(mCameras.begin(),      mCameras.end(),      [](SLCamera_GL3* item)      { delete item; });
-		std::for_each(mScenes.begin(),       mScenes.end(),       [](SLRenderScene_GL3* item)       { delete item; });
+		std::for_each(mScenes.begin(),       mScenes.end(),       [](SLRenderScene_GL3* item) { delete item; });
 
 		// clear lists
 		mTexture2Ds.clear();

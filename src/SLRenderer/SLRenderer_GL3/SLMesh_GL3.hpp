@@ -12,7 +12,7 @@ namespace SLR_GL3 {
 	private:
 		// renderer
 		ISLRenderer* mRenderer = nullptr;
-
+	public:
 		// textures
 		SLTexture2D_GL3* mBaseTexture   = nullptr;
 		SLTexture2D_GL3* mDetailTexture = nullptr;
@@ -34,6 +34,7 @@ namespace SLR_GL3 {
 	public:
 		// OpenGL handles and settings
 		GLuint mGLVertexArrayHandle = 0;
+		GLuint mGLPrimitiveMode = GL_TRIANGLES;
 
 		// OpenGL attributes locations
 		GLuint mGLPositionAttrLoc = 0;
@@ -41,7 +42,7 @@ namespace SLR_GL3 {
 		GLuint mGLNormalAttrLoc   = 2;
 		GLuint mGLTangentAttrLoc  = 3;
 		GLuint mGLTexCoordAttrLoc = 4;
-		GLuint mGLWeightsAttrLoc    = 5;
+		GLuint mGLWeightsAttrLoc  = 5;
 	public:
 		// constructor and destructor
 		SLMesh_GL3(ISLRenderer* renderer);
@@ -94,5 +95,6 @@ namespace SLR_GL3 {
 
 		// update mesh VAO
 		void UpdateVAO();
+		void Draw();
 	};
 }

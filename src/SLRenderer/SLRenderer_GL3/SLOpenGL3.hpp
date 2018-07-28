@@ -39,6 +39,17 @@ namespace SLR_GL3
 		GL_LINEAR_MIPMAP_LINEAR,  // SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR  = 3,
 	};
 
+	// SLPrimitiveType to OpenGL primitive type
+	static const GLenum cSLPrimitiveTypeToGLPrimitiveMode[] =
+	{
+		GL_POINTS,         // SL_PRIMITIVE_TYPE_POINT = 0,
+		GL_LINES,          // SL_PRIMITIVE_TYPE_LINE = 1,
+		GL_LINE_STRIP,     // SL_PRIMITIVE_TYPE_LINE_STRIP = 2,
+		GL_TRIANGLES,      // SL_PRIMITIVE_TYPE_TRIANGLE = 3,
+		GL_TRIANGLE_STRIP, // SL_PRIMITIVE_TYPE_TRIANGLE_STRIP = 4,
+	};
+
+
 	/*
 	// GL_VERSION_1_1
 	extern PFNGLDRAWARRAYSPROC        glDrawArrays;

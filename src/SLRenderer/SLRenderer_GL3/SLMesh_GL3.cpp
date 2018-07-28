@@ -170,6 +170,7 @@ namespace SLR_GL3
 	void SLMesh_GL3::SetPrimitiveType(SLPrimitiveType primitiveType)
 	{
 		mPrimitiveType = primitiveType;
+		mGLPrimitiveMode = cSLPrimitiveTypeToGLPrimitiveMode[mPrimitiveType];
 	}
 
 	// GetBaseColor
@@ -312,6 +313,19 @@ namespace SLR_GL3
 			GL_CHECK(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndexBuffer->mGLBufferHandle));
 
 		// unbind VAO
+		GL_CHECK(glBindVertexArray(0));
+	}
+
+	// Draw
+	void SLMesh_GL3::Draw()
+	{
+		GL_CHECK(glBindVertexArray(mGLVertexArrayHandle));
+		// draw not indexed
+		if (mIndexBuffer == nullptr)
+			GL_CHECK(glDrawArrays(mGLPrimitiveMode, 0, mPrimitiveCount));
+		// draw indexed
+		if (mIndexBuffer != nullptr)
+			GL_CHECK(glDrawElements(mGLPrimitiveMode, mPrimitiveCount, GL_UNSIGNED_SHORT, 0));
 		GL_CHECK(glBindVertexArray(0));
 	}
 }

@@ -11,7 +11,7 @@ namespace SLR_GL3 {
 	private:
 		// renderer
 		ISLRenderer* mRenderer = nullptr;
-
+	public:
 		// visibility
 		SLModelVisibilityMode mVisibilityMode = SL_MODEL_VISIBILITY_MODE_VISIBLE;
 
