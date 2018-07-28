@@ -47,12 +47,19 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gl4_app", "apps\rend
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gles3_app", "apps\render_gles3_app\render_gles3_app.vcxproj", "{3ADB401A-8338-4ACD-BC47-1329EE6761CB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharedScene", "apps\SharedScene\SharedScene.vcxitems", "{AB8309D6-69C5-4986-9912-D3BE7D1F3E14}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		apps\SharedScene\SharedScene.vcxitems*{1f99c092-1ddf-43e9-a3ff-ad9d396c67db}*SharedItemsImports = 4
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{1f99c092-1ddf-43e9-a3ff-ad9d396c67db}*SharedItemsImports = 4
+		apps\SharedScene\SharedScene.vcxitems*{2652ce5c-fffd-41f5-8277-42474283c6e8}*SharedItemsImports = 4
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{2652ce5c-fffd-41f5-8277-42474283c6e8}*SharedItemsImports = 4
+		apps\SharedScene\SharedScene.vcxitems*{3adb401a-8338-4acd-bc47-1329ee6761cb}*SharedItemsImports = 4
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{3adb401a-8338-4acd-bc47-1329ee6761cb}*SharedItemsImports = 4
+		apps\SharedScene\SharedScene.vcxitems*{574cb5d2-daf5-4de9-85ed-73391ce096bf}*SharedItemsImports = 4
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{574cb5d2-daf5-4de9-85ed-73391ce096bf}*SharedItemsImports = 4
+		apps\SharedScene\SharedScene.vcxitems*{ab8309d6-69c5-4986-9912-d3be7d1f3e14}*SharedItemsImports = 9
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{c7448e0b-d670-4feb-afce-4dad1da64b13}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -223,6 +230,7 @@ Global
 		{D970D931-879B-4D76-A6B7-084C6B0394F6} = {9FD5A1AD-7308-44AA-B97D-0FD5AB6E3025}
 		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{3ADB401A-8338-4ACD-BC47-1329EE6761CB} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
+		{AB8309D6-69C5-4986-9912-D3BE7D1F3E14} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88118672-05E8-4C89-92C8-E3CB6E9192DC}
