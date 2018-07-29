@@ -36,7 +36,7 @@ namespace SLR_GL2 {
 		// create description
 		std::stringstream lines;
 		lines <<
-			"SLRenderer OpenGL 3.x implementation" << std::endl <<
+			"SLRenderer OpenGL 2.x implementation" << std::endl <<
 			"GL Vendor    : " << mGLVendor << std::endl <<
 			"GL Renderer  : " << mGLRenderer << std::endl <<
 			"GL Version   : " << mGLVersion << std::endl <<
@@ -312,7 +312,7 @@ namespace SLR_GL2 {
 						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLViewMatUniformLoc, 1, GL_FALSE, scene->mCamera->mTransform));
 						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLProjMatUniformLoc, 1, GL_FALSE, scene->mCamera->mProjection));
 
-						// set position buffer
+						// set color buffer
 						if (mesh->mPositionBuffer != nullptr)
 						{
 							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mPositionBuffer->mGLBufferHandle));

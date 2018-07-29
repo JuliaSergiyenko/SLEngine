@@ -49,6 +49,12 @@ namespace SLR_GL2
 		mGLProgram = GL_CHECK(glCreateProgram());
 		GL_CHECK(glAttachShader(mGLProgram, mGLVertexShader));
 		GL_CHECK(glAttachShader(mGLProgram, mGLFragmentShader));
+
+		// set attribute location
+		GL_CHECK(glBindAttribLocation(mGLProgram, 0, "aPosition"));
+		GL_CHECK(glBindAttribLocation(mGLProgram, 1, "aColor"));
+
+		// link program
 		GL_CHECK(glLinkProgram(mGLProgram));
 		if (!ProgramStatusCheck(mGLProgram))
 		{
@@ -61,12 +67,21 @@ namespace SLR_GL2
 			return false;
 		}
 
-		// get attributes and uniforms location
+		// use program
+		GL_CHECK(glUseProgram(mGLProgram));
+
+		// get attribute locations
+		mGLPositionAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aPosition"));
+		mGLColorAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aColor"));
+
+		// get uniforms location
 		mGLModelMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uModelMat"));
 		mGLViewMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uViewMat"));
 		mGLProjMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uProjMat"));
 
-		// TODO: add attributes and uniforms locations binding
+		// unuse program
+		GL_CHECK(glUseProgram(0));
+
 		return true;
 	}
 

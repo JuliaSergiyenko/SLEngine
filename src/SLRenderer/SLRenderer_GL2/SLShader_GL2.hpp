@@ -13,6 +13,10 @@ namespace SLR_GL2
 		GLuint mGLFragmentShader = 0;
 		GLuint mGLProgram = 0;
 
+		// attributes locations
+		GLint mGLPositionAttributeLoc = -1;
+		GLint mGLColorAttributeLoc = -1;
+
 		// uniform locations
 		GLint mGLModelMatUniformLoc = -1;
 		GLint mGLViewMatUniformLoc = -1;
@@ -25,7 +29,7 @@ namespace SLR_GL2
 		// create shader
 		bool CreateShader(const char* vertexSource, const char* fragmentSource);
 		void DeleteShader();
-	
+
 		// status check functions
 		static bool ShaderStatusCheck(GLuint shader);
 		static bool ProgramStatusCheck(GLuint program);

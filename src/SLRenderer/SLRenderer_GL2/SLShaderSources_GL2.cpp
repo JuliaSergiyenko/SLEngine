@@ -7,11 +7,9 @@ namespace SLR_GL2
 	// vertex shader with position and color
 	const char* cVSShaderSource_PositionColor = R"(
 
-#version 330 core
-
 // attributes
-layout (location = 0) in vec3 aPosition;
-layout (location = 1) in vec4 aColor;
+attribute vec3 aPosition;
+attribute vec4 aColor;
 
 // uniforms
 uniform mat4 uModelMat;
@@ -19,7 +17,7 @@ uniform mat4 uViewMat;
 uniform mat4 uProjMat;
 
 // outputs
-out vec4 vColor;
+varying vec4 vColor;
 
 // main
 void main()
@@ -33,10 +31,8 @@ void main()
 	// fragment shader with position and color
 	const char* cFSShaderSource_PositionColor = R"(
 
-#version 330 core
-
 // inputs
-in vec4 vColor;
+varying vec4 vColor;
 
 // main
 void main()

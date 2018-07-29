@@ -36,7 +36,7 @@ namespace SLR_GL4 {
 		// create description
 		std::stringstream lines;
 		lines <<
-			"SLRenderer OpenGL 3.x implementation" << std::endl <<
+			"SLRenderer OpenGL 4.x implementation" << std::endl <<
 			"GL Vendor    : " << mGLVendor << std::endl <<
 			"GL Renderer  : " << mGLRenderer << std::endl <<
 			"GL Version   : " << mGLVersion << std::endl <<

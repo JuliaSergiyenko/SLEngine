@@ -13,6 +13,10 @@ namespace SLR_GL4
 		GLuint mGLFragmentShader = 0;
 		GLuint mGLProgram = 0;
 
+		// attributes locations
+		GLint mGLPositionAttributeLoc = -1;
+		GLint mGLColorAttributeLoc = -1;
+
 		// uniform locations
 		GLint mGLModelMatUniformLoc = -1;
 		GLint mGLViewMatUniformLoc = -1;

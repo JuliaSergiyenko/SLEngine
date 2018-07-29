@@ -1,4 +1,5 @@
 #include <iostream>
+#include <typeinfo>
 #include <glfw/glfw3.h>
 #include <SharedScene.hpp>
 
