@@ -1,5 +1,4 @@
 #pragma once
-
 #include "../SLRenderer.hpp"
 
 // SLR_GL4
@@ -10,7 +9,7 @@ namespace SLR_GL4 {
 	private:
 		// renderer
 		ISLRenderer* mRenderer = nullptr;
-		
+	public:
 		// properties
 		size_t mViewportWidth  = 0;
 		size_t mViewportHeight = 0;

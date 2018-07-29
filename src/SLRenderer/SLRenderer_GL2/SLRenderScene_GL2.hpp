@@ -11,8 +11,8 @@ namespace SLR_GL2 {
 	{
 	private:
 		// renderer
-		ISLRenderer * mRenderer = nullptr;
-
+		ISLRenderer* mRenderer = nullptr;
+	public:
 		// camera
 		SLCamera_GL2* mCamera = nullptr;
 

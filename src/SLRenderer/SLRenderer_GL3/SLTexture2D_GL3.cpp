@@ -1,5 +1,6 @@
 #include "SLTexture2D_GL3.hpp"
 
+// SLR_GL3
 namespace SLR_GL3
 {
 	// SLTexture2D_GL3

@@ -1,6 +1,8 @@
 #include "SLMesh_GLES2.hpp"
-#include <stdexcept>
+#include "SLCamera_GLES2.hpp"
+#include "SLModel_GLES2.hpp"
 
+// SLR_GLES2
 namespace SLR_GLES2
 {
 	// SLMesh_GLES2
@@ -11,6 +13,31 @@ namespace SLR_GLES2
 	// ~SLMesh_GLES2
 	SLMesh_GLES2::~SLMesh_GLES2()
 	{
+	}
+
+	// UpdateElementsCount
+	void SLMesh_GLES2::UpdateElementsCount()
+	{
+		switch (mPrimitiveType)
+		{
+		case SL_PRIMITIVE_TYPE_POINT:
+			mGLElementsCount = mPrimitiveCount;
+			break;
+		case SL_PRIMITIVE_TYPE_LINE:
+			mGLElementsCount = mPrimitiveCount * 2;
+			break;
+		case SL_PRIMITIVE_TYPE_LINE_STRIP:
+			mGLElementsCount = mPrimitiveCount + 1;
+			break;
+		case SL_PRIMITIVE_TYPE_TRIANGLE:
+			mGLElementsCount = mPrimitiveCount * 3;
+			break;
+		case SL_PRIMITIVE_TYPE_TRIANGLE_STRIP:
+			mGLElementsCount = mPrimitiveCount + 2;
+			break;
+		default:
+			break;
+		}
 	}
 
 	// GetRenderer
@@ -49,55 +76,121 @@ namespace SLR_GLES2
 	// SetPositionBuffer
 	void SLMesh_GLES2::SetPositionBuffer(ISLBuffer* buffer)
 	{
-		mPositionBuffer = (SLBuffer_GLES2 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mPositionBuffer != buffer)
+		{
+			// store and update
+			mPositionBuffer = (SLBuffer_GLES2 *)buffer;
+		}
 	}
 
 	// SetColorBuffer
 	void SLMesh_GLES2::SetColorBuffer(ISLBuffer* buffer)
 	{
-		mColorBuffer = (SLBuffer_GLES2 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mColorBuffer != buffer)
+		{
+			// store and update
+			mColorBuffer = (SLBuffer_GLES2 *)buffer;
+		}
 	}
 
 	// SetNormalBuffer
 	void SLMesh_GLES2::SetNormalBuffer(ISLBuffer* buffer)
 	{
-		mNormalBuffer = (SLBuffer_GLES2 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mNormalBuffer != buffer)
+		{
+			// store and update
+			mNormalBuffer = (SLBuffer_GLES2 *)buffer;
+		}
 	}
 
 	// SetTangentBuffer
 	void SLMesh_GLES2::SetTangentBuffer(ISLBuffer* buffer)
 	{
-		mTangentBuffer = (SLBuffer_GLES2 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mTangentBuffer != buffer)
+		{
+			// store and update
+			mTangentBuffer = (SLBuffer_GLES2 *)buffer;
+		}
 	}
 
 	// SetTexCoordBuffer
 	void SLMesh_GLES2::SetTexCoordBuffer(ISLBuffer* buffer)
 	{
-		mTexCoordBuffer = (SLBuffer_GLES2 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mTexCoordBuffer != buffer)
+		{
+			// store and update
+			mTexCoordBuffer = (SLBuffer_GLES2 *)buffer;
+		}
 	}
 
 	// SetWeightsBuffer
 	void SLMesh_GLES2::SetWeightsBuffer(ISLBuffer* buffer)
 	{
-		mWeightsBuffer = (SLBuffer_GLES2 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mWeightsBuffer != buffer)
+		{
+			// store and update
+			mWeightsBuffer = (SLBuffer_GLES2 *)buffer;
+		}
 	}
 
 	// SetIndexBuffer
 	void SLMesh_GLES2::SetIndexBuffer(ISLIndexBuffer* buffer)
 	{
-		mIndexBuffer = (SLIndexBuffer_GLES2 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsIndexBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mIndexBuffer != buffer)
+		{
+			// store and update
+			mIndexBuffer = (SLIndexBuffer_GLES2 *)buffer;
+		}
 	}
 
 	// SetPrimitiveCount
 	void SLMesh_GLES2::SetPrimitiveCount(uint32_t count)
 	{
 		mPrimitiveCount = count;
+		UpdateElementsCount();
 	}
 
 	// SetPrimitiveType
 	void SLMesh_GLES2::SetPrimitiveType(SLPrimitiveType primitiveType)
 	{
 		mPrimitiveType = primitiveType;
+		mGLPrimitiveMode = cSLPrimitiveTypeToGLPrimitiveMode[mPrimitiveType];
+		UpdateElementsCount();
 	}
 
 	// GetBaseColor

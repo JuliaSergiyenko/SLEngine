@@ -1,8 +1,7 @@
 #pragma once
+#include "SLOpenGLES2.hpp"
 
-#include "../SLRenderer.hpp"
-
-// SLRGLES2
+// SLR_GLES2
 namespace SLR_GLES2 {
 	// SLTexture2D_GLES2
 	class SLTexture2D_GLES2 : public ISLTexture2D
@@ -15,6 +14,13 @@ namespace SLR_GLES2 {
 		SLTextureWrapMode mWrapModeS = SL_TEXTURE_WRAP_MODE_REPEAT;
 		SLTextureWrapMode mWrapModeT = SL_TEXTURE_WRAP_MODE_REPEAT;
 		SLTextureFilterimgMode mFilteringMode = SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR;
+	public:
+		// OpenGL handles and settings
+		GLuint mGLTextureHadle = 0;
+		GLint mGLWrapModeS = GL_REPEAT;
+		GLint mGLWrapModeT = GL_REPEAT;
+		GLint mGLMinFilteringMode = GL_LINEAR_MIPMAP_LINEAR;
+		GLint mGLMagFilteringMode = GL_LINEAR;
 	public:
 		// constructor and destructor
 		SLTexture2D_GLES2(ISLRenderer* renderer);

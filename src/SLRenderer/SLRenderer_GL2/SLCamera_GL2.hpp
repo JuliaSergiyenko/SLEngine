@@ -1,5 +1,4 @@
 #pragma once
-
 #include "../SLRenderer.hpp"
 
 // SLR_GL2
@@ -9,10 +8,10 @@ namespace SLR_GL2 {
 	{
 	private:
 		// renderer
-		ISLRenderer * mRenderer = nullptr;
-
+		ISLRenderer* mRenderer = nullptr;
+	public:
 		// properties
-		size_t mViewportWidth = 0;
+		size_t mViewportWidth  = 0;
 		size_t mViewportHeight = 0;
 		float mProjection[16];
 		float mTransform[16];

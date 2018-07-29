@@ -10,6 +10,9 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLTexture2D_GL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderScene_GL4.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShader_GL4.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShaderManager_GL4.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShaderSources_GL4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLBuffer_GL4.hpp" />
@@ -21,5 +24,8 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLTexture2D_GL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderScene_GL4.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShader_GL4.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShaderManager_GL4.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShaderSources_GL4.hpp" />
   </ItemGroup>
 </Project>

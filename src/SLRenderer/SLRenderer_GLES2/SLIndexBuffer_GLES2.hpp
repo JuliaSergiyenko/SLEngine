@@ -1,8 +1,7 @@
 #pragma once
+#include "SLOpenGLES2.hpp"
 
-#include "../SLRenderer.hpp"
-
-// SLRGLES2
+// SLR_GLES2
 namespace SLR_GLES2 {
 	// SLIndexBuffer_GLES2
 	class SLIndexBuffer_GLES2 : public ISLIndexBuffer
@@ -14,6 +13,9 @@ namespace SLR_GLES2 {
 		// properties
 		uint32_t mSize = 0;
 	public:
+		// OpenGL handles and settings
+		GLuint mGLBufferHandle = 0;
+	public:
 		// constructor and destructor
 		SLIndexBuffer_GLES2(ISLRenderer* renderer);
 		~SLIndexBuffer_GLES2();
@@ -23,7 +25,7 @@ namespace SLR_GLES2 {
 
 		// update data
 		virtual void UpdateData(uint16_t* data, uint32_t size);
-		
+
 		// get buffer size
 		virtual uint32_t GetSize() const;
 	};

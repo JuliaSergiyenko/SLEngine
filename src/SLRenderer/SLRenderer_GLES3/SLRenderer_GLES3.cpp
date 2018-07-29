@@ -1,17 +1,31 @@
 #include "SLRenderer_GLES3.hpp"
 
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 #include <sstream>
 
-// SLRGL4
+// SLR_GLES3
 namespace SLR_GLES3 {
 	// SLRenderer_GLES3
 	SLRenderer_GLES3::SLRenderer_GLES3()
 	{
 		// init opengl extensions
-		InitOpenGLES3();
+		CreateDescription();
 
+		// setup renderer
+		mShaderManager.SetRenderer(this);
+		mShaderManager.CreateShaders();
+	}
+
+	// ~SLRenderer_GLES3
+	SLRenderer_GLES3::~SLRenderer_GLES3()
+	{
+		// destructor
+	}
+
+	// CreateDescription
+	void SLRenderer_GLES3::CreateDescription()
+	{
 		// get opengl info
 		mGLVendor = (const char *)glGetString(GL_VENDOR);
 		mGLRenderer = (const char *)glGetString(GL_RENDERER);
@@ -21,18 +35,12 @@ namespace SLR_GLES3 {
 		// create description
 		std::stringstream lines;
 		lines <<
-			"SLRenderer OpenGL ES 3.x implementation" << std::endl <<
+			"SLRenderer OpenGL 3.x implementation" << std::endl <<
 			"GL Vendor    : " << mGLVendor << std::endl <<
 			"GL Renderer  : " << mGLRenderer << std::endl <<
 			"GL Version   : " << mGLVersion << std::endl <<
 			"GLSL Version : " << mGLSLVersion << std::endl;
 		mDescription = lines.str();
-	}
-
-	// ~SLRenderer_GLES3
-	SLRenderer_GLES3::~SLRenderer_GLES3()
-	{
-		// destructor
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -149,6 +157,7 @@ namespace SLR_GLES3 {
 	{
 		// create new buffer
 		SLMesh_GLES3* mesh = new SLMesh_GLES3(this);
+		mesh->mShader = mShaderManager.GetDefaultShader();
 		mMeshes.push_back(mesh);
 		return mesh;
 	}
@@ -283,19 +292,48 @@ namespace SLR_GLES3 {
 	// Render
 	void SLRenderer_GLES3::Render()
 	{
-		// 		// temporary output renderer info
-		// 		std::cout << mTexture2Ds.size() << std::endl;
-		// 		std::cout << mBuffers.size() << std::endl;
-		// 		std::cout << mIndexBuffers.size() << std::endl;
-		// 		std::cout << mMeshes.size() << std::endl;
-		// 		std::cout << mModels.size() << std::endl;
-		// 		std::cout << mCameras.size() << std::endl;
-		// 		std::cout << mRenderScenes.size() << std::endl;
+		// clear buffer
+		GL_CHECK(glClearColor(1.0f / 255.0f, 36.0f / 255, 86.0f / 255.0f, 1.0f));
+		GL_CHECK(glClearDepthf(1.0));
+		GL_CHECK(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+
+		// iterate by all meshes
+		for (auto scene : mRenderScenes) {
+			if (scene->mVisibilityMode == SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE) {
+				for (auto model : scene->mModels) {
+					for (auto mesh : model->mMeshes)
+					{
+						// bind program and buffers
+						GL_CHECK(glUseProgram(mesh->mShader->mGLProgram));
+						GL_CHECK(glBindVertexArray(mesh->mGLVertexArrayHandle));
+
+						// set uniforms
+						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLModelMatUniformLoc, 1, GL_FALSE, model->mTransform));
+						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLViewMatUniformLoc, 1, GL_FALSE, scene->mCamera->mTransform));
+						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLProjMatUniformLoc, 1, GL_FALSE, scene->mCamera->mProjection));
+
+						// draw not indexed
+						if (mesh->mIndexBuffer == nullptr)
+							GL_CHECK(glDrawArrays(mesh->mGLPrimitiveMode, 0, mesh->mGLElementsCount));
+						// draw indexed
+						if (mesh->mIndexBuffer != nullptr)
+							GL_CHECK(glDrawElements(mesh->mGLPrimitiveMode, mesh->mGLElementsCount, GL_UNSIGNED_SHORT, 0));
+
+						// unbind program and buffers
+						GL_CHECK(glBindVertexArray(0));
+						GL_CHECK(glUseProgram(0));
+					}
+				}
+			}
+		}
 	}
 
 	// DeleteResources
 	void SLRenderer_GLES3::DeleteResources()
 	{
+		// delete shaders
+		mShaderManager.DeleteShaders();
+
 		// delete all items
 		std::for_each(mTexture2Ds.begin(), mTexture2Ds.end(), [](SLTexture2D_GLES3* item) { delete item; });
 		std::for_each(mBuffers.begin(), mBuffers.end(), [](SLBuffer_GLES3* item) { delete item; });

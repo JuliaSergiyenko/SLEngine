@@ -345,28 +345,4 @@ namespace SLR_GL3
 		// unbind VAO
 		GL_CHECK(glBindVertexArray(0));
 	}
-
-	// Draw
-	void SLMesh_GL3::Draw(ISLCamera* camera, ISLModel* model)
-	{
-		// bind program and buffers
-		GL_CHECK(glUseProgram(mShader->mGLProgram));
-		GL_CHECK(glBindVertexArray(mGLVertexArrayHandle));
-
-		// set uniforms
-		GL_CHECK(glUniformMatrix4fv(mShader->mGLModelMatUniformLoc, 1, GL_FALSE, ((SLModel_GL3 *)model)->mTransform));
-		GL_CHECK(glUniformMatrix4fv(mShader->mGLViewMatUniformLoc, 1, GL_FALSE, ((SLCamera_GL3 *)camera)->mTransform));
-		GL_CHECK(glUniformMatrix4fv(mShader->mGLProjMatUniformLoc, 1, GL_FALSE, ((SLCamera_GL3 *)camera)->mProjection));
-
-		// draw not indexed
-		if (mIndexBuffer == nullptr)
-			GL_CHECK(glDrawArrays(mGLPrimitiveMode, 0, mPrimitiveCount * 3));
-		// draw indexed
-		if (mIndexBuffer != nullptr)
-			GL_CHECK(glDrawElements(mGLPrimitiveMode, mGLElementsCount, GL_UNSIGNED_SHORT, 0));
-
-		// unbind program and buffers
-		GL_CHECK(glBindVertexArray(0));
-		GL_CHECK(glUseProgram(0));
-	}
 }

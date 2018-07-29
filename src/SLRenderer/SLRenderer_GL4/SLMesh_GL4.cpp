@@ -1,16 +1,46 @@
 #include "SLMesh_GL4.hpp"
-#include <stdexcept>
+#include "SLCamera_GL4.hpp"
+#include "SLModel_GL4.hpp"
 
+// SLR_GL4
 namespace SLR_GL4
 {
 	// SLMesh_GL4
 	SLMesh_GL4::SLMesh_GL4(ISLRenderer* renderer) : mRenderer(renderer)
 	{
+		// create vertex array handle
+		GL_CHECK(glGenVertexArrays(1, &mGLVertexArrayHandle));
 	}
 
 	// ~SLMesh_GL4
 	SLMesh_GL4::~SLMesh_GL4()
 	{
+		GL_CHECK(glDeleteVertexArrays(1, &mGLVertexArrayHandle));
+	}
+
+	// UpdateElementsCount
+	void SLMesh_GL4::UpdateElementsCount()
+	{
+		switch (mPrimitiveType)
+		{
+		case SL_PRIMITIVE_TYPE_POINT:
+			mGLElementsCount = mPrimitiveCount;
+			break;
+		case SL_PRIMITIVE_TYPE_LINE:
+			mGLElementsCount = mPrimitiveCount * 2;
+			break;
+		case SL_PRIMITIVE_TYPE_LINE_STRIP:
+			mGLElementsCount = mPrimitiveCount + 1;
+			break;
+		case SL_PRIMITIVE_TYPE_TRIANGLE:
+			mGLElementsCount = mPrimitiveCount * 3;
+			break;
+		case SL_PRIMITIVE_TYPE_TRIANGLE_STRIP:
+			mGLElementsCount = mPrimitiveCount + 2;
+			break;
+		default:
+			break;
+		}
 	}
 
 	// GetRenderer
@@ -49,55 +79,128 @@ namespace SLR_GL4
 	// SetPositionBuffer
 	void SLMesh_GL4::SetPositionBuffer(ISLBuffer* buffer)
 	{
-		mPositionBuffer = (SLBuffer_GL4 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mPositionBuffer != buffer)
+		{
+			// store and update
+			mPositionBuffer = (SLBuffer_GL4 *)buffer;
+			UpdateVAO();
+		}
 	}
 
 	// SetColorBuffer
 	void SLMesh_GL4::SetColorBuffer(ISLBuffer* buffer)
 	{
-		mColorBuffer = (SLBuffer_GL4 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mColorBuffer != buffer)
+		{
+			// store and update
+			mColorBuffer = (SLBuffer_GL4 *)buffer;
+			UpdateVAO();
+		}
 	}
 
 	// SetNormalBuffer
 	void SLMesh_GL4::SetNormalBuffer(ISLBuffer* buffer)
 	{
-		mNormalBuffer = (SLBuffer_GL4 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mNormalBuffer != buffer)
+		{
+			// store and update
+			mNormalBuffer = (SLBuffer_GL4 *)buffer;
+			UpdateVAO();
+		}
 	}
 
 	// SetTangentBuffer
 	void SLMesh_GL4::SetTangentBuffer(ISLBuffer* buffer)
 	{
-		mTangentBuffer = (SLBuffer_GL4 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mTangentBuffer != buffer)
+		{
+			// store and update
+			mTangentBuffer = (SLBuffer_GL4 *)buffer;
+			UpdateVAO();
+		}
 	}
 
 	// SetTexCoordBuffer
 	void SLMesh_GL4::SetTexCoordBuffer(ISLBuffer* buffer)
 	{
-		mTexCoordBuffer = (SLBuffer_GL4 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mTexCoordBuffer != buffer)
+		{
+			// store and update
+			mTexCoordBuffer = (SLBuffer_GL4 *)buffer;
+			UpdateVAO();
+		}
 	}
 
 	// SetWeightsBuffer
 	void SLMesh_GL4::SetWeightsBuffer(ISLBuffer* buffer)
 	{
-		mWeightsBuffer = (SLBuffer_GL4 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mWeightsBuffer != buffer)
+		{
+			// store and update
+			mWeightsBuffer = (SLBuffer_GL4 *)buffer;
+			UpdateVAO();
+		}
 	}
 
 	// SetIndexBuffer
 	void SLMesh_GL4::SetIndexBuffer(ISLIndexBuffer* buffer)
 	{
-		mIndexBuffer = (SLIndexBuffer_GL4 *)buffer;
+		// check if exists in renderer
+		if ((buffer != nullptr) && (!GetRenderer()->IsIndexBufferExists(buffer)))
+			return;
+
+		// check if changed
+		if (mIndexBuffer != buffer)
+		{
+			// store and update
+			mIndexBuffer = (SLIndexBuffer_GL4 *)buffer;
+			UpdateVAO();
+		}
 	}
 
 	// SetPrimitiveCount
 	void SLMesh_GL4::SetPrimitiveCount(uint32_t count)
 	{
 		mPrimitiveCount = count;
+		UpdateElementsCount();
 	}
 
 	// SetPrimitiveType
 	void SLMesh_GL4::SetPrimitiveType(SLPrimitiveType primitiveType)
 	{
 		mPrimitiveType = primitiveType;
+		mGLPrimitiveMode = cSLPrimitiveTypeToGLPrimitiveMode[mPrimitiveType];
+		UpdateElementsCount();
 	}
 
 	// GetBaseColor
@@ -179,5 +282,67 @@ namespace SLR_GL4
 	SLPrimitiveType SLMesh_GL4::GetPrimitiveType() const
 	{
 		return mPrimitiveType;
+	}
+
+	// update mesh VAO
+	void SLMesh_GL4::UpdateVAO()
+	{
+		// bind VAO
+		GL_CHECK(glBindVertexArray(mGLVertexArrayHandle));
+
+		// set position buffer
+		if (mPositionBuffer != nullptr)
+		{ 
+			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mPositionBuffer->mGLBufferHandle));
+			GL_CHECK(glVertexAttribPointer(mGLPositionAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLPositionAttrLoc));
+		}
+
+		// set color buffer
+		if (mColorBuffer != nullptr)
+		{
+			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mColorBuffer->mGLBufferHandle));
+			GL_CHECK(glVertexAttribPointer(mGLColorAttrLoc, 4, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLColorAttrLoc));
+		}
+
+		// set normal buffer
+		if (mNormalBuffer != nullptr)
+		{
+			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mNormalBuffer->mGLBufferHandle));
+			GL_CHECK(glVertexAttribPointer(mGLNormalAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLNormalAttrLoc));
+		}
+
+		// set tangent buffer
+		if (mTangentBuffer != nullptr)
+		{
+			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mTangentBuffer->mGLBufferHandle));
+			GL_CHECK(glVertexAttribPointer(mGLTangentAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLTangentAttrLoc));
+		}
+
+		// set tex coord buffer
+		if (mTexCoordBuffer != nullptr)
+		{
+			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mTexCoordBuffer->mGLBufferHandle));
+			GL_CHECK(glVertexAttribPointer(mGLTexCoordAttrLoc, 2, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLTexCoordAttrLoc));
+		}
+
+		// set weights buffer
+		if (mWeightsBuffer != nullptr)
+		{
+			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mWeightsBuffer->mGLBufferHandle));
+			GL_CHECK(glVertexAttribPointer(mGLWeightsAttrLoc, 4, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLWeightsAttrLoc));
+		}
+
+		// set index buffer
+		if (mIndexBuffer != nullptr)
+			GL_CHECK(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndexBuffer->mGLBufferHandle));
+
+		// unbind VAO
+		GL_CHECK(glBindVertexArray(0));
 	}
 }

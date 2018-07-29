@@ -167,6 +167,9 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLModel_GL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLOpenGL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShaderManager_GL4.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShaderSources_GL4.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShader_GL4.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLTexture2D_GL4.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +181,9 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLModel_GL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLOpenGL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShaderManager_GL4.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShaderSources_GL4.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLShader_GL4.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL4\SLTexture2D_GL4.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

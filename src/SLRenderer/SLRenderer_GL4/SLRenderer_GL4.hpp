@@ -1,22 +1,15 @@
 #pragma once
 
 // local components
-#include "SLTexture2D_GL4.hpp"
-#include "SLBuffer_GL4.hpp"
-#include "SLIndexBuffer_GL4.hpp"
-#include "SLMesh_GL4.hpp"
-#include "SLModel_GL4.hpp"
-#include "SLCamera_GL4.hpp"
 #include "SLRenderScene_GL4.hpp"
-#include "SLOpenGL4.hpp"
+#include "SLShaderManager_GL4.hpp"
 
 // standard library
-#include <vector>
 #include <string>
 
-// SLRGL4
+// SLR_GL4
 namespace SLR_GL4 {
-	// SLRendererGL4
+	// SLRendererGL3
 	class SLRenderer_GL4 : public ISLRenderer
 	{
 	private:
@@ -27,7 +20,7 @@ namespace SLR_GL4 {
 		std::vector<SLMesh_GL4 *>        mMeshes;
 		std::vector<SLModel_GL4 *>       mModels;
 		std::vector<SLCamera_GL4 *>      mCameras;
-		std::vector<SLRenderScene_GL4 *>       mRenderScenes;
+		std::vector<SLRenderScene_GL4 *> mRenderScenes;
 
 		// renderer info
 		std::string mGLVendor;
@@ -35,6 +28,12 @@ namespace SLR_GL4 {
 		std::string mGLVersion;
 		std::string mGLSLVersion;
 		std::string mDescription;
+	private:
+		// helper function
+		void CreateDescription();
+	public:
+		// internal resources
+		SLShaderManager_GL4 mShaderManager;
 	public:
 		// constructor and destructor
 		SLRenderer_GL4();

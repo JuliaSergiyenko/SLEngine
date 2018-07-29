@@ -1,18 +1,20 @@
 #pragma once
+#include "SLOpenGL2.hpp"
 
-#include "../SLRenderer.hpp"
-
-// SLRGL2
+// SLR_GL2
 namespace SLR_GL2 {
 	// SLBuffer_GL2
 	class SLBuffer_GL2 : public ISLBuffer
 	{
 	private:
 		// renderer
-		ISLRenderer * mRenderer = nullptr;
+		ISLRenderer* mRenderer = nullptr;
 
 		// properties
 		uint32_t mSize = 0;
+	public:
+		// OpenGL handles and settings
+		GLuint mGLBufferHandle = 0;
 	public:
 		// constructor and destructor
 		SLBuffer_GL2(ISLRenderer* renderer);
@@ -28,4 +30,3 @@ namespace SLR_GL2 {
 		virtual uint32_t GetSize() const;
 	};
 }
-

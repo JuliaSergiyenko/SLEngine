@@ -1,31 +1,39 @@
 #pragma once
 
 // local components
-#include "SLTexture2D_GL2.hpp"
-#include "SLBuffer_GL2.hpp"
-#include "SLIndexBuffer_GL2.hpp"
-#include "SLMesh_GL2.hpp"
-#include "SLModel_GL2.hpp"
-#include "SLCamera_GL2.hpp"
 #include "SLRenderScene_GL2.hpp"
-#include "SLOpenGL2.hpp"
+#include "SLShaderManager_GL2.hpp"
 
 // standard library
-#include <vector>
+#include <string>
 
-// SLRGL2
+// SLR_GL2
 namespace SLR_GL2 {
-	// SLRendererGL2
+	// SLRenderer_GL2
 	class SLRenderer_GL2 : public ISLRenderer
 	{
 	private:
+		// object vectors
 		std::vector<SLTexture2D_GL2 *>   mTexture2Ds;
 		std::vector<SLBuffer_GL2 *>      mBuffers;
 		std::vector<SLIndexBuffer_GL2 *> mIndexBuffers;
 		std::vector<SLMesh_GL2 *>        mMeshes;
 		std::vector<SLModel_GL2 *>       mModels;
 		std::vector<SLCamera_GL2 *>      mCameras;
-		std::vector<SLRenderScene_GL2 *>       mRenderScenes;
+		std::vector<SLRenderScene_GL2 *> mRenderScenes;
+
+		// renderer info
+		std::string mGLVendor;
+		std::string mGLRenderer;
+		std::string mGLVersion;
+		std::string mGLSLVersion;
+		std::string mDescription;
+	private:
+		// helper function
+		void CreateDescription();
+	public:
+		// internal resources
+		SLShaderManager_GL2 mShaderManager;
 	public:
 		// constructor and destructor
 		SLRenderer_GL2();

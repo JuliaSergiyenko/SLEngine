@@ -12,7 +12,7 @@ namespace SLR_GLES3 {
 	private:
 		// renderer
 		ISLRenderer* mRenderer = nullptr;
-
+	public:
 		// camera
 		SLCamera_GLES3* mCamera = nullptr;
 

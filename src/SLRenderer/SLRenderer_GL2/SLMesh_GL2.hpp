@@ -3,34 +3,53 @@
 #include "SLTexture2D_GL2.hpp"
 #include "SLBuffer_GL2.hpp"
 #include "SLIndexBuffer_GL2.hpp"
+#include "SLShader_GL2.hpp"
 
-// SLRGL2
+// SLR_GL2
 namespace SLR_GL2 {
 	// SLMesh_GL2
 	class SLMesh_GL2 : public ISLMesh
 	{
 	private:
 		// renderer
-		ISLRenderer * mRenderer = nullptr;
-
+		ISLRenderer* mRenderer = nullptr;
+	public:
 		// textures
-		SLTexture2D_GL2* mBaseTexture = nullptr;
+		SLTexture2D_GL2* mBaseTexture   = nullptr;
 		SLTexture2D_GL2* mDetailTexture = nullptr;
 		SLTexture2D_GL2* mNormalTexture = nullptr;
 
 		// buffers
 		SLBuffer_GL2* mPositionBuffer = nullptr;
-		SLBuffer_GL2* mColorBuffer = nullptr;
-		SLBuffer_GL2* mNormalBuffer = nullptr;
-		SLBuffer_GL2* mTangentBuffer = nullptr;
+		SLBuffer_GL2* mColorBuffer    = nullptr;
+		SLBuffer_GL2* mNormalBuffer   = nullptr;
+		SLBuffer_GL2* mTangentBuffer  = nullptr;
 		SLBuffer_GL2* mTexCoordBuffer = nullptr;
-		SLBuffer_GL2* mWeightsBuffer = nullptr;
+		SLBuffer_GL2* mWeightsBuffer  = nullptr;
 		SLIndexBuffer_GL2* mIndexBuffer = nullptr;
 
+		// shader
+		SLShader_GL2* mShader = nullptr;
+
 		// properties
-		float mBaseColor[4] = { 0,0,0,0 };
-		uint32_t mPrimitiveCount = 0;
+		float mBaseColor[4]            = { 0,0,0,0 };
+		uint32_t mPrimitiveCount       = 0;
 		SLPrimitiveType mPrimitiveType = SL_PRIMITIVE_TYPE_TRIANGLE;
+	private:
+		// utils
+		void UpdateElementsCount();
+	public:
+		// OpenGL handles and settings
+		GLuint mGLPrimitiveMode = GL_TRIANGLES;
+		GLuint mGLElementsCount = GL_TRIANGLES;
+
+		// OpenGL attributes locations
+		GLuint mGLPositionAttrLoc = 0;
+		GLuint mGLColorAttrLoc    = 1;
+		GLuint mGLNormalAttrLoc   = 2;
+		GLuint mGLTangentAttrLoc  = 3;
+		GLuint mGLTexCoordAttrLoc = 4;
+		GLuint mGLWeightsAttrLoc  = 5;
 	public:
 		// constructor and destructor
 		SLMesh_GL2(ISLRenderer* renderer);

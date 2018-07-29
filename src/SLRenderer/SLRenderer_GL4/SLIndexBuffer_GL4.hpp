@@ -1,8 +1,7 @@
 #pragma once
+#include "SLOpenGL4.hpp"
 
-#include "../SLRenderer.hpp"
-
-// SLRGL4
+// SLR_GL4
 namespace SLR_GL4 {
 	// SLIndexBuffer_GL4
 	class SLIndexBuffer_GL4 : public ISLIndexBuffer
@@ -13,6 +12,9 @@ namespace SLR_GL4 {
 
 		// properties
 		uint32_t mSize = 0;
+	public:
+		// OpenGL handles and settings
+		GLuint mGLBufferHandle = 0;
 	public:
 		// constructor and destructor
 		SLIndexBuffer_GL4(ISLRenderer* renderer);

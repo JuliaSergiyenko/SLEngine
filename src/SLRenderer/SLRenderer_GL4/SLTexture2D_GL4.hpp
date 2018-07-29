@@ -1,8 +1,7 @@
 #pragma once
+#include "SLOpenGL4.hpp"
 
-#include "../SLRenderer.hpp"
-
-// SLRGL4
+// SLR_GL4
 namespace SLR_GL4 {
 	// SLTexture2D_GL4
 	class SLTexture2D_GL4 : public ISLTexture2D
@@ -15,6 +14,14 @@ namespace SLR_GL4 {
 		SLTextureWrapMode mWrapModeS = SL_TEXTURE_WRAP_MODE_REPEAT;
 		SLTextureWrapMode mWrapModeT = SL_TEXTURE_WRAP_MODE_REPEAT;
 		SLTextureFilterimgMode mFilteringMode = SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR;
+	public:
+		// OpenGL handles and settings
+		GLuint mGLTextureHadle = 0;
+		GLuint mGLSamplerHadle = 0;
+		GLint mGLWrapModeS = GL_REPEAT;
+		GLint mGLWrapModeT = GL_REPEAT;
+		GLint mGLMinFilteringMode = GL_LINEAR_MIPMAP_LINEAR;
+		GLint mGLMagFilteringMode = GL_LINEAR;
 	public:
 		// constructor and destructor
 		SLTexture2D_GL4(ISLRenderer* renderer);

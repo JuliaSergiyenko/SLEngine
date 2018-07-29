@@ -1,5 +1,6 @@
 #include "SLRenderer_GL3.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 
@@ -298,11 +299,34 @@ namespace SLR_GL3 {
 		GL_CHECK(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
 		// iterate by all meshes
-		for (auto scene : mRenderScenes)
-			if (scene->mVisibilityMode == SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE)
-				for (auto model : scene->mModels)
+		for (auto scene : mRenderScenes) {
+			if (scene->mVisibilityMode == SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE) {
+				for (auto model : scene->mModels) {
 					for (auto mesh : model->mMeshes)
-						mesh->Draw(scene->GetCamera(), model);
+					{
+						// bind program and buffers
+						GL_CHECK(glUseProgram(mesh->mShader->mGLProgram));
+						GL_CHECK(glBindVertexArray(mesh->mGLVertexArrayHandle));
+
+						// set uniforms
+						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLModelMatUniformLoc, 1, GL_FALSE, model->mTransform));
+						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLViewMatUniformLoc, 1, GL_FALSE, scene->mCamera->mTransform));
+						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLProjMatUniformLoc, 1, GL_FALSE, scene->mCamera->mProjection));
+
+						// draw not indexed
+						if (mesh->mIndexBuffer == nullptr)
+							GL_CHECK(glDrawArrays(mesh->mGLPrimitiveMode, 0, mesh->mGLElementsCount));
+						// draw indexed
+						if (mesh->mIndexBuffer != nullptr)
+							GL_CHECK(glDrawElements(mesh->mGLPrimitiveMode, mesh->mGLElementsCount, GL_UNSIGNED_SHORT, 0));
+
+						// unbind program and buffers
+						GL_CHECK(glBindVertexArray(0));
+						GL_CHECK(glUseProgram(0));
+					}
+				}
+			}
+		}
 	}
 
 	// DeleteResources
@@ -312,12 +336,12 @@ namespace SLR_GL3 {
 		mShaderManager.DeleteShaders();
 
 		// delete all items
-		std::for_each(mTexture2Ds.begin(),   mTexture2Ds.end(),   [](SLTexture2D_GL3* item)   { delete item; });
-		std::for_each(mBuffers.begin(),      mBuffers.end(),      [](SLBuffer_GL3* item)      { delete item; });
+		std::for_each(mTexture2Ds.begin(), mTexture2Ds.end(), [](SLTexture2D_GL3* item) { delete item; });
+		std::for_each(mBuffers.begin(), mBuffers.end(), [](SLBuffer_GL3* item) { delete item; });
 		std::for_each(mIndexBuffers.begin(), mIndexBuffers.end(), [](SLIndexBuffer_GL3* item) { delete item; });
-		std::for_each(mMeshes.begin(),       mMeshes.end(),       [](SLMesh_GL3* item)        { delete item; });
-		std::for_each(mModels.begin(),       mModels.end(),       [](SLModel_GL3* item)       { delete item; });
-		std::for_each(mCameras.begin(),      mCameras.end(),      [](SLCamera_GL3* item)      { delete item; });
+		std::for_each(mMeshes.begin(), mMeshes.end(), [](SLMesh_GL3* item) { delete item; });
+		std::for_each(mModels.begin(), mModels.end(), [](SLModel_GL3* item) { delete item; });
+		std::for_each(mCameras.begin(), mCameras.end(), [](SLCamera_GL3* item) { delete item; });
 		std::for_each(mRenderScenes.begin(), mRenderScenes.end(), [](SLRenderScene_GL3* item) { delete item; });
 
 		// clear lists

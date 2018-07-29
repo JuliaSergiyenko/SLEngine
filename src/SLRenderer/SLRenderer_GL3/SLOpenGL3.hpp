@@ -49,7 +49,6 @@ namespace SLR_GL3
 		GL_TRIANGLE_STRIP, // SL_PRIMITIVE_TYPE_TRIANGLE_STRIP = 4,
 	};
 
-
 	/*
 	// GL_VERSION_1_1
 	extern PFNGLDRAWARRAYSPROC        glDrawArrays;

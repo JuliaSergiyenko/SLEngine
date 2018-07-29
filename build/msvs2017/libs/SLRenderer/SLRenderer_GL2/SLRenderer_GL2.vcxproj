@@ -27,6 +27,9 @@
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLModel_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLOpenGL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLShaderManager_GL2.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLShaderSources_GL2.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLShader_GL2.cpp" />
     <ClCompile Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLTexture2D_GL2.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -38,6 +41,9 @@
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLModel_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLOpenGL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLShaderManager_GL2.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLShaderSources_GL2.hpp" />
+    <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLShader_GL2.hpp" />
     <ClInclude Include="..\..\..\..\..\src\SLRenderer\SLRenderer_GL2\SLTexture2D_GL2.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

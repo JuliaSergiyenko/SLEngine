@@ -3,8 +3,9 @@
 #include "SLTexture2D_GL4.hpp"
 #include "SLBuffer_GL4.hpp"
 #include "SLIndexBuffer_GL4.hpp"
+#include "SLShader_GL4.hpp"
 
-// SLRGL4
+// SLR_GL4
 namespace SLR_GL4 {
 	// SLMesh_GL4
 	class SLMesh_GL4 : public ISLMesh
@@ -12,7 +13,7 @@ namespace SLR_GL4 {
 	private:
 		// renderer
 		ISLRenderer* mRenderer = nullptr;
-
+	public:
 		// textures
 		SLTexture2D_GL4* mBaseTexture   = nullptr;
 		SLTexture2D_GL4* mDetailTexture = nullptr;
@@ -27,10 +28,29 @@ namespace SLR_GL4 {
 		SLBuffer_GL4* mWeightsBuffer  = nullptr;
 		SLIndexBuffer_GL4* mIndexBuffer = nullptr;
 
+		// shader
+		SLShader_GL4* mShader = nullptr;
+
 		// properties
 		float mBaseColor[4]            = { 0,0,0,0 };
 		uint32_t mPrimitiveCount       = 0;
 		SLPrimitiveType mPrimitiveType = SL_PRIMITIVE_TYPE_TRIANGLE;
+	private:
+		// utils
+		void UpdateElementsCount();
+	public:
+		// OpenGL handles and settings
+		GLuint mGLVertexArrayHandle = 0;
+		GLuint mGLPrimitiveMode = GL_TRIANGLES;
+		GLuint mGLElementsCount = GL_TRIANGLES;
+
+		// OpenGL attributes locations
+		GLuint mGLPositionAttrLoc = 0;
+		GLuint mGLColorAttrLoc    = 1;
+		GLuint mGLNormalAttrLoc   = 2;
+		GLuint mGLTangentAttrLoc  = 3;
+		GLuint mGLTexCoordAttrLoc = 4;
+		GLuint mGLWeightsAttrLoc  = 5;
 	public:
 		// constructor and destructor
 		SLMesh_GL4(ISLRenderer* renderer);
@@ -80,5 +100,9 @@ namespace SLR_GL4 {
 		// get primitive info
 		virtual uint32_t GetPrimitiveCount() const;
 		virtual SLPrimitiveType GetPrimitiveType() const;
+
+		// update mesh VAO
+		void UpdateVAO();
+		void Draw(ISLCamera* camera, ISLModel* model);
 	};
 }

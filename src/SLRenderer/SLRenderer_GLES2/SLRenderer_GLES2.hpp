@@ -1,22 +1,15 @@
 #pragma once
 
 // local components
-#include "SLTexture2D_GLES2.hpp"
-#include "SLBuffer_GLES2.hpp"
-#include "SLIndexBuffer_GLES2.hpp"
-#include "SLMesh_GLES2.hpp"
-#include "SLModel_GLES2.hpp"
-#include "SLCamera_GLES2.hpp"
 #include "SLRenderScene_GLES2.hpp"
-#include "SLOpenGLES2.hpp"
+#include "SLShaderManager_GLES2.hpp"
 
 // standard library
-#include <vector>
 #include <string>
 
-// SLRGL4
+// SLR_GLES2
 namespace SLR_GLES2 {
-	// SLRendererGL4
+	// SLRendererGL3
 	class SLRenderer_GLES2 : public ISLRenderer
 	{
 	private:
@@ -27,7 +20,7 @@ namespace SLR_GLES2 {
 		std::vector<SLMesh_GLES2 *>        mMeshes;
 		std::vector<SLModel_GLES2 *>       mModels;
 		std::vector<SLCamera_GLES2 *>      mCameras;
-		std::vector<SLRenderScene_GLES2 *>       mRenderScenes;
+		std::vector<SLRenderScene_GLES2 *> mRenderScenes;
 
 		// renderer info
 		std::string mGLVendor;
@@ -35,6 +28,12 @@ namespace SLR_GLES2 {
 		std::string mGLVersion;
 		std::string mGLSLVersion;
 		std::string mDescription;
+	private:
+		// helper function
+		void CreateDescription();
+	public:
+		// internal resources
+		SLShaderManager_GLES2 mShaderManager;
 	public:
 		// constructor and destructor
 		SLRenderer_GLES2();

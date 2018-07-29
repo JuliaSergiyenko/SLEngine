@@ -1,20 +1,47 @@
 #include "SLRenderer_GL2.hpp"
 
-#include <iostream>
 #include <algorithm>
+#include <iostream>
+#include <sstream>
 
-// SLRGL2
+// SLR_GL2
 namespace SLR_GL2 {
 	// SLRenderer_GL2
 	SLRenderer_GL2::SLRenderer_GL2()
 	{
+		// init opengl extensions
 		InitOpenGL2();
+		CreateDescription();
+
+		// setup renderer
+		mShaderManager.SetRenderer(this);
+		mShaderManager.CreateShaders();
 	}
 
 	// ~SLRenderer_GL2
 	SLRenderer_GL2::~SLRenderer_GL2()
 	{
 		// destructor
+	}
+
+	// CreateDescription
+	void SLRenderer_GL2::CreateDescription()
+	{
+		// get opengl info
+		mGLVendor = (const char *)glGetString(GL_VENDOR);
+		mGLRenderer = (const char *)glGetString(GL_RENDERER);
+		mGLVersion = (const char *)glGetString(GL_VERSION);
+		mGLSLVersion = (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION);
+
+		// create description
+		std::stringstream lines;
+		lines <<
+			"SLRenderer OpenGL 3.x implementation" << std::endl <<
+			"GL Vendor    : " << mGLVendor << std::endl <<
+			"GL Renderer  : " << mGLRenderer << std::endl <<
+			"GL Version   : " << mGLVersion << std::endl <<
+			"GLSL Version : " << mGLSLVersion << std::endl;
+		mDescription = lines.str();
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -131,6 +158,7 @@ namespace SLR_GL2 {
 	{
 		// create new buffer
 		SLMesh_GL2* mesh = new SLMesh_GL2(this);
+		mesh->mShader = mShaderManager.GetDefaultShader();
 		mMeshes.push_back(mesh);
 		return mesh;
 	}
@@ -265,19 +293,120 @@ namespace SLR_GL2 {
 	// Render
 	void SLRenderer_GL2::Render()
 	{
-		// temporary output renderer info
-		std::cout << mTexture2Ds.size() << std::endl;
-		std::cout << mBuffers.size() << std::endl;
-		std::cout << mIndexBuffers.size() << std::endl;
-		std::cout << mMeshes.size() << std::endl;
-		std::cout << mModels.size() << std::endl;
-		std::cout << mCameras.size() << std::endl;
-		std::cout << mRenderScenes.size() << std::endl;
+		// clear buffer
+		GL_CHECK(glClearColor(1.0f / 255.0f, 36.0f / 255, 86.0f / 255.0f, 1.0f));
+		GL_CHECK(glClearDepth(1.0));
+		GL_CHECK(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+
+		// iterate by all meshes
+		for (auto scene : mRenderScenes) {
+			if (scene->mVisibilityMode == SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE) {
+				for (auto model : scene->mModels) {
+					for (auto mesh : model->mMeshes)
+					{
+						// bind program and buffers
+						GL_CHECK(glUseProgram(mesh->mShader->mGLProgram));
+
+						// set uniforms
+						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLModelMatUniformLoc, 1, GL_FALSE, model->mTransform));
+						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLViewMatUniformLoc, 1, GL_FALSE, scene->mCamera->mTransform));
+						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLProjMatUniformLoc, 1, GL_FALSE, scene->mCamera->mProjection));
+
+						// set position buffer
+						if (mesh->mPositionBuffer != nullptr)
+						{
+							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mPositionBuffer->mGLBufferHandle));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLPositionAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLPositionAttrLoc));
+						}
+
+						// set color buffer
+						if (mesh->mColorBuffer != nullptr)
+						{
+							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mColorBuffer->mGLBufferHandle));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLColorAttrLoc, 4, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLColorAttrLoc));
+						}
+
+						// set normal buffer
+						if (mesh->mNormalBuffer != nullptr)
+						{
+							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mNormalBuffer->mGLBufferHandle));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLNormalAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLNormalAttrLoc));
+						}
+
+						// set tangent buffer
+						if (mesh->mTangentBuffer != nullptr)
+						{
+							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mTangentBuffer->mGLBufferHandle));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLTangentAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLTangentAttrLoc));
+						}
+
+						// set tex coord buffer
+						if (mesh->mTexCoordBuffer != nullptr)
+						{
+							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mTexCoordBuffer->mGLBufferHandle));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLTexCoordAttrLoc, 2, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLTexCoordAttrLoc));
+						}
+
+						// set weights buffer
+						if (mesh->mWeightsBuffer != nullptr)
+						{
+							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mWeightsBuffer->mGLBufferHandle));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLWeightsAttrLoc, 4, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLWeightsAttrLoc));
+						}
+
+						// set index buffer
+						if (mesh->mIndexBuffer != nullptr)
+							GL_CHECK(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->mIndexBuffer->mGLBufferHandle));
+
+						// draw not indexed
+						if (mesh->mIndexBuffer == nullptr)
+							GL_CHECK(glDrawArrays(mesh->mGLPrimitiveMode, 0, mesh->mGLElementsCount));
+						// draw indexed
+						if (mesh->mIndexBuffer != nullptr)
+							GL_CHECK(glDrawElements(mesh->mGLPrimitiveMode, mesh->mGLElementsCount, GL_UNSIGNED_SHORT, 0));
+
+						// disable position buffer
+						if (mesh->mPositionBuffer != nullptr)
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLPositionAttrLoc));
+						// disable position buffer
+						if (mesh->mColorBuffer != nullptr)
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLColorAttrLoc));
+						// disable position buffer
+						if (mesh->mNormalBuffer != nullptr)
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLNormalAttrLoc));
+						// disable position buffer
+						if (mesh->mTangentBuffer != nullptr)
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLTangentAttrLoc));
+						// disable position buffer
+						if (mesh->mTexCoordBuffer != nullptr)
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLTexCoordAttrLoc));
+						// disable position buffer
+						if (mesh->mWeightsBuffer != nullptr)
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLWeightsAttrLoc));
+						// disable index buffer
+						if (mesh->mIndexBuffer != nullptr)
+							GL_CHECK(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+
+						// unbind program and buffers
+						GL_CHECK(glUseProgram(0));
+					}
+				}
+			}
+		}
 	}
 
 	// DeleteResources
 	void SLRenderer_GL2::DeleteResources()
 	{
+		// delete shaders
+		mShaderManager.DeleteShaders();
+
 		// delete all items
 		std::for_each(mTexture2Ds.begin(), mTexture2Ds.end(), [](SLTexture2D_GL2* item) { delete item; });
 		std::for_each(mBuffers.begin(), mBuffers.end(), [](SLBuffer_GL2* item) { delete item; });
@@ -300,6 +429,6 @@ namespace SLR_GL2 {
 	// GetDescription
 	const char* SLRenderer_GL2::GetDescription() const
 	{
-		return "SLRenderer OpenGL 2.1 implementation";
+		return mDescription.c_str();
 	}
 }
