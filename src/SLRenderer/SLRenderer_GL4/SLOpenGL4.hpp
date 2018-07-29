@@ -16,6 +16,14 @@
 namespace SLR_GL4
 {
 	// SLPixelDataType to OpenGL format converter
+	static const GLuint cSLVertexAttribLication_Position = 0;
+	static const GLuint cSLVertexAttribLication_Color = 1;
+	static const GLuint cSLVertexAttribLication_Normal = 2;
+	static const GLuint cSLVertexAttribLication_Tangent = 3;
+	static const GLuint cSLVertexAttribLication_TexCoord = 4;
+	static const GLuint cSLVertexAttribLication_Weights = 5;
+
+	// SLPixelDataType to OpenGL format converter
 	static const GLenum cSLPixelDataTypeToGLFormat[] = {
 		GL_RGB,  // SL_PIXEL_DATA_TYPE_RGB  = 0,
 		GL_BGR,  // SL_PIXEL_DATA_TYPE_BGR  = 1,

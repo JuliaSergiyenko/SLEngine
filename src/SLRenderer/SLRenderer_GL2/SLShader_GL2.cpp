@@ -51,8 +51,8 @@ namespace SLR_GL2
 		GL_CHECK(glAttachShader(mGLProgram, mGLFragmentShader));
 
 		// set attribute location
-		GL_CHECK(glBindAttribLocation(mGLProgram, 0, "aPosition"));
-		GL_CHECK(glBindAttribLocation(mGLProgram, 1, "aColor"));
+		GL_CHECK(glBindAttribLocation(mGLProgram, cSLVertexAttribLication_Position, "aPosition"));
+		GL_CHECK(glBindAttribLocation(mGLProgram, cSLVertexAttribLication_Color, "aColor"));
 
 		// link program
 		GL_CHECK(glLinkProgram(mGLProgram));

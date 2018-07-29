@@ -35,9 +35,6 @@ namespace SLR_GLES3 {
 		float mBaseColor[4]            = { 0,0,0,0 };
 		uint32_t mPrimitiveCount       = 0;
 		SLPrimitiveType mPrimitiveType = SL_PRIMITIVE_TYPE_TRIANGLE;
-	private:
-		// utils
-		void UpdateElementsCount();
 	public:
 		// OpenGL handles and settings
 		GLuint mGLVertexArrayHandle = 0;
@@ -45,12 +42,15 @@ namespace SLR_GLES3 {
 		GLuint mGLElementsCount = GL_TRIANGLES;
 
 		// OpenGL attributes locations
-		GLuint mGLPositionAttrLoc = 0;
-		GLuint mGLColorAttrLoc    = 1;
-		GLuint mGLNormalAttrLoc   = 2;
-		GLuint mGLTangentAttrLoc  = 3;
-		GLuint mGLTexCoordAttrLoc = 4;
-		GLuint mGLWeightsAttrLoc  = 5;
+		GLuint mGLPositionAttrLoc = cSLVertexAttribLication_Position;
+		GLuint mGLColorAttrLoc = cSLVertexAttribLication_Color;
+		GLuint mGLNormalAttrLoc = cSLVertexAttribLication_Normal;
+		GLuint mGLTangentAttrLoc = cSLVertexAttribLication_Tangent;
+		GLuint mGLTexCoordAttrLoc = cSLVertexAttribLication_TexCoord;
+		GLuint mGLWeightsAttrLoc = cSLVertexAttribLication_Weights;
+	private:
+		// utils
+		void UpdateElementsCount();
 	public:
 		// constructor and destructor
 		SLMesh_GLES3(ISLRenderer* renderer);
