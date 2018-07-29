@@ -31,12 +31,12 @@ int main(int argc, char** argv)
 	// set current context
 	glfwMakeContextCurrent(window);
 
-	// setup therender scene ready for rendering
+	// get window size
 	int width = 0, height = 0;
 	glfwGetFramebufferSize(window, &width, &height);
 
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL2);
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL3);
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create scene
