@@ -304,14 +304,43 @@ namespace SLR_GL3 {
 				for (auto model : scene->mModels) {
 					for (auto mesh : model->mMeshes)
 					{
-						// bind program and buffers
+						// use program
 						GL_CHECK(glUseProgram(mesh->mShader->mGLProgram));
-						GL_CHECK(glBindVertexArray(mesh->mGLVertexArrayHandle));
 
 						// set uniforms
 						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLModelMatUniformLoc, 1, GL_FALSE, model->mTransform));
 						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLViewMatUniformLoc, 1, GL_FALSE, scene->mCamera->mTransform));
 						GL_CHECK(glUniformMatrix4fv(mesh->mShader->mGLProjMatUniformLoc, 1, GL_FALSE, scene->mCamera->mProjection));
+
+						// bind buffers
+						GL_CHECK(glBindVertexArray(mesh->mGLVertexArrayHandle));
+
+						// set base texture unit
+						if (mesh->mBaseTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Base));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, mesh->mBaseTexture->mGLTextureHadle));
+							GL_CHECK(glBindSampler(cSLTextureUnit_Base, mesh->mBaseTexture->mGLSamplerHadle));
+							GL_CHECK(glUniform1i(mesh->mShader->mGLBaseTextureUniformLoc, cSLTextureUnit_Base));
+						}
+
+						// set base texture unit
+						if (mesh->mDetailTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Detail));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, mesh->mDetailTexture->mGLTextureHadle));
+							GL_CHECK(glBindSampler(cSLTextureUnit_Detail, mesh->mDetailTexture->mGLSamplerHadle));
+							GL_CHECK(glUniform1i(mesh->mShader->mGLDetailTextureUniformLoc, cSLTextureUnit_Detail));
+						}
+
+						// set normal texture unit
+						if (mesh->mNormalTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Normal));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, mesh->mNormalTexture->mGLTextureHadle));
+							GL_CHECK(glBindSampler(cSLTextureUnit_Normal, mesh->mNormalTexture->mGLSamplerHadle));
+							GL_CHECK(glUniform1i(mesh->mShader->mGLNormalTextureUniformLoc, cSLTextureUnit_Normal));
+						}
 
 						// draw not indexed
 						if (mesh->mIndexBuffer == nullptr)
@@ -320,8 +349,34 @@ namespace SLR_GL3 {
 						if (mesh->mIndexBuffer != nullptr)
 							GL_CHECK(glDrawElements(mesh->mGLPrimitiveMode, mesh->mGLElementsCount, GL_UNSIGNED_SHORT, 0));
 
-						// unbind program and buffers
+						// unbind base texture unit
+						if (mesh->mBaseTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Base));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, 0));
+							GL_CHECK(glBindSampler(cSLTextureUnit_Base, 0));
+						}
+
+						// unbind detail texture unit
+						if (mesh->mDetailTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Detail));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, 0));
+							GL_CHECK(glBindSampler(cSLTextureUnit_Detail, 0));
+						}
+
+						// unbind normal texture unit
+						if (mesh->mNormalTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Normal));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, 0));
+							GL_CHECK(glBindSampler(cSLTextureUnit_Normal, 0));
+						}
+
+						// unbind buffers
 						GL_CHECK(glBindVertexArray(0));
+
+						// unuse program
 						GL_CHECK(glUseProgram(0));
 					}
 				}

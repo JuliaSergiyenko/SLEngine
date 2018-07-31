@@ -39,7 +39,7 @@ namespace SLR_GL3 {
 		// OpenGL handles and settings
 		GLuint mGLVertexArrayHandle = 0;
 		GLuint mGLPrimitiveMode = GL_TRIANGLES;
-		GLuint mGLElementsCount = GL_TRIANGLES;
+		GLuint mGLElementsCount = 0;
 
 		// OpenGL attributes locations
 		GLuint mGLPositionAttrLoc = cSLVertexAttribLication_Position;

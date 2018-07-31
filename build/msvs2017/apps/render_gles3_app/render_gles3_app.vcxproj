@@ -98,7 +98,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SL_RENDERER_GLES2;SL_RENDERER_GLES3;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -116,7 +116,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SL_RENDERER_GLES2;SL_RENDERER_GLES3;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -136,7 +136,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>SL_RENDERER_GLES2;SL_RENDERER_GLES3;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -158,7 +158,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>SL_RENDERER_GLES2;SL_RENDERER_GLES3;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

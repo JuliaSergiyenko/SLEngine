@@ -32,11 +32,11 @@ namespace SLR_GL3
 	}
 
 	// UpdateImage
-	void SLTexture2D_GL3::UpdateImage(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	void SLTexture2D_GL3::UpdateImage(int32_t mipLevel, SLPixelDataType format, uint32_t width, uint32_t height, const void* data, size_t dataSize)
 	{
 		// update texture image by layer
 		GL_CHECK(glBindTexture(GL_TEXTURE_2D, mGLTextureHadle));
-		GL_CHECK(glTexImage2D(GL_TEXTURE_2D, mipLevel, cSLPixelDataTypeToGLFormat[pixelDataType], width, height, 0, cSLPixelDataTypeToGLFormat[pixelDataType], GL_UNSIGNED_BYTE, data));
+		GL_CHECK(glTexImage2D(GL_TEXTURE_2D, mipLevel, cSLPixelDataTypeToGLFormat[format], width, height, 0, cSLPixelDataTypeToGLFormat[format], GL_UNSIGNED_BYTE, data));
 		GL_CHECK(glBindTexture(GL_TEXTURE_2D, 0));
 	}
 

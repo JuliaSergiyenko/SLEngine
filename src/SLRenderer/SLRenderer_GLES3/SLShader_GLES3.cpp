@@ -66,9 +66,18 @@ namespace SLR_GLES3
 		// use program
 		GL_CHECK(glUseProgram(mGLProgram));
 
-		// get attribute locations
+		// get attributes location
 		mGLPositionAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aPosition"));
 		mGLColorAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aColor"));
+		mGLNormalAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aNormal"));
+		mGLTangentAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aTangent"));
+		mGLTexCoordAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aTexCoord"));
+		mGLWeightsAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aWeights"));
+
+		// get texture units
+		mGLBaseTextureUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "sBaseTexture"));
+		mGLDetailTextureUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "sDetailTexture"));
+		mGLNormalTextureUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "sNormalTexture"));
 
 		// get uniforms location
 		mGLModelMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uModelMat"));

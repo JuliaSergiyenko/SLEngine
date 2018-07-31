@@ -13,14 +13,14 @@ namespace SLR_GL3 {
 		// properties
 		SLTextureWrapMode mWrapModeS = SL_TEXTURE_WRAP_MODE_REPEAT;
 		SLTextureWrapMode mWrapModeT = SL_TEXTURE_WRAP_MODE_REPEAT;
-		SLTextureFilterimgMode mFilteringMode = SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR;
+		SLTextureFilterimgMode mFilteringMode = SL_TEXTURE_FILTERING_MODE_LINEAR;
 	public:
 		// OpenGL handles and settings
 		GLuint mGLTextureHadle = 0;
 		GLuint mGLSamplerHadle = 0;
 		GLint mGLWrapModeS = GL_REPEAT;
 		GLint mGLWrapModeT = GL_REPEAT;
-		GLint mGLMinFilteringMode = GL_LINEAR_MIPMAP_LINEAR;
+		GLint mGLMinFilteringMode = GL_LINEAR;
 		GLint mGLMagFilteringMode = GL_LINEAR;
 	public:
 		// constructor and destructor
@@ -31,7 +31,7 @@ namespace SLR_GL3 {
 		virtual ISLRenderer* GetRenderer() const;
 
 		// update image
-		virtual void UpdateImage(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0);
+		virtual void UpdateImage(int32_t mipLevel, SLPixelDataType format, uint32_t width, uint32_t height, const void* data, size_t dataSize = 0);
 
 		// set texture wrap mode S and T
 		virtual void SetWrapModeS(SLTextureWrapMode wrapMode);

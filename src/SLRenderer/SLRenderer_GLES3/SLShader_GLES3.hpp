@@ -13,11 +13,20 @@ namespace SLR_GLES3
 		GLuint mGLFragmentShader = 0;
 		GLuint mGLProgram = 0;
 
-		// attributes locations
+		// OpenGL attributes locations
 		GLint mGLPositionAttributeLoc = -1;
 		GLint mGLColorAttributeLoc = -1;
+		GLint mGLNormalAttributeLoc = -1;
+		GLint mGLTangentAttributeLoc = -1;
+		GLint mGLTexCoordAttributeLoc = -1;
+		GLint mGLWeightsAttributeLoc = -1;
 
-		// uniform locations
+		// OpenGL texture uniforms locations
+		GLint mGLBaseTextureUniformLoc = -1;
+		GLint mGLDetailTextureUniformLoc = -1;
+		GLint mGLNormalTextureUniformLoc = -1;
+
+		// OpenGL uniform locations
 		GLint mGLModelMatUniformLoc = -1;
 		GLint mGLViewMatUniformLoc = -1;
 		GLint mGLProjMatUniformLoc = -1;

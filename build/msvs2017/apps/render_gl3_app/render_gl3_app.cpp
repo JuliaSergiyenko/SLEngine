@@ -1,5 +1,4 @@
 #include <iostream>
-#include <typeinfo>
 #include <glfw/glfw3.h>
 #include <SharedScene.hpp>
 
@@ -23,7 +22,7 @@ int main(int argc, char** argv)
 
 	// select OpenGL version
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
 	// create window
@@ -37,7 +36,7 @@ int main(int argc, char** argv)
 	glfwGetFramebufferSize(window, &width, &height);
 
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL3);
+	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GL4);
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create scene

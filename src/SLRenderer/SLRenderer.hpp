@@ -18,7 +18,7 @@ enum SLTextureFilterimgMode
 	SL_TEXTURE_FILTERING_MODE_NEAREST        = 0,
 	SL_TEXTURE_FILTERING_MODE_LINEAR         = 1,
 	SL_TEXTURE_FILTERING_MODE_MIPMAP_NEAREST = 2,
-	SL_TEXTURE_FILTERING_MODE_MIPMAP_LENEAR  = 3,
+	SL_TEXTURE_FILTERING_MODE_MIPMAP_LINEAR  = 3,
 };
 
 // SLPixelDataType
@@ -80,7 +80,7 @@ public:
 	virtual ISLRenderer* GetRenderer() const = 0;
 
 	// update image
-	virtual void UpdateImage(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel = 0) = 0;
+	virtual void UpdateImage(int32_t mipLevel, SLPixelDataType format, uint32_t width, uint32_t height, const void* data, size_t dataSize = 0) = 0;
 
 	// set texture wrap mode S and T
 	virtual void SetWrapModeS(SLTextureWrapMode wrapMode) = 0;

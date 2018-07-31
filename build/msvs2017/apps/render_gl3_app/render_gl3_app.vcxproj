@@ -98,7 +98,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SL_RENDERER_GL2;SL_RENDERER_GL3;SL_RENDERER_GL4;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,7 +118,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SL_RENDERER_GL2;SL_RENDERER_GL3;SL_RENDERER_GL4;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,7 +140,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>SL_RENDERER_GL2;SL_RENDERER_GL3;SL_RENDERER_GL4;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -164,7 +164,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>SL_RENDERER_GL2;SL_RENDERER_GL3;SL_RENDERER_GL4;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

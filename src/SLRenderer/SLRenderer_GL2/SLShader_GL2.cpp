@@ -50,9 +50,13 @@ namespace SLR_GL2
 		GL_CHECK(glAttachShader(mGLProgram, mGLVertexShader));
 		GL_CHECK(glAttachShader(mGLProgram, mGLFragmentShader));
 
-		// set attribute location
+		// bind attribute location
 		GL_CHECK(glBindAttribLocation(mGLProgram, cSLVertexAttribLication_Position, "aPosition"));
 		GL_CHECK(glBindAttribLocation(mGLProgram, cSLVertexAttribLication_Color, "aColor"));
+		GL_CHECK(glBindAttribLocation(mGLProgram, cSLVertexAttribLication_Normal, "aNormal"));
+		GL_CHECK(glBindAttribLocation(mGLProgram, cSLVertexAttribLication_Tangent, "aTangent"));
+		GL_CHECK(glBindAttribLocation(mGLProgram, cSLVertexAttribLication_TexCoord, "aTexCoord"));
+		GL_CHECK(glBindAttribLocation(mGLProgram, cSLVertexAttribLication_Weights, "aWeights"));
 
 		// link program
 		GL_CHECK(glLinkProgram(mGLProgram));
@@ -70,9 +74,18 @@ namespace SLR_GL2
 		// use program
 		GL_CHECK(glUseProgram(mGLProgram));
 
-		// get attribute locations
+		// get attributes location
 		mGLPositionAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aPosition"));
 		mGLColorAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aColor"));
+		mGLNormalAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aNormal"));
+		mGLTangentAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aTangent"));
+		mGLTexCoordAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aTexCoord"));
+		mGLWeightsAttributeLoc = GL_CHECK(glGetAttribLocation(mGLProgram, "aWeights"));
+
+		// get texture units
+		mGLBaseTextureUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "sBaseTexture"));
+		mGLDetailTextureUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "sDetailTexture"));
+		mGLNormalTextureUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "sNormalTexture"));
 
 		// get uniforms location
 		mGLModelMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uModelMat"));

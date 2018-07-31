@@ -30,11 +30,11 @@ namespace SLR_GLES2
 	}
 
 	// UpdateImage
-	void SLTexture2D_GLES2::UpdateImage(uint8_t* data, uint32_t dataSize, uint32_t width, uint32_t height, SLPixelDataType pixelDataType, uint32_t mipLevel)
+	void SLTexture2D_GLES2::UpdateImage(int32_t mipLevel, SLPixelDataType format, uint32_t width, uint32_t height, const void* data, size_t dataSize)
 	{
 		// update texture image by layer
 		GL_CHECK(glBindTexture(GL_TEXTURE_2D, mGLTextureHadle));
-		GL_CHECK(glTexImage2D(GL_TEXTURE_2D, mipLevel, cSLPixelDataTypeToGLFormat[pixelDataType], width, height, 0, cSLPixelDataTypeToGLFormat[pixelDataType], GL_UNSIGNED_BYTE, data));
+		GL_CHECK(glTexImage2D(GL_TEXTURE_2D, mipLevel, cSLPixelDataTypeToGLFormat[format], width, height, 0, cSLPixelDataTypeToGLFormat[format], GL_UNSIGNED_BYTE, data));
 		GL_CHECK(glBindTexture(GL_TEXTURE_2D, 0));
 	}
 
@@ -46,7 +46,7 @@ namespace SLR_GLES2
 		mGLWrapModeS = cSLTextureWrapModeToGLWrapMode[mWrapModeS];
 		
 		// apply params
-		GL_CHECK(glTexParameteri(mGLTextureHadle, GL_TEXTURE_WRAP_S, mGLWrapModeS));
+		GL_CHECK(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, mGLWrapModeS));
 	}
 
 	// SetWrapModeT
@@ -57,7 +57,7 @@ namespace SLR_GLES2
 		mGLWrapModeT = cSLTextureWrapModeToGLWrapMode[mWrapModeT];
 
 		// apply params
-		GL_CHECK(glTexParameteri(mGLTextureHadle, GL_TEXTURE_WRAP_T, mGLWrapModeT));
+		GL_CHECK(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, mGLWrapModeT));
 	}
 
 	// SetFilteringMode
@@ -69,8 +69,8 @@ namespace SLR_GLES2
 		mGLMagFilteringMode = mFilteringMode <= SL_TEXTURE_FILTERING_MODE_LINEAR ? cSLTextureFilterimgModeToGLFilteringMode[mFilteringMode] : GL_LINEAR;
 
 		// apply params
-		GL_CHECK(glTexParameteri(mGLTextureHadle, GL_TEXTURE_MIN_FILTER, mGLMinFilteringMode));
-		GL_CHECK(glTexParameteri(mGLTextureHadle, GL_TEXTURE_MAG_FILTER, mGLMagFilteringMode));
+		GL_CHECK(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, mGLMinFilteringMode));
+		GL_CHECK(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, mGLMagFilteringMode));
 	}
 
 	// GetWrapModeS

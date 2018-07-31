@@ -12,6 +12,7 @@ precision mediump float;
 // attributes
 attribute vec3 aPosition;
 attribute vec4 aColor;
+attribute vec2 aTexCoord;
 
 // uniforms
 uniform mat4 uModelMat;
@@ -20,12 +21,15 @@ uniform mat4 uProjMat;
 
 // outputs
 varying vec4 vColor;
+varying vec2 vTexCoord;
 
 // main
 void main()
 {
-	gl_Position = uProjMat * uViewMat * uModelMat * vec4(aPosition, 1.0);
+	// copy in to out
+	vTexCoord = aTexCoord;
 	vColor = aColor;
+	gl_Position = uProjMat * uViewMat * uModelMat * vec4(aPosition, 1.0);
 }
 
 )";
@@ -37,11 +41,17 @@ precision mediump float;
 
 // inputs
 varying vec4 vColor;
+varying vec2 vTexCoord;
+
+// textures
+uniform sampler2D sBaseTexture;
 
 // main
 void main()
 {
-    gl_FragColor = vColor;
+	gl_FragColor = texture2D(sBaseTexture, vTexCoord.xy) * vColor;
+	//fragColor = vec4(vTexCoord, 0.0, 1.0) * vColor;
+	//fragColor = vColor;
 }
 
 )";

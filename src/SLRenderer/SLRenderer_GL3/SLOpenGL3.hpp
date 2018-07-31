@@ -15,13 +15,18 @@
 // SLR_GL3
 namespace SLR_GL3
 {
-	// SLPixelDataType to OpenGL format converter
+	// OpenGL vertex attribute locations
 	static const GLuint cSLVertexAttribLication_Position = 0;
-	static const GLuint cSLVertexAttribLication_Color    = 1;
-	static const GLuint cSLVertexAttribLication_Normal   = 2;
-	static const GLuint cSLVertexAttribLication_Tangent  = 3;
+	static const GLuint cSLVertexAttribLication_Color = 1;
+	static const GLuint cSLVertexAttribLication_Normal = 2;
+	static const GLuint cSLVertexAttribLication_Tangent = 3;
 	static const GLuint cSLVertexAttribLication_TexCoord = 4;
-	static const GLuint cSLVertexAttribLication_Weights  = 5;
+	static const GLuint cSLVertexAttribLication_Weights = 5;
+
+	// OpenGL texture units
+	static const GLint cSLTextureUnit_Base = 0;
+	static const GLint cSLTextureUnit_Detail = 1;
+	static const GLint cSLTextureUnit_Normal = 2;
 
 	// SLPixelDataType to OpenGL format converter
 	static const GLenum cSLPixelDataTypeToGLFormat[] = {

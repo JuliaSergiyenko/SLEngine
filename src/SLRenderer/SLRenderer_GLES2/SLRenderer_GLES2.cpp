@@ -363,12 +363,57 @@ namespace SLR_GLES2 {
 						if (mesh->mIndexBuffer != nullptr)
 							GL_CHECK(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->mIndexBuffer->mGLBufferHandle));
 
+						// set base texture unit
+						if (mesh->mBaseTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Base));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, mesh->mBaseTexture->mGLTextureHadle));
+							GL_CHECK(glUniform1i(mesh->mShader->mGLBaseTextureUniformLoc, cSLTextureUnit_Base));
+						}
+
+						// set base texture unit
+						if (mesh->mDetailTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Detail));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, mesh->mDetailTexture->mGLTextureHadle));
+							GL_CHECK(glUniform1i(mesh->mShader->mGLDetailTextureUniformLoc, cSLTextureUnit_Detail));
+						}
+
+						// set normal texture unit
+						if (mesh->mNormalTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Normal));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, mesh->mNormalTexture->mGLTextureHadle));
+							GL_CHECK(glUniform1i(mesh->mShader->mGLNormalTextureUniformLoc, cSLTextureUnit_Normal));
+						}
+
 						// draw not indexed
 						if (mesh->mIndexBuffer == nullptr)
 							GL_CHECK(glDrawArrays(mesh->mGLPrimitiveMode, 0, mesh->mGLElementsCount));
 						// draw indexed
 						if (mesh->mIndexBuffer != nullptr)
 							GL_CHECK(glDrawElements(mesh->mGLPrimitiveMode, mesh->mGLElementsCount, GL_UNSIGNED_SHORT, 0));
+
+						// unbind base texture unit
+						if (mesh->mBaseTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Base));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, 0));
+						}
+
+						// unbind detail texture unit
+						if (mesh->mDetailTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Detail));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, 0));
+						}
+
+						// unbind normal texture unit
+						if (mesh->mNormalTexture != nullptr)
+						{
+							GL_CHECK(glActiveTexture(GL_TEXTURE0 + cSLTextureUnit_Normal));
+							GL_CHECK(glBindTexture(GL_TEXTURE_2D, 0));
+						}
 
 						// disable position buffer
 						if (mesh->mPositionBuffer != nullptr)
