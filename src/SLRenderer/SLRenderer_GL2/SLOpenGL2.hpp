@@ -57,6 +57,7 @@ namespace SLR_GL2
 		GL_TRIANGLE_STRIP, // SL_PRIMITIVE_TYPE_TRIANGLE_STRIP = 4,
 	};
 
+	/*
 	// GL_VERSION_1_1
 	extern PFNGLDRAWARRAYSPROC        glDrawArrays;
 	extern PFNGLDRAWELEMENTSPROC      glDrawElements;
@@ -72,6 +73,7 @@ namespace SLR_GL2
 	extern PFNGLDELETETEXTURESPROC    glDeleteTextures;
 	extern PFNGLGENTEXTURESPROC       glGenTextures;
 	extern PFNGLISTEXTUREPROC         glIsTexture;
+	*/
 
 	// GL_VERSION_1_2
 	extern PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;

@@ -80,7 +80,7 @@ namespace SLR_GL3
 	extern PFNGLTEXIMAGE3DPROC        glTexImage3D;
 	extern PFNGLTEXSUBIMAGE3DPROC     glTexSubImage3D;
 	extern PFNGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D;
-
+	
 	// GL_VERSION_1_3
 	extern PFNGLACTIVETEXTUREPROC           glActiveTexture;
 	extern PFNGLSAMPLECOVERAGEPROC          glSampleCoverage;

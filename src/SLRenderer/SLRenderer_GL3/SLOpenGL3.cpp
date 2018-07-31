@@ -13,6 +13,7 @@
 // SLR_GL3
 namespace SLR_GL3
 {
+	/*
 	// GL_VERSION_1_1
 	PFNGLDRAWARRAYSPROC        glDrawArrays = nullptr;
 	PFNGLDRAWELEMENTSPROC      glDrawElements = nullptr;
@@ -28,6 +29,7 @@ namespace SLR_GL3
 	PFNGLDELETETEXTURESPROC    glDeleteTextures = nullptr;
 	PFNGLGENTEXTURESPROC       glGenTextures = nullptr;
 	PFNGLISTEXTUREPROC         glIsTexture = nullptr;
+	*/
 
 	// GL_VERSION_1_2
 	PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements = nullptr;
@@ -335,6 +337,7 @@ namespace SLR_GL3
 	// InitOpenGL3
 	void InitOpenGL3()
 	{
+		/*
 		// GL_VERSION_1_1
 		glDrawArrays = (PFNGLDRAWARRAYSPROC)GetProcAddress("glDrawArrays");
 		glDrawElements = (PFNGLDRAWELEMENTSPROC)GetProcAddress("glDrawElements");
@@ -350,6 +353,7 @@ namespace SLR_GL3
 		glDeleteTextures = (PFNGLDELETETEXTURESPROC)GetProcAddress("glDeleteTextures");
 		glGenTextures = (PFNGLGENTEXTURESPROC)GetProcAddress("glGenTextures");
 		glIsTexture = (PFNGLISTEXTUREPROC)GetProcAddress("glIsTexture");
+		*/
 
 		// GL_VERSION_1_2
 		glDrawRangeElements = (PFNGLDRAWRANGEELEMENTSPROC)GetProcAddress("glDrawRangeElements");
