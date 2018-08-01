@@ -415,3 +415,15 @@ namespace SLR_GL4 {
 		return mDescription.c_str();
 	}
 }
+
+// global create SL Renderer
+extern ISLRenderer* CreateSLRenderer()
+{
+	return new SLR_GL4::SLRenderer_GL4();
+}
+
+// global destroy SL Renderer
+extern void DestroySLRenderer(ISLRenderer* renderer)
+{
+	delete (SLR_GL4::SLRenderer_GL4 *)renderer;
+}

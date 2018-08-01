@@ -414,3 +414,15 @@ namespace SLR_GLES3 {
 		return mDescription.c_str();
 	}
 }
+
+// global create SL Renderer
+extern ISLRenderer* CreateSLRenderer()
+{
+	return new SLR_GLES3::SLRenderer_GLES3();
+}
+
+// global destroy SL Renderer
+extern void DestroySLRenderer(ISLRenderer* renderer)
+{
+	delete (SLR_GLES3::SLRenderer_GLES3 *)renderer;
+}

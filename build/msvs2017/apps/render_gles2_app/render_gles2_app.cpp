@@ -36,7 +36,7 @@ int main(int argc, char** argv)
 	glfwGetFramebufferSize(window, &width, &height);
 
 	// create renderer
-	ISLRenderer* renderer = SLRendererFabric::CreateRenderer(SL_RENDERER_TYPE_GLES2);
+	ISLRenderer* renderer = CreateSLRenderer();
 	std::cout << renderer->GetDescription() << std::endl;
 
 	// create scene

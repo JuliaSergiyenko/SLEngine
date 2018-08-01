@@ -55,7 +55,6 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
-    <Import Project="..\..\libs\SLRenderer\SLRenderer\SLRenderer.vcxitems" Label="Shared" />
     <Import Project="..\SharedScene\SharedScene.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -73,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\..\bin\windows\$(PlatformTarget)\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\obj\windows\$(PlatformTarget)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\bin\windows_$(PlatformTarget)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\obj\windows_$(PlatformTarget)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\..\bin\windows\$(PlatformTarget)\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\obj\windows\$(PlatformTarget)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\bin\windows_$(PlatformTarget)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\obj\windows_$(PlatformTarget)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\..\bin\windows\$(PlatformTarget)\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\obj\windows\$(PlatformTarget)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\bin\windows_$(PlatformTarget)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\obj\windows_$(PlatformTarget)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\..\bin\windows\$(PlatformTarget)\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\obj\windows\$(PlatformTarget)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\bin\windows_$(PlatformTarget)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\obj\windows_$(PlatformTarget)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -97,8 +96,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>SL_RENDERER_GL2;SL_RENDERER_GL3;SL_RENDERER_GL4;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SL_RENDERER_GL3;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;..\..\..\..\deps\imgui\examples;..\..\..\..\deps\imgui\examples\libs\gl3w;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,8 +116,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>SL_RENDERER_GL2;SL_RENDERER_GL3;SL_RENDERER_GL4;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SL_RENDERER_GL3;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;..\..\..\..\deps\imgui\examples;..\..\..\..\deps\imgui\examples\libs\gl3w;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,8 +138,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>SL_RENDERER_GL2;SL_RENDERER_GL3;SL_RENDERER_GL4;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SL_RENDERER_GL3;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;..\..\..\..\deps\imgui\examples;..\..\..\..\deps\imgui\examples\libs\gl3w;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,8 +162,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>SL_RENDERER_GL2;SL_RENDERER_GL3;SL_RENDERER_GL4;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\khronos;..\..\..\..\deps\stb;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SL_RENDERER_GL3;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;..\..\..\..\deps\imgui\examples;..\..\..\..\deps\imgui\examples\libs\gl3w;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -186,14 +185,11 @@
     <ProjectReference Include="..\..\libs\glfw\glfw.vcxproj">
       <Project>{cde7fc66-a90e-4475-9840-2d1b0f412b40}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.vcxproj">
-      <Project>{f0d7c786-a9bb-46d9-a3c4-1fa99aa8a169}</Project>
+    <ProjectReference Include="..\..\libs\imgui\imgui_glfw_opengl3\imgui_glfw_opengl3.vcxproj">
+      <Project>{f89296c2-6f73-4795-bdca-6b1b027af50f}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GL3\SLRenderer_GL3.vcxproj">
       <Project>{32ebb925-1af4-44e9-b848-0b67a81b27ff}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.vcxproj">
-      <Project>{6f62e277-9308-46c1-bbb0-ab977332f126}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

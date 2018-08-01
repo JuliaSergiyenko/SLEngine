@@ -477,3 +477,17 @@ namespace SLR_GL2 {
 		return mDescription.c_str();
 	}
 }
+
+// global renderers vector;
+
+// global create SL Renderer
+extern ISLRenderer* CreateSLRenderer()
+{
+	return new SLR_GL2::SLRenderer_GL2();
+}
+
+// global destroy SL Renderer
+extern void DestroySLRenderer(ISLRenderer* renderer)
+{
+	delete (SLR_GL2::SLRenderer_GL2 *)renderer;
+}

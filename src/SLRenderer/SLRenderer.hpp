@@ -40,19 +40,6 @@ enum SLPrimitiveType
 	SL_PRIMITIVE_TYPE_TRIANGLE_STRIP = 4,
 };
 
-// SLRendererType
-enum SLRendererType
-{
-	SL_RENDERER_TYPE_GL2     = 0,
-	SL_RENDERER_TYPE_GL3     = 1,
-	SL_RENDERER_TYPE_GL4     = 2,
-	SL_RENDERER_TYPE_GLES2   = 3,
-	SL_RENDERER_TYPE_GLES3   = 4,
-	SL_RENDERER_TYPE_VULKAN  = 5,
-	SL_RENDERER_TYPE_D3D9    = 6,
-	SL_RENDERER_TYPE_DEFAULT = 0x7fffffff,
-};
-
 // SLModelVisibilityMode
 enum SLModelVisibilityMode
 {
@@ -305,9 +292,7 @@ public:
 	virtual const char* GetDescription() const = 0;
 };
 
-// SLRendererFabric
-class SLRendererFabric
-{
-public:
-	static ISLRenderer* CreateRenderer(SLRendererType rendererType = SL_RENDERER_TYPE_DEFAULT);
-};
+// global create SL Renderer
+ISLRenderer* CreateSLRenderer();
+// global destroy SL Renderer
+void DestroySLRenderer(ISLRenderer* renderer);

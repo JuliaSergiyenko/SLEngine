@@ -14,9 +14,6 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SLRenderer\SLRenderer.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SLRenderer\SLRenderer.hpp" />
   </ItemGroup>
 </Project>

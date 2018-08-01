@@ -415,3 +415,17 @@ namespace SLR_GL3 {
 		return mDescription.c_str();
 	}
 }
+
+// global renderers vector;
+
+// global create SL Renderer
+extern ISLRenderer* CreateSLRenderer()
+{
+	return new SLR_GL3::SLRenderer_GL3();
+}
+
+// global destroy SL Renderer
+extern void DestroySLRenderer(ISLRenderer* renderer)
+{
+	delete (SLR_GL3::SLRenderer_GL3 *)renderer;
+}
