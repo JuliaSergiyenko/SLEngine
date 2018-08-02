@@ -62,10 +62,11 @@ void CreateScene(ISLRenderer* renderer, ISLModel** ppModel, ISLCamera** ppCamera
 	textCoordsBuffer->UpdateData((float *)textCoords, sizeof(textCoords));
 
 	// create texture 
-	int x = 0, y = 0, n = 0;
+	int x = 0, y = 0, n = 4;
 	stbi_uc *textureData = stbi_load("data/brick.jpg", &x, &y, &n, 4);
 	ISLTexture2D* baseTexture = renderer->CreateTexture2D();
-	baseTexture->UpdateImage(0, SL_PIXEL_DATA_TYPE_RGRA, 512, 512, textureData);
+	//baseTexture->UpdateImage(0, SL_PIXEL_DATA_TYPE_RGRA, 512, 512, textureData);
+	baseTexture->UpdateImage(0, SL_TEXTURE_DATA_TYPE_RGBA, 512, 512, textureData);
 	baseTexture->SetFilteringMode(SL_TEXTURE_FILTERING_MODE_LINEAR);
 	stbi_image_free(textureData);
 

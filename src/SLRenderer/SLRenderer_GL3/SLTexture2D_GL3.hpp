@@ -22,6 +22,11 @@ namespace SLR_GL3 {
 		GLint mGLWrapModeT = GL_REPEAT;
 		GLint mGLMinFilteringMode = GL_LINEAR;
 		GLint mGLMagFilteringMode = GL_LINEAR;
+		GLint mGLInternalFormat = GL_RGBA;
+		GLenum mGLFormat = GL_RGBA;
+	private:
+		// utils
+		void UpdateFormats(SLTextureDataType textureDataType);
 	public:
 		// constructor and destructor
 		SLTexture2D_GL3(ISLRenderer* renderer);
@@ -31,7 +36,7 @@ namespace SLR_GL3 {
 		virtual ISLRenderer* GetRenderer() const;
 
 		// update image
-		virtual void UpdateImage(int32_t mipLevel, SLPixelDataType format, uint32_t width, uint32_t height, const void* data, size_t dataSize = 0);
+		virtual void UpdateImage(int32_t mipLevel, SLTextureDataType textureDataType, uint32_t width, uint32_t height, const void* data, size_t dataSize = 0);
 
 		// set texture wrap mode S and T
 		virtual void SetWrapModeS(SLTextureWrapMode wrapMode);

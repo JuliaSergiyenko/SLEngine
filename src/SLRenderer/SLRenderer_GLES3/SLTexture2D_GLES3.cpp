@@ -31,12 +31,33 @@ namespace SLR_GLES3
 		return mRenderer;
 	}
 
-	// UpdateImage
-	void SLTexture2D_GLES3::UpdateImage(int32_t mipLevel, SLPixelDataType format, uint32_t width, uint32_t height, const void* data, size_t dataSize)
+	// UpdateFormats
+	void SLTexture2D_GLES3::UpdateFormats(SLTextureDataType textureDataType)
 	{
+		switch (textureDataType)
+		{
+		case SL_TEXTURE_DATA_TYPE_RGB:
+			mGLInternalFormat = GL_RGB;
+			mGLFormat = GL_RGB;
+			break;
+		case SL_TEXTURE_DATA_TYPE_RGBA:
+			mGLInternalFormat = GL_RGBA;
+			mGLFormat = GL_RGBA;
+			break;
+		default:
+			break;
+		}
+	}
+
+	// UpdateImage
+	void SLTexture2D_GLES3::UpdateImage(int32_t mipLevel, SLTextureDataType textureDataType, uint32_t width, uint32_t height, const void* data, size_t dataSize)
+	{
+		// transform texture data type to texture formats
+		UpdateFormats(textureDataType);
+
 		// update texture image by layer
 		GL_CHECK(glBindTexture(GL_TEXTURE_2D, mGLTextureHadle));
-		GL_CHECK(glTexImage2D(GL_TEXTURE_2D, mipLevel, cSLPixelDataTypeToGLFormat[format], width, height, 0, cSLPixelDataTypeToGLFormat[format], GL_UNSIGNED_BYTE, data));
+		GL_CHECK(glTexImage2D(GL_TEXTURE_2D, mipLevel, mGLInternalFormat, width, height, 0, mGLFormat, GL_UNSIGNED_BYTE, data));
 		GL_CHECK(glBindTexture(GL_TEXTURE_2D, 0));
 	}
 

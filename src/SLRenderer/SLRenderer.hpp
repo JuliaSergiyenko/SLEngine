@@ -21,13 +21,11 @@ enum SLTextureFilterimgMode
 	SL_TEXTURE_FILTERING_MODE_MIPMAP_LINEAR  = 3,
 };
 
-// SLPixelDataType
-enum SLPixelDataType
+// SLTextureDataType
+enum SLTextureDataType
 {
-	SL_PIXEL_DATA_TYPE_RGB  = 0,
-	SL_PIXEL_DATA_TYPE_BGR  = 1,
-	SL_PIXEL_DATA_TYPE_RGRA = 2,
-	SL_PIXEL_DATA_TYPE_BGRA = 3,
+	SL_TEXTURE_DATA_TYPE_RGB  = 0,
+	SL_TEXTURE_DATA_TYPE_RGBA = 1,
 };
 
 // SLPrimitiveType
@@ -67,7 +65,7 @@ public:
 	virtual ISLRenderer* GetRenderer() const = 0;
 
 	// update image
-	virtual void UpdateImage(int32_t mipLevel, SLPixelDataType format, uint32_t width, uint32_t height, const void* data, size_t dataSize = 0) = 0;
+	virtual void UpdateImage(int32_t mipLevel, SLTextureDataType format, uint32_t width, uint32_t height, const void* data, size_t dataSize = 0) = 0;
 
 	// set texture wrap mode S and T
 	virtual void SetWrapModeS(SLTextureWrapMode wrapMode) = 0;

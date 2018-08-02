@@ -27,14 +27,6 @@ namespace SLR_GLES2
 	static const GLint cSLTextureUnit_Detail = 1;
 	static const GLint cSLTextureUnit_Normal = 2;
 
-	// SLPixelDataType to OpenGL format converter
-	static const GLenum cSLPixelDataTypeToGLFormat[] = {
-		GL_RGB,  // SL_PIXEL_DATA_TYPE_RGB  = 0,
-		GL_RGB,  // SL_PIXEL_DATA_TYPE_BGR  = 1,
-		GL_RGBA, // SL_PIXEL_DATA_TYPE_RGRA = 2,
-		GL_RGBA, // SL_PIXEL_DATA_TYPE_BGRA = 3,
-	};
-
 	// SLTextureWrapMode to OpenGL wrap mode converter
 	static const GLenum cSLTextureWrapModeToGLWrapMode[] =
 	{
