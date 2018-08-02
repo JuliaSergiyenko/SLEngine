@@ -18,28 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\deps\imgui\examples\imgui_impl_glfw.h" />
-    <ClInclude Include="..\..\..\..\..\deps\imgui\examples\imgui_impl_opengl3.h" />
-    <ClInclude Include="..\..\..\..\..\deps\imgui\examples\libs\gl3w\GL\gl3w.h" />
-    <ClInclude Include="..\..\..\..\..\deps\imgui\examples\libs\gl3w\GL\glcorearb.h" />
-    <ClInclude Include="..\..\..\..\..\deps\imgui\imconfig.h" />
-    <ClInclude Include="..\..\..\..\..\deps\imgui\imgui.h" />
-    <ClInclude Include="..\..\..\..\..\deps\imgui\imgui_internal.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\deps\imgui\examples\imgui_impl_glfw.cpp" />
-    <ClCompile Include="..\..\..\..\..\deps\imgui\examples\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="..\..\..\..\..\deps\imgui\examples\libs\gl3w\GL\gl3w.c" />
-    <ClCompile Include="..\..\..\..\..\deps\imgui\imgui.cpp" />
-    <ClCompile Include="..\..\..\..\..\deps\imgui\imgui_demo.cpp" />
-    <ClCompile Include="..\..\..\..\..\deps\imgui\imgui_draw.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{F89296C2-6F73-4795-BDCA-6B1B027AF50F}</ProjectGuid>
+    <ProjectGuid>{6D74A513-4E75-4182-ACAF-3BA58B63343E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>imguiglfwopengl3</RootNamespace>
+    <RootNamespace>imgui</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -109,13 +92,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\..\..\deps\imgui;..\..\..\..\..\deps\imgui;..\..\..\..\..\deps\imgui\examples\libs\glfw\include;..\..\..\..\..\deps\imgui\examples\libs\gl3w;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -124,13 +106,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\..\..\deps\imgui;..\..\..\..\..\deps\imgui;..\..\..\..\..\deps\imgui\examples\libs\glfw\include;..\..\..\..\..\deps\imgui\examples\libs\gl3w;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -139,15 +120,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\..\..\deps\imgui;..\..\..\..\..\deps\imgui;..\..\..\..\..\deps\imgui\examples\libs\glfw\include;..\..\..\..\..\deps\imgui\examples\libs\gl3w;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -158,15 +138,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\..\..\deps\imgui;..\..\..\..\..\deps\imgui;..\..\..\..\..\deps\imgui\examples\libs\glfw\include;..\..\..\..\..\deps\imgui\examples\libs\gl3w;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -175,6 +154,15 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\deps\imgui\imconfig.h" />
+    <ClInclude Include="..\..\..\..\deps\imgui\imgui.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\deps\imgui\imgui.cpp" />
+    <ClCompile Include="..\..\..\..\deps\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\..\..\..\deps\imgui\imgui_draw.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -2,5 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="render_gl4_app.cpp" />
+    <ClCompile Include="glcore4.cpp" />
+    <ClCompile Include="imgui_impl_glfw.cpp" />
+    <ClCompile Include="imgui_impl_opengl4.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="glcore4.hpp" />
+    <ClInclude Include="imgui_impl_glfw.h" />
+    <ClInclude Include="imgui_impl_opengl4.h" />
   </ItemGroup>
 </Project>

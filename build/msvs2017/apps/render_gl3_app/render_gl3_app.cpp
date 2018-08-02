@@ -1,12 +1,16 @@
-// imgui
-#include <imgui.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
-#include <GL/gl3w.h>
-
 // context and renderer
 #include <iostream>
 #include <glfw/glfw3.h>
+
+// ImGUI
+#include <imgui.h>
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
+// OpenGL 3.3
+#include "glcore3.hpp"
+
+// scene (I WANT TO REFUCTOR THIS CODE)
 #include <SharedScene.hpp>
 
 // main
@@ -17,7 +21,7 @@ int main(int argc, char** argv)
 		std::cout << "Error: " << description << std::endl;
 	});
 
-	// init glfw
+	// init GLFW
 	glfwInit();
 
 	// select OpenGL ES version
@@ -42,22 +46,29 @@ int main(int argc, char** argv)
 	int width = 0, height = 0;
 	glfwGetFramebufferSize(window, &width, &height);
 
-	gl3wInit();
+	//////////////////////////////////////////////////////////////////////////
+	// ImGui
+	//////////////////////////////////////////////////////////////////////////
+
+	// init OpenGL
+	glcore3Init();
 
 	// Setup Dear ImGui binding
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;  // Enable Keyboard Controls
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;   // Enable Gamepad Controls
 
-	const char* glsl_version = "#version 130";
+	// init ImGUI and 
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init(glsl_version);
+	ImGui_ImplOpenGL3_Init("#version 330");
 
 	// Setup style
-	//ImGui::StyleColorsDark();
-	ImGui::StyleColorsClassic();
+	ImGui::StyleColorsDark();
+	//ImGui::StyleColorsClassic();
+
+	//////////////////////////////////////////////////////////////////////////
+	// Scene
+	//////////////////////////////////////////////////////////////////////////
 
 	// destroy SLRenderer
 	ISLRenderer* renderer = CreateSLRenderer();
@@ -72,21 +83,7 @@ int main(int argc, char** argv)
 	double dt = 0, last_update_time = 0;
 	while (!glfwWindowShouldClose(window))
 	{
-		// Start the Dear ImGui frame
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-
-		ImGui::Begin("Hello, world!");
-
-		ImGui::Text(renderer->GetDescription());
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-
-		ImGui::End();
-
-		ImGui::Render();
-
-		// create matrixes
+		// create matrices
 		glm::mat4 modelMat = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(1.0f, 0.5f, 0.1f));
 		glm::mat4 viewMat = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glm::mat4 projMat = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);
@@ -96,7 +93,18 @@ int main(int argc, char** argv)
 		camera->SetTransform(glm::value_ptr(viewMat));
 		camera->SetProjection(glm::value_ptr(projMat));
 
+		// Start the Dear ImGui frame
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
+		ImGui::Begin("Renderer info");
+		ImGui::Text(renderer->GetDescription());
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		ImGui::End();
+
 		// render!
+		ImGui::Render();
 		renderer->Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
@@ -114,12 +122,12 @@ int main(int argc, char** argv)
 	DeleteRenderScene(renderer);
 	DestroySLRenderer(renderer);
 
-	// imgui cleanup
+	// ImGui clean-up
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 
-	// destroy gltf window
+	// destroy GLFW window
 	glfwDestroyWindow(window);
 	std::cout << "Exit!" << std::endl;
 
