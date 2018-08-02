@@ -33,7 +33,7 @@ namespace SLR_GL4 {
 	void SLShaderManager_GL4::CreateShaders()
 	{
 		// create all shaders
-		mShader_PositionColor.CreateShader(cVSShaderSource_PositionColor, cFSShaderSource_PositionColor);
+		mShader_PositionColor.CreateShader(cVSShaderSource_PositionColorTexCoords, cFSShaderSource_PositionColorTexCoords);
 	}
 
 	void SLShaderManager_GL4::DeleteShaders()

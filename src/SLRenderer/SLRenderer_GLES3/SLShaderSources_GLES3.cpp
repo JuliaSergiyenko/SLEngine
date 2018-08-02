@@ -4,8 +4,8 @@
 // SLR_GLES3
 namespace SLR_GLES3
 {
-	// vertex shader with position and color
-	const char* cVSShaderSource_PositionColor = R"(
+	// vertex // shader with position, color and tex coords
+	const char* cVSShaderSource_PositionColorTexCoords = R"(
 
 #version 300 es
 precision mediump float;
@@ -37,8 +37,8 @@ void main()
 
 )";
 
-	// fragment shader with position and color
-	const char* cFSShaderSource_PositionColor = R"(
+	// fragment // shader with position, color and tex coords
+	const char* cFSShaderSource_PositionColorTexCoords = R"(
 
 #version 300 es
 precision mediump float;
