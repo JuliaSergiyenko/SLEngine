@@ -29,6 +29,8 @@ void main()
 	// copy in to out
 	vTexCoord = aTexCoord;
 	vColor = aColor;
+
+	// find position
 	gl_Position = uProjMat * uViewMat * uModelMat * vec4(aPosition, 1.0);
 }
 
@@ -53,9 +55,6 @@ layout (location = 0) out vec4 fragColor;
 void main()
 {
 	fragColor = texture2D(sBaseTexture, vTexCoord.xy) * vColor;
-	//fragColor = vec4(vTexCoord, 0.0, 1.0) * vColor;
-	//fragColor = vec4(vTexCoord, 1.0, 1.0);
-	//fragColor = vColor;
 }
 
 )";

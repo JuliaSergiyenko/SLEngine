@@ -1,14 +1,13 @@
-// context and renderer
+// standard library
 #include <iostream>
+
+// GLFW
 #include <glfw/glfw3.h>
 
-// ImGUI
+// ImGui
 #include <imgui.h>
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
-
-// OpenGL 3.3
-#include "glcore3.hpp"
 
 // scene (I WANT TO REFUCTOR THIS CODE)
 #include <SharedScene.hpp>
@@ -50,17 +49,15 @@ int main(int argc, char** argv)
 	// ImGui
 	//////////////////////////////////////////////////////////////////////////
 
-	// init OpenGL
-	glcore3Init();
-
 	// Setup Dear ImGui binding
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	io.IniFilename = nullptr;
 
 	// init ImGUI and 
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("#version 330");
+	ImGui_ImplOpenGL3_Init();
 
 	// Setup style
 	ImGui::StyleColorsDark();
@@ -80,7 +77,6 @@ int main(int argc, char** argv)
 	CreateScene(renderer, &model, &camera);
 
 	// main loop
-	double dt = 0, last_update_time = 0;
 	while (!glfwWindowShouldClose(window))
 	{
 		// create matrices
@@ -94,14 +90,15 @@ int main(int argc, char** argv)
 		camera->SetProjection(glm::value_ptr(projMat));
 
 		// Start the Dear ImGui frame
-		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
 
+		// ImGui controls
+		ImGui::NewFrame();
 		ImGui::Begin("Renderer info");
 		ImGui::Text(renderer->GetDescription());
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::End();
+		ImGui::EndFrame();
 
 		// render!
 		ImGui::Render();
@@ -111,11 +108,6 @@ int main(int argc, char** argv)
 		// display and process events through callbacks
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-
-		// get frame time
-		dt = glfwGetTime();
-		if ((dt - last_update_time) > 0.2)
-			last_update_time = dt;
 	}
 
 	// destroy SLRenderer

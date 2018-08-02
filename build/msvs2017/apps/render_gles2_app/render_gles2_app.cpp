@@ -1,9 +1,15 @@
-// imgui
-#include <imgui.h>
-
-// context and renderer
+// standard library
 #include <iostream>
+
+// GLFW
 #include <glfw/glfw3.h>
+
+// ImGui
+#include <imgui.h>
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_OpenGLES2.h"
+
+// scene (I WANT TO REFUCTOR THIS CODE)
 #include <SharedScene.hpp>
 
 // main
@@ -13,7 +19,7 @@ int main(int argc, char** argv)
 	glfwSetErrorCallback([](int error, const char* description) {
 		std::cout << "Error: " << description << std::endl;
 	});
-
+	
 	// init GLFW
 	glfwInit();
 
@@ -39,6 +45,28 @@ int main(int argc, char** argv)
 	int width = 0, height = 0;
 	glfwGetFramebufferSize(window, &width, &height);
 
+	//////////////////////////////////////////////////////////////////////////
+	// ImGui
+	//////////////////////////////////////////////////////////////////////////
+
+	// Setup Dear ImGui binding
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	io.IniFilename = nullptr;
+
+	// init ImGUI and 
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGLES2_Init();
+
+	// Setup style
+	ImGui::StyleColorsDark();
+	//ImGui::StyleColorsClassic();
+
+	//////////////////////////////////////////////////////////////////////////
+	// Scene
+	//////////////////////////////////////////////////////////////////////////
+
 	// destroy SLRenderer
 	ISLRenderer* renderer = CreateSLRenderer();
 	std::cout << renderer->GetDescription() << std::endl;
@@ -49,7 +77,6 @@ int main(int argc, char** argv)
 	CreateScene(renderer, &model, &camera);
 
 	// main loop
-	double dt = 0, last_update_time = 0;
 	while (!glfwWindowShouldClose(window))
 	{
 		// create matrices
@@ -62,22 +89,35 @@ int main(int argc, char** argv)
 		camera->SetTransform(glm::value_ptr(viewMat));
 		camera->SetProjection(glm::value_ptr(projMat));
 
+		// Start the Dear ImGui frame
+		ImGui_ImplGlfw_NewFrame();
+
+		// ImGui controls
+		ImGui::NewFrame();
+		ImGui::Begin("Renderer info");
+		ImGui::Text(renderer->GetDescription());
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		ImGui::End();
+		ImGui::EndFrame();
+
 		// render!
+		ImGui::Render();
 		renderer->Render();
+		ImGui_ImplOpenGLES2_RenderDrawData(ImGui::GetDrawData());
 
 		// display and process events through callbacks
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-
-		// get frame time
-		dt = glfwGetTime();
-		if ((dt - last_update_time) > 0.2)
-			last_update_time = dt;
 	}
 
 	// destroy SLRenderer
 	DeleteRenderScene(renderer);
 	DestroySLRenderer(renderer);
+
+	// ImGui clean-up
+	ImGui_ImplOpenGLES2_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 
 	// destroy GLFW window
 	glfwDestroyWindow(window);
