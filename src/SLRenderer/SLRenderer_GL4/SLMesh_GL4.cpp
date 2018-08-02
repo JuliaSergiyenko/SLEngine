@@ -294,48 +294,48 @@ namespace SLR_GL4
 		if (mPositionBuffer != nullptr)
 		{ 
 			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mPositionBuffer->mGLBufferHandle));
-			GL_CHECK(glVertexAttribPointer(mGLPositionAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
-			GL_CHECK(glEnableVertexAttribArray(mGLPositionAttrLoc));
+			GL_CHECK(glVertexAttribPointer(mGLAttribLocation_Position, 3, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLAttribLocation_Position));
 		}
 
 		// set color buffer
 		if (mColorBuffer != nullptr)
 		{
 			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mColorBuffer->mGLBufferHandle));
-			GL_CHECK(glVertexAttribPointer(mGLColorAttrLoc, 4, GL_FLOAT, GL_FALSE, 0, 0));
-			GL_CHECK(glEnableVertexAttribArray(mGLColorAttrLoc));
+			GL_CHECK(glVertexAttribPointer(mGLAttribLocation_Color, 4, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLAttribLocation_Color));
 		}
 
 		// set normal buffer
 		if (mNormalBuffer != nullptr)
 		{
 			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mNormalBuffer->mGLBufferHandle));
-			GL_CHECK(glVertexAttribPointer(mGLNormalAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
-			GL_CHECK(glEnableVertexAttribArray(mGLNormalAttrLoc));
+			GL_CHECK(glVertexAttribPointer(mGLAttribLocation_Normal, 3, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLAttribLocation_Normal));
 		}
 
 		// set tangent buffer
 		if (mTangentBuffer != nullptr)
 		{
 			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mTangentBuffer->mGLBufferHandle));
-			GL_CHECK(glVertexAttribPointer(mGLTangentAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
-			GL_CHECK(glEnableVertexAttribArray(mGLTangentAttrLoc));
+			GL_CHECK(glVertexAttribPointer(mGLAttribLocation_Tangent, 3, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLAttribLocation_Tangent));
 		}
 
 		// set tex coord buffer
 		if (mTexCoordBuffer != nullptr)
 		{
 			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mTexCoordBuffer->mGLBufferHandle));
-			GL_CHECK(glVertexAttribPointer(mGLTexCoordAttrLoc, 2, GL_FLOAT, GL_FALSE, 0, 0));
-			GL_CHECK(glEnableVertexAttribArray(mGLTexCoordAttrLoc));
+			GL_CHECK(glVertexAttribPointer(mGLAttribLocation_TexCoord, 2, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLAttribLocation_TexCoord));
 		}
 
 		// set weights buffer
 		if (mWeightsBuffer != nullptr)
 		{
 			GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mWeightsBuffer->mGLBufferHandle));
-			GL_CHECK(glVertexAttribPointer(mGLWeightsAttrLoc, 4, GL_FLOAT, GL_FALSE, 0, 0));
-			GL_CHECK(glEnableVertexAttribArray(mGLWeightsAttrLoc));
+			GL_CHECK(glVertexAttribPointer(mGLAttribLocation_Weights, 4, GL_FLOAT, GL_FALSE, 0, 0));
+			GL_CHECK(glEnableVertexAttribArray(mGLAttribLocation_Weights));
 		}
 
 		// set index buffer

@@ -4,12 +4,12 @@
 #include <direct.h>
 
 // OpenGL attributes locations
-// GLuint mGLPositionAttrLoc = 0;
-// GLuint mGLColorAttrLoc = 1;
-// GLuint mGLNormalAttrLoc = 2;
-// GLuint mGLTangentAttrLoc = 3;
-// GLuint mGLTexCoordAttrLoc = 4;
-// GLuint mGLWeightsAttrLoc = 5;
+// GLuint mGLAttribLocation_Position = 0;
+// GLuint mGLAttribLocation_Color = 1;
+// GLuint mGLAttribLocation_Normal = 2;
+// GLuint mGLAttribLocation_Tangent = 3;
+// GLuint mGLAttribLocation_TexCoord = 4;
+// GLuint mGLAttribLocation_Weights = 5;
 
 // simple triangle positions
 static const float positions[] =

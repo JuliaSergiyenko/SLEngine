@@ -41,12 +41,12 @@ namespace SLR_GL2 {
 		GLuint mGLElementsCount = GL_TRIANGLES;
 
 		// OpenGL attributes locations
-		GLuint mGLPositionAttrLoc = cSLVertexAttribLication_Position;
-		GLuint mGLColorAttrLoc = cSLVertexAttribLication_Color;
-		GLuint mGLNormalAttrLoc = cSLVertexAttribLication_Normal;
-		GLuint mGLTangentAttrLoc = cSLVertexAttribLication_Tangent;
-		GLuint mGLTexCoordAttrLoc = cSLVertexAttribLication_TexCoord;
-		GLuint mGLWeightsAttrLoc = cSLVertexAttribLication_Weights;
+		GLuint mGLAttribLocation_Position = cSLVertexAttribLication_Position;
+		GLuint mGLAttribLocation_Color = cSLVertexAttribLication_Color;
+		GLuint mGLAttribLocation_Normal = cSLVertexAttribLication_Normal;
+		GLuint mGLAttribLocation_Tangent = cSLVertexAttribLication_Tangent;
+		GLuint mGLAttribLocation_TexCoord = cSLVertexAttribLication_TexCoord;
+		GLuint mGLAttribLocation_Weights = cSLVertexAttribLication_Weights;
 	private:
 		// utils
 		void UpdateElementsCount();

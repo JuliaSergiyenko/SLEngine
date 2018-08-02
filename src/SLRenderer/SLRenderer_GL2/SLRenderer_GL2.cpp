@@ -316,48 +316,48 @@ namespace SLR_GL2 {
 						if (mesh->mPositionBuffer != nullptr)
 						{
 							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mPositionBuffer->mGLBufferHandle));
-							GL_CHECK(glVertexAttribPointer(mesh->mGLPositionAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
-							GL_CHECK(glEnableVertexAttribArray(mesh->mGLPositionAttrLoc));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLAttribLocation_Position, 3, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLAttribLocation_Position));
 						}
 
 						// set color buffer
 						if (mesh->mColorBuffer != nullptr)
 						{
 							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mColorBuffer->mGLBufferHandle));
-							GL_CHECK(glVertexAttribPointer(mesh->mGLColorAttrLoc, 4, GL_FLOAT, GL_FALSE, 0, 0));
-							GL_CHECK(glEnableVertexAttribArray(mesh->mGLColorAttrLoc));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLAttribLocation_Color, 4, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLAttribLocation_Color));
 						}
 
 						// set normal buffer
 						if (mesh->mNormalBuffer != nullptr)
 						{
 							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mNormalBuffer->mGLBufferHandle));
-							GL_CHECK(glVertexAttribPointer(mesh->mGLNormalAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
-							GL_CHECK(glEnableVertexAttribArray(mesh->mGLNormalAttrLoc));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLAttribLocation_Normal, 3, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLAttribLocation_Normal));
 						}
 
 						// set tangent buffer
 						if (mesh->mTangentBuffer != nullptr)
 						{
 							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mTangentBuffer->mGLBufferHandle));
-							GL_CHECK(glVertexAttribPointer(mesh->mGLTangentAttrLoc, 3, GL_FLOAT, GL_FALSE, 0, 0));
-							GL_CHECK(glEnableVertexAttribArray(mesh->mGLTangentAttrLoc));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLAttribLocation_Tangent, 3, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLAttribLocation_Tangent));
 						}
 
 						// set tex coord buffer
 						if (mesh->mTexCoordBuffer != nullptr)
 						{
 							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mTexCoordBuffer->mGLBufferHandle));
-							GL_CHECK(glVertexAttribPointer(mesh->mGLTexCoordAttrLoc, 2, GL_FLOAT, GL_FALSE, 0, 0));
-							GL_CHECK(glEnableVertexAttribArray(mesh->mGLTexCoordAttrLoc));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLAttribLocation_TexCoord, 2, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLAttribLocation_TexCoord));
 						}
 
 						// set weights buffer
 						if (mesh->mWeightsBuffer != nullptr)
 						{
 							GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, mesh->mWeightsBuffer->mGLBufferHandle));
-							GL_CHECK(glVertexAttribPointer(mesh->mGLWeightsAttrLoc, 4, GL_FLOAT, GL_FALSE, 0, 0));
-							GL_CHECK(glEnableVertexAttribArray(mesh->mGLWeightsAttrLoc));
+							GL_CHECK(glVertexAttribPointer(mesh->mGLAttribLocation_Weights, 4, GL_FLOAT, GL_FALSE, 0, 0));
+							GL_CHECK(glEnableVertexAttribArray(mesh->mGLAttribLocation_Weights));
 						}
 
 						// set index buffer
@@ -418,22 +418,22 @@ namespace SLR_GL2 {
 
 						// disable position buffer
 						if (mesh->mPositionBuffer != nullptr)
-							GL_CHECK(glDisableVertexAttribArray(mesh->mGLPositionAttrLoc));
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLAttribLocation_Position));
 						// disable position buffer
 						if (mesh->mColorBuffer != nullptr)
-							GL_CHECK(glDisableVertexAttribArray(mesh->mGLColorAttrLoc));
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLAttribLocation_Color));
 						// disable position buffer
 						if (mesh->mNormalBuffer != nullptr)
-							GL_CHECK(glDisableVertexAttribArray(mesh->mGLNormalAttrLoc));
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLAttribLocation_Normal));
 						// disable position buffer
 						if (mesh->mTangentBuffer != nullptr)
-							GL_CHECK(glDisableVertexAttribArray(mesh->mGLTangentAttrLoc));
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLAttribLocation_Tangent));
 						// disable position buffer
 						if (mesh->mTexCoordBuffer != nullptr)
-							GL_CHECK(glDisableVertexAttribArray(mesh->mGLTexCoordAttrLoc));
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLAttribLocation_TexCoord));
 						// disable position buffer
 						if (mesh->mWeightsBuffer != nullptr)
-							GL_CHECK(glDisableVertexAttribArray(mesh->mGLWeightsAttrLoc));
+							GL_CHECK(glDisableVertexAttribArray(mesh->mGLAttribLocation_Weights));
 						// disable index buffer
 						if (mesh->mIndexBuffer != nullptr)
 							GL_CHECK(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
