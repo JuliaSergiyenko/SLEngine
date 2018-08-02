@@ -103,6 +103,5 @@ namespace SLR_GL4 {
 
 		// update mesh VAO
 		void UpdateVAO();
-		void Draw(ISLCamera* camera, ISLModel* model);
 	};
 }
