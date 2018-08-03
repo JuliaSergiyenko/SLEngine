@@ -1,5 +1,6 @@
 // standard library
 #include <iostream>
+#include <chrono>
 
 // GLFW
 #include <glfw/glfw3.h>
@@ -15,88 +16,83 @@
 // main
 int main(int argc, char** argv)
 {
-	// set error handling
-	glfwSetErrorCallback([](int error, const char* description) {
-		std::cout << "Error: " << description << std::endl;
-	});
-
-	// init GLFW
+	// create glfw window
+	glfwSetErrorCallback([](int error, const char* description) { std::cout << "Error: " << description << std::endl; });
 	glfwInit();
-
-	// select OpenGL ES version
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
 	glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-
-	// 	// select OpenGL version
-	// 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	// 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-
-	// create window
 	GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW OpenGL", nullptr, nullptr);
-
-	// set current context
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(0);
-
-	// get window size
-	int width = 0, height = 0;
-	glfwGetFramebufferSize(window, &width, &height);
-
-	//////////////////////////////////////////////////////////////////////////
-	// ImGui
-	//////////////////////////////////////////////////////////////////////////
 
 	// Setup Dear ImGui binding
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	io.IniFilename = nullptr;
-
-	// init ImGUI and 
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGLES3_Init();
-
-	// Setup style
 	ImGui::StyleColorsDark();
-	//ImGui::StyleColorsClassic();
 
-	//////////////////////////////////////////////////////////////////////////
-	// Scene
-	//////////////////////////////////////////////////////////////////////////
-
-	// destroy SLRenderer
+	// create SLRenderer
 	ISLRenderer* renderer = CreateSLRenderer();
-	std::cout << renderer->GetDescription() << std::endl;
-
-	// create scene
 	ISLModel* model = nullptr;
 	ISLCamera* camera = nullptr;
 	CreateScene(renderer, &model, &camera);
 
+	// camera position
+	glm::vec3 eye = glm::vec3(0.0f, 0.0f, 3.0f);
+	glm::vec3 dir = glm::vec3(0.0f, 0.0f, -1.0f);
+	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+
+	// get start time
+	auto startTimeStamp = std::chrono::high_resolution_clock::now();
+	auto currTimeStamp = std::chrono::high_resolution_clock::now();
+
 	// main loop
 	while (!glfwWindowShouldClose(window))
 	{
+		// get window size
+		int width = 0, height = 0;
+		glfwGetFramebufferSize(window, &width, &height);
+
+		// get current time
+		auto prevTimeStamp = currTimeStamp;
+		currTimeStamp = std::chrono::high_resolution_clock::now();
+		float newTime = std::chrono::duration_cast<std::chrono::microseconds>(currTimeStamp - startTimeStamp).count() * std::pow(10.0f, -6.0f);
+		float frameTime = std::chrono::duration_cast<std::chrono::microseconds>(currTimeStamp - prevTimeStamp).count() * std::pow(10.0f, -6.0f);
+		float frameRate = 1.0f / frameTime;
+
+		// camera move 
+		if (io.KeysDown[GLFW_KEY_W] || io.KeysDown[GLFW_KEY_UP]) eye += dir * frameTime;
+		if (io.KeysDown[GLFW_KEY_S] || io.KeysDown[GLFW_KEY_DOWN]) eye -= dir * frameTime;
+		if (io.KeysDown[GLFW_KEY_A] || io.KeysDown[GLFW_KEY_LEFT]) eye -= glm::normalize(glm::cross(dir, up)) * frameTime;
+		if (io.KeysDown[GLFW_KEY_D] || io.KeysDown[GLFW_KEY_RIGHT]) eye += glm::normalize(glm::cross(dir, up)) * frameTime;
+		if (io.KeysDown[GLFW_KEY_ESCAPE]) glfwSetWindowShouldClose(window, 1);
+
 		// create matrices
 		glm::mat4 modelMat = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(1.0f, 0.5f, 0.1f));
-		glm::mat4 viewMat = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glm::mat4 viewMat = glm::lookAt(eye, eye+dir, up);
 		glm::mat4 projMat = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);
 
 		// set camera matrices
 		model->SetTransform(glm::value_ptr(modelMat));
 		camera->SetTransform(glm::value_ptr(viewMat));
 		camera->SetProjection(glm::value_ptr(projMat));
+		camera->SetViewport(width, height);
 
 		// Start the Dear ImGui frame
 		ImGui_ImplGlfw_NewFrame();
-
-		// ImGui controls
 		ImGui::NewFrame();
+		ImGui::SetNextWindowPos(ImVec2(0, 0));
 		ImGui::Begin("Renderer info");
 		ImGui::Text(renderer->GetDescription());
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / frameRate, frameRate);
+		ImGui::Text("Application run time %.3f s", newTime);
+		ImGui::Text("Eye: (%.3f,%.3f,%.3f)", eye.x, eye.y, eye.z);
+		ImGui::Text("Dir: (%.3f,%.3f,%.3f)", dir.x, dir.y, dir.z);
 		ImGui::End();
 		ImGui::EndFrame();
 
@@ -121,7 +117,6 @@ int main(int argc, char** argv)
 
 	// destroy GLFW window
 	glfwDestroyWindow(window);
-	std::cout << "Exit!" << std::endl;
 
 	// exit
 	return EXIT_SUCCESS;

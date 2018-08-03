@@ -300,6 +300,9 @@ namespace SLR_GLES2 {
 		// iterate by all meshes
 		for (auto scene : mRenderScenes) {
 			if (scene->mVisibilityMode == SL_RENDER_SCENE_VISIBILITY_MODE_VISIBLE) {
+				// set viewport
+				if (scene->mCamera)
+					GL_CHECK(glViewport(0, 0, (GLsizei)scene->mCamera->mViewportWidth, (GLsizei)scene->mCamera->mViewportHeight));
 				for (auto model : scene->mModels) {
 					for (auto mesh : model->mMeshes)
 					{

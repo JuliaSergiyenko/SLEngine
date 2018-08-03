@@ -1,12 +1,27 @@
 #include <Windows.h>
 #include <GL/GL.h>
 #include <GL/wglext.h>
-#include "glcore3.hpp"
+#include <chrono>
+#include "glcore2.hpp"
 
 // ImGui
 #include <imgui.h>
 #include "imgui_impl_win32.h"
-#include "imgui_impl_opengl3.h"
+#include "imgui_impl_opengl2.h"
+
+// SharedScene
+#include "SharedScene.hpp"
+
+// define buttons codes
+#define GLFW_KEY_W      0x57
+#define GLFW_KEY_A      0x41
+#define GLFW_KEY_S      0x53
+#define GLFW_KEY_D      0x44
+#define GLFW_KEY_UP     VK_UP
+#define GLFW_KEY_DOWN   VK_DOWN
+#define GLFW_KEY_LEFT   VK_LEFT
+#define GLFW_KEY_RIGHT  VK_RIGHT
+#define GLFW_KEY_ESCAPE VK_ESCAPE
 
 // CreateWinGLContext
 HGLRC CreateWinGLContext(HDC hDC, int majorVersion, int minorVersion)
@@ -45,7 +60,7 @@ HGLRC CreateWinGLContext(HDC hDC, int majorVersion, int minorVersion)
 		0
 	};
 
-	// get wglCreateContextAttribsARB address
+	// create OpenGL context by attribs
 	PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = (PFNWGLCREATECONTEXTATTRIBSARBPROC)wglGetProcAddress("wglCreateContextAttribsARB");
 	if (wglCreateContextAttribsARB)
 		context = wglCreateContextAttribsARB(hDC, 0, attribs);
@@ -62,9 +77,17 @@ HGLRC CreateWinGLContext(HDC hDC, int majorVersion, int minorVersion)
 	return context;
 }
 
+// ImGui_ImplWin32_WndProcHandler
+extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 // WndProc
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	// UmGui wnd proc call
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam))
+		return true;
+
+	// native wnd proc call
 	switch (message)
 	{
 	case WM_KEYDOWN:
@@ -88,7 +111,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	TCHAR szWindowClass[] = L"win32app";
 
 	// The string that appears in the application's title bar.
-	TCHAR szTitle[] = L"Win32 Guided Tour Application";
+	TCHAR szTitle[] = L"SLRender application";
 
 	// create and register window class
 	WNDCLASSEX wcex;
@@ -115,7 +138,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	// create OpenGL context
 	HDC hDC = GetDC(hWnd);
-	HGLRC hGLRC = CreateWinGLContext(hDC, 3, 3);
+	HGLRC hGLRC = CreateWinGLContext(hDC, 3, 1);
 	wglMakeCurrent(hDC, hGLRC);
 
 	// get OpenGL version
@@ -129,59 +152,98 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	io.IniFilename = nullptr;
 	ImGui_ImplWin32_Init(hWnd);
-	ImGui_ImplOpenGL3_Init();
+	ImGui_ImplOpenGL2_Init();
 	ImGui::StyleColorsDark();
+
+	// create scene
+	ISLRenderer* renderer = CreateSLRenderer();
+	ISLModel* model = nullptr;
+	ISLCamera* camera = nullptr;
+	CreateScene(renderer, &model, &camera);
+
+	// camera position
+	glm::vec3 eye = glm::vec3(0.0f, 0.0f, 3.0f);
+	glm::vec3 dir = glm::vec3(0.0f, 0.0f, -1.0f);
+	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+
+	// get start time
+	auto startTimeStamp = std::chrono::high_resolution_clock::now();
+	auto currTimeStamp = std::chrono::high_resolution_clock::now();
 
 	// main loop
 	MSG msg = { 0 };
 	while (msg.message != WM_QUIT)
 	{
-		// query performance info types
-		LARGE_INTEGER StartingTime, EndingTime, Elapsed;
-		LARGE_INTEGER Frequency;
-
-		// query performance info
-		QueryPerformanceFrequency(&Frequency);
-		QueryPerformanceCounter(&StartingTime);
-
 		// get messages
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		} 
-		//else
+		else
 		{
-			// draw scene
-			glClearColor(0.0f, 0.2f, 0.4f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			// get client window rect
+			RECT rect = { 0 };
+			GetWindowRect(hWnd, &rect);
+			int width = rect.right - rect.left;
+			int height = rect.bottom - rect.top;
+
+			// get current time
+			auto prevTimeStamp = currTimeStamp;
+			currTimeStamp = std::chrono::high_resolution_clock::now();
+			float newTime = std::chrono::duration_cast<std::chrono::microseconds>(currTimeStamp - startTimeStamp).count() * std::pow(10.0f, -6.0f);
+			float frameTime = std::chrono::duration_cast<std::chrono::microseconds>(currTimeStamp - prevTimeStamp).count() * std::pow(10.0f, -6.0f);
+			float frameRate = 1.0f / frameTime;
+
+			// camera move 
+			if (io.KeysDown[GLFW_KEY_W] || io.KeysDown[GLFW_KEY_UP]) eye += dir * frameTime;
+			if (io.KeysDown[GLFW_KEY_S] || io.KeysDown[GLFW_KEY_DOWN]) eye -= dir * frameTime;
+			if (io.KeysDown[GLFW_KEY_A] || io.KeysDown[GLFW_KEY_LEFT]) eye -= glm::normalize(glm::cross(dir, up)) * frameTime;
+			if (io.KeysDown[GLFW_KEY_D] || io.KeysDown[GLFW_KEY_RIGHT]) eye += glm::normalize(glm::cross(dir, up)) * frameTime;
+			if (io.KeysDown[GLFW_KEY_ESCAPE]) PostQuitMessage(0);
+
+			// create matrices
+			glm::mat4 modelMat = glm::rotate(glm::mat4(1.0f), newTime, glm::vec3(1.0f, 0.5f, 0.1f));
+			glm::mat4 viewMat = glm::lookAt(eye, eye + dir, up);
+			glm::mat4 projMat = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);
+
+			// set camera matrices
+			model->SetTransform(glm::value_ptr(modelMat));
+			camera->SetTransform(glm::value_ptr(viewMat));
+			camera->SetProjection(glm::value_ptr(projMat));
+			camera->SetViewport(width, height);
 
 			// Start the Dear ImGui frame
 			ImGui_ImplWin32_NewFrame();
 			ImGui::NewFrame();
+			ImGui::SetNextWindowPos(ImVec2(0, 0));
 			ImGui::Begin("Renderer info");
-			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+			ImGui::Text(renderer->GetDescription());
+			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / frameRate, frameRate);
+			ImGui::Text("Application run time %.3f s", newTime);
+			ImGui::Text("Eye: (%.3f,%.3f,%.3f)", eye.x, eye.y, eye.z);
+			ImGui::Text("Dir: (%.3f,%.3f,%.3f)", dir.x, dir.y, dir.z);
 			ImGui::End();
 			ImGui::EndFrame();
 
 			// render
 			ImGui::Render();
-			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+			renderer->Render();
+			ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 
 			// swap buffers
 			SwapBuffers(hDC);
 		}
-
-		// query performance info (Frequency.QuadPart* (1.0f / Elapsed.QuadPart))
-		QueryPerformanceCounter(&EndingTime);
-		Elapsed.QuadPart = EndingTime.QuadPart - StartingTime.QuadPart;
 	}
 
+	// destroy SLRenderer
+	DeleteRenderScene(renderer);
+	DestroySLRenderer(renderer);
+
 	// ImGui shutdown
-	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplOpenGL2_Shutdown();
 	ImGui_ImplWin32_Shutdown();
 	ImGui::DestroyContext();
-
 
 	// destroy OprnGL context
 	wglMakeCurrent(NULL, NULL);

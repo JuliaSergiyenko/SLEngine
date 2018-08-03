@@ -37,8 +37,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gles2_app", "apps\re
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "playgorund_app", "apps\playgorund_app\playgorund_app.vcxproj", "{8AA6A4A8-0342-46A9-AD52-C20A84792BA1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "windows_app", "apps\windows_app\windows_app.vcxproj", "{E782F27A-F963-4507-9D63-85CDAE78BDD9}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SLRenderer_GL4", "libs\SLRenderer\SLRenderer_GL4\SLRenderer_GL4.vcxproj", "{6F62E277-9308-46C1-BBB0-AB977332F126}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SLRenderer_GLES3", "libs\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.vcxproj", "{D970D931-879B-4D76-A6B7-084C6B0394F6}"
@@ -51,14 +49,20 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharedScene", "apps\SharedS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgui", "libs\imgui\imgui.vcxproj", "{6D74A513-4E75-4182-ACAF-3BA58B63343E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gl2_app", "apps\render_gl2_app\render_gl2_app.vcxproj", "{50DE4BFA-0167-4E2F-A870-2E34992ECD41}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "windows_app", "apps\windows_app\windows_app.vcxproj", "{E782F27A-F963-4507-9D63-85CDAE78BDD9}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		apps\SharedScene\SharedScene.vcxitems*{1f99c092-1ddf-43e9-a3ff-ad9d396c67db}*SharedItemsImports = 4
 		apps\SharedScene\SharedScene.vcxitems*{2652ce5c-fffd-41f5-8277-42474283c6e8}*SharedItemsImports = 4
 		apps\SharedScene\SharedScene.vcxitems*{3adb401a-8338-4acd-bc47-1329ee6761cb}*SharedItemsImports = 4
+		apps\SharedScene\SharedScene.vcxitems*{50de4bfa-0167-4e2f-a870-2e34992ecd41}*SharedItemsImports = 4
 		apps\SharedScene\SharedScene.vcxitems*{574cb5d2-daf5-4de9-85ed-73391ce096bf}*SharedItemsImports = 4
 		apps\SharedScene\SharedScene.vcxitems*{ab8309d6-69c5-4986-9912-d3be7d1f3e14}*SharedItemsImports = 9
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{c7448e0b-d670-4feb-afce-4dad1da64b13}*SharedItemsImports = 9
+		apps\SharedScene\SharedScene.vcxitems*{e782f27a-f963-4507-9d63-85cdae78bdd9}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -163,14 +167,6 @@ Global
 		{8AA6A4A8-0342-46A9-AD52-C20A84792BA1}.Release|x64.Build.0 = Release|x64
 		{8AA6A4A8-0342-46A9-AD52-C20A84792BA1}.Release|x86.ActiveCfg = Release|Win32
 		{8AA6A4A8-0342-46A9-AD52-C20A84792BA1}.Release|x86.Build.0 = Release|Win32
-		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x64.ActiveCfg = Debug|x64
-		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x64.Build.0 = Debug|x64
-		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x86.ActiveCfg = Debug|Win32
-		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x86.Build.0 = Debug|Win32
-		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x64.ActiveCfg = Release|x64
-		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x64.Build.0 = Release|x64
-		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x86.ActiveCfg = Release|Win32
-		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x86.Build.0 = Release|Win32
 		{6F62E277-9308-46C1-BBB0-AB977332F126}.Debug|x64.ActiveCfg = Debug|x64
 		{6F62E277-9308-46C1-BBB0-AB977332F126}.Debug|x64.Build.0 = Debug|x64
 		{6F62E277-9308-46C1-BBB0-AB977332F126}.Debug|x86.ActiveCfg = Debug|Win32
@@ -211,6 +207,22 @@ Global
 		{6D74A513-4E75-4182-ACAF-3BA58B63343E}.Release|x64.Build.0 = Release|x64
 		{6D74A513-4E75-4182-ACAF-3BA58B63343E}.Release|x86.ActiveCfg = Release|Win32
 		{6D74A513-4E75-4182-ACAF-3BA58B63343E}.Release|x86.Build.0 = Release|Win32
+		{50DE4BFA-0167-4E2F-A870-2E34992ECD41}.Debug|x64.ActiveCfg = Debug|x64
+		{50DE4BFA-0167-4E2F-A870-2E34992ECD41}.Debug|x64.Build.0 = Debug|x64
+		{50DE4BFA-0167-4E2F-A870-2E34992ECD41}.Debug|x86.ActiveCfg = Debug|Win32
+		{50DE4BFA-0167-4E2F-A870-2E34992ECD41}.Debug|x86.Build.0 = Debug|Win32
+		{50DE4BFA-0167-4E2F-A870-2E34992ECD41}.Release|x64.ActiveCfg = Release|x64
+		{50DE4BFA-0167-4E2F-A870-2E34992ECD41}.Release|x64.Build.0 = Release|x64
+		{50DE4BFA-0167-4E2F-A870-2E34992ECD41}.Release|x86.ActiveCfg = Release|Win32
+		{50DE4BFA-0167-4E2F-A870-2E34992ECD41}.Release|x86.Build.0 = Release|Win32
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x64.ActiveCfg = Debug|x64
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x64.Build.0 = Debug|x64
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x86.ActiveCfg = Debug|Win32
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Debug|x86.Build.0 = Debug|Win32
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x64.ActiveCfg = Release|x64
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x64.Build.0 = Release|x64
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x86.ActiveCfg = Release|Win32
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -231,13 +243,14 @@ Global
 		{574CB5D2-DAF5-4DE9-85ED-73391CE096BF} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{2652CE5C-FFFD-41F5-8277-42474283C6E8} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{8AA6A4A8-0342-46A9-AD52-C20A84792BA1} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
-		{E782F27A-F963-4507-9D63-85CDAE78BDD9} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{6F62E277-9308-46C1-BBB0-AB977332F126} = {9FD5A1AD-7308-44AA-B97D-0FD5AB6E3025}
 		{D970D931-879B-4D76-A6B7-084C6B0394F6} = {9FD5A1AD-7308-44AA-B97D-0FD5AB6E3025}
 		{1F99C092-1DDF-43E9-A3FF-AD9D396C67DB} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{3ADB401A-8338-4ACD-BC47-1329EE6761CB} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{AB8309D6-69C5-4986-9912-D3BE7D1F3E14} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{6D74A513-4E75-4182-ACAF-3BA58B63343E} = {89AA82B6-A4F2-4F55-AF46-B613E3841397}
+		{50DE4BFA-0167-4E2F-A870-2E34992ECD41} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
+		{E782F27A-F963-4507-9D63-85CDAE78BDD9} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88118672-05E8-4C89-92C8-E3CB6E9192DC}

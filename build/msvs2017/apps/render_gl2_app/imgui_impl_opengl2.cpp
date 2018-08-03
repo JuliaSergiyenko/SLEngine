@@ -7,8 +7,8 @@
 #include <imgui.h>
 
 // local headers
-#include "imgui_impl_opengl3.h"
-#include "glcore3.hpp"
+#include "imgui_impl_OpenGL2.h"
+#include "glcore2.hpp"
 
 // standard library
 #include <GL/GL.h>
@@ -28,19 +28,19 @@ static GLuint g_VboHandle = 0, g_ElementsHandle = 0;
 // vertex shader
 static const GLchar* cVSShaderSource = R"(
 
-#version 330 core
+#version 120
 
 // attributes
-layout (location = 0) in vec2 aPosition;
-layout (location = 1) in vec4 aColor;
-layout (location = 4) in vec2 aTexCoord;
+attribute vec2 aPosition;
+attribute vec4 aColor;
+attribute vec2 aTexCoord;
 
 // uniforms
 uniform mat4 uProjMat;
 
 // outputs
-out vec4 vColor;
-out vec2 vTexCoord;
+varying vec4 vColor;
+varying vec2 vTexCoord;
 
 // main
 void main()
@@ -56,42 +56,37 @@ void main()
 // fragment shader
 static const GLchar* cFSShaderSource = R"(
 
-#version 330 core
-
 // inputs
-in vec4 vColor;
-in vec2 vTexCoord;
+varying vec4 vColor;
+varying vec2 vTexCoord;
 
 // textures
 uniform sampler2D sBaseTexture;
 
-// outputs
-out vec4 fragColor;
-
 // main
 void main()
 {
-	fragColor = texture2D(sBaseTexture, vTexCoord.xy) * vColor;
+	gl_FragColor = texture2D(sBaseTexture, vTexCoord.xy) * vColor;
 }
 
 )";
 
-// ImGui_ImplOpenGL3_Init
-bool ImGui_ImplOpenGL3_Init()
+// ImGui_ImplOpenGL2_Init
+bool ImGui_ImplOpenGL2_Init()
 {
-	glcore3Init();
-	ImGui_ImplOpenGL3_CreateDeviceObjects();
+	glcore2Init();
+	ImGui_ImplOpenGL2_CreateDeviceObjects();
 	return true;
 }
 
-// ImGui_ImplOpenGL3_Shutdown
-void ImGui_ImplOpenGL3_Shutdown()
+// ImGui_ImplOpenGL2_Shutdown
+void ImGui_ImplOpenGL2_Shutdown()
 {
-	ImGui_ImplOpenGL3_DestroyDeviceObjects();
+	ImGui_ImplOpenGL2_DestroyDeviceObjects();
 }
 
-// ImGui_ImplOpenGL3_RenderDrawData
-void ImGui_ImplOpenGL3_RenderDrawData(ImDrawData* draw_data)
+// ImGui_ImplOpenGL2_RenderDrawData
+void ImGui_ImplOpenGL2_RenderDrawData(ImDrawData* draw_data)
 {
 	// Avoid rendering when minimized, scale coordinates for retina displays (screen coordinates != framebuffer coordinates)
 	ImGuiIO& io = ImGui::GetIO();
@@ -149,12 +144,6 @@ void ImGui_ImplOpenGL3_RenderDrawData(ImDrawData* draw_data)
 	glUseProgram(g_ShaderHandle);
 	glUniform1i(g_AttribLocationTex, 0);
 	glUniformMatrix4fv(g_AttribLocationProjMtx, 1, GL_FALSE, &ortho_projection[0][0]);
-	glBindSampler(0, 0); // We use combined texture/sampler state. Applications using GL 3.3 may set that otherwise.
-	// Recreate the VAO every time 
-	// (This is to easily allow multiple GL contexts. VAO are not shared among GL contexts, and we don't track creation/deletion of windows so we don't have an obvious key to use to cache them.)
-	GLuint vao_handle = 0;
-	glGenVertexArrays(1, &vao_handle);
-	glBindVertexArray(vao_handle);
 	glBindBuffer(GL_ARRAY_BUFFER, g_VboHandle);
 	glEnableVertexAttribArray(g_AttribLocationPosition);
 	glEnableVertexAttribArray(g_AttribLocationTexCoord);
@@ -200,14 +189,11 @@ void ImGui_ImplOpenGL3_RenderDrawData(ImDrawData* draw_data)
 			idx_buffer_offset += pcmd->ElemCount;
 		}
 	}
-	glDeleteVertexArrays(1, &vao_handle);
 	
 	// Restore modified GL state
 	glUseProgram(last_program);
 	glBindTexture(GL_TEXTURE_2D, last_texture);
-	glBindSampler(0, last_sampler);
 	glActiveTexture(last_active_texture);
-	glBindVertexArray(last_vertex_array);
 	glBindBuffer(GL_ARRAY_BUFFER, last_array_buffer);
 	glBlendEquationSeparate(last_blend_equation_rgb, last_blend_equation_alpha);
 	glBlendFuncSeparate(last_blend_src_rgb, last_blend_dst_rgb, last_blend_src_alpha, last_blend_dst_alpha);
@@ -220,8 +206,8 @@ void ImGui_ImplOpenGL3_RenderDrawData(ImDrawData* draw_data)
 	glScissor(last_scissor_box[0], last_scissor_box[1], (GLsizei)last_scissor_box[2], (GLsizei)last_scissor_box[3]);
 }
 
-// ImGui_ImplOpenGL3_CreateFontsTexture
-bool ImGui_ImplOpenGL3_CreateFontsTexture()
+// ImGui_ImplOpenGL2_CreateFontsTexture
+bool ImGui_ImplOpenGL2_CreateFontsTexture()
 {
 	// Build texture atlas
 	ImGuiIO& io = ImGui::GetIO();
@@ -248,8 +234,8 @@ bool ImGui_ImplOpenGL3_CreateFontsTexture()
 	return true;
 }
 
-// ImGui_ImplOpenGL3_DestroyFontsTexture
-void ImGui_ImplOpenGL3_DestroyFontsTexture()
+// ImGui_ImplOpenGL2_DestroyFontsTexture
+void ImGui_ImplOpenGL2_DestroyFontsTexture()
 {
 	if (g_FontTexture)
 	{
@@ -302,8 +288,8 @@ bool ProgramStatusCheck(GLuint program)
 	return true;
 }
 
-// ImGui_ImplOpenGL3_CreateDeviceObjects
-bool ImGui_ImplOpenGL3_CreateDeviceObjects()
+// ImGui_ImplOpenGL2_CreateDeviceObjects
+bool ImGui_ImplOpenGL2_CreateDeviceObjects()
 {
 	// Backup GL state
 	GLint last_texture, last_array_buffer, last_vertex_array;
@@ -338,18 +324,17 @@ bool ImGui_ImplOpenGL3_CreateDeviceObjects()
 	glGenBuffers(1, &g_VboHandle);
 	glGenBuffers(1, &g_ElementsHandle);
 	
-	ImGui_ImplOpenGL3_CreateFontsTexture();
+	ImGui_ImplOpenGL2_CreateFontsTexture();
 	
 	// Restore modified GL state
 	glBindTexture(GL_TEXTURE_2D, last_texture);
 	glBindBuffer(GL_ARRAY_BUFFER, last_array_buffer);
-	glBindVertexArray(last_vertex_array);
 	
 	return true;
 }
 
-// ImGui_ImplOpenGL3_DestroyDeviceObjects
-void ImGui_ImplOpenGL3_DestroyDeviceObjects()
+// ImGui_ImplOpenGL2_DestroyDeviceObjects
+void ImGui_ImplOpenGL2_DestroyDeviceObjects()
 {
 	if (g_VboHandle) glDeleteBuffers(1, &g_VboHandle);
 	if (g_ElementsHandle) glDeleteBuffers(1, &g_ElementsHandle);
@@ -366,5 +351,5 @@ void ImGui_ImplOpenGL3_DestroyDeviceObjects()
 	if (g_ShaderHandle) glDeleteProgram(g_ShaderHandle);
 	g_ShaderHandle = 0;
 	
-	ImGui_ImplOpenGL3_DestroyFontsTexture();
+	ImGui_ImplOpenGL2_DestroyFontsTexture();
 }

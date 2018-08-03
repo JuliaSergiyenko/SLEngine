@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="windows_app.cpp" />
-    <ClCompile Include="imgui_impl_win32.cpp" />
     <ClCompile Include="glcore2.cpp" />
+    <ClCompile Include="imgui_impl_glfw.cpp" />
     <ClCompile Include="imgui_impl_opengl2.cpp" />
+    <ClCompile Include="render_gl2_app.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="imgui_impl_win32.h" />
     <ClInclude Include="glcore2.hpp" />
+    <ClInclude Include="imgui_impl_glfw.h" />
     <ClInclude Include="imgui_impl_opengl2.h" />
   </ItemGroup>
 </Project>

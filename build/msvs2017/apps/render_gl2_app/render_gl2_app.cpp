@@ -8,7 +8,7 @@
 // ImGui
 #include <imgui.h>
 #include "imgui_impl_glfw.h"
-#include "imgui_impl_OpenGL4.h"
+#include "imgui_impl_OpenGL2.h"
 
 // scene (I WANT TO REFUCTOR THIS CODE)
 #include <SharedScene.hpp>
@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	io.IniFilename = nullptr;
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL4_Init();
+	ImGui_ImplOpenGL2_Init();
 	ImGui::StyleColorsDark();
 
 	// create SLRenderer
@@ -99,7 +99,7 @@ int main(int argc, char** argv)
 		// render!
 		ImGui::Render();
 		renderer->Render();
-		ImGui_ImplOpenGL4_RenderDrawData(ImGui::GetDrawData());
+		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 
 		// display and process events through callbacks
 		glfwSwapBuffers(window);
@@ -111,7 +111,7 @@ int main(int argc, char** argv)
 	DestroySLRenderer(renderer);
 
 	// ImGui clean-up
-	ImGui_ImplOpenGL4_Shutdown();
+	ImGui_ImplOpenGL2_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 

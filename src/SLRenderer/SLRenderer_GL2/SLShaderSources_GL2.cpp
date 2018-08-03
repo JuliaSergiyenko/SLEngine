@@ -7,6 +7,8 @@ namespace SLR_GL2
 	// vertex // shader with position, color and tex coords
 	const char* cVSShaderSource_PositionColorTexCoords = R"(
 
+#version 120
+
 // attributes
 attribute vec3 aPosition;
 attribute vec4 aColor;
@@ -36,6 +38,8 @@ void main()
 
 	// fragment // shader with position, color and tex coords
 	const char* cFSShaderSource_PositionColorTexCoords = R"(
+
+#version 120
 
 // inputs
 varying vec4 vColor;
