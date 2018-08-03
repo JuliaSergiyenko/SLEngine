@@ -17,6 +17,8 @@
 #define GLFW_KEY_A      0x41
 #define GLFW_KEY_S      0x53
 #define GLFW_KEY_D      0x44
+#define GLFW_KEY_E      0x45
+#define GLFW_KEY_Q      0x51
 #define GLFW_KEY_UP     VK_UP
 #define GLFW_KEY_DOWN   VK_DOWN
 #define GLFW_KEY_LEFT   VK_LEFT
@@ -170,6 +172,10 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	auto startTimeStamp = std::chrono::high_resolution_clock::now();
 	auto currTimeStamp = std::chrono::high_resolution_clock::now();
 
+	// camera angles
+	float cameraPitch = 0.0f;
+	float cameraYaw = -90.0f;
+
 	// main loop
 	MSG msg = { 0 };
 	while (msg.message != WM_QUIT)
@@ -196,14 +202,29 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			float frameRate = 1.0f / frameTime;
 
 			// camera move 
-			if (io.KeysDown[GLFW_KEY_W] || io.KeysDown[GLFW_KEY_UP]) eye += dir * frameTime;
-			if (io.KeysDown[GLFW_KEY_S] || io.KeysDown[GLFW_KEY_DOWN]) eye -= dir * frameTime;
-			if (io.KeysDown[GLFW_KEY_A] || io.KeysDown[GLFW_KEY_LEFT]) eye -= glm::normalize(glm::cross(dir, up)) * frameTime;
-			if (io.KeysDown[GLFW_KEY_D] || io.KeysDown[GLFW_KEY_RIGHT]) eye += glm::normalize(glm::cross(dir, up)) * frameTime;
+			if (io.KeysDown[GLFW_KEY_W] || io.KeysDown[GLFW_KEY_UP]) eye += dir * frameTime * 2.0f;
+			if (io.KeysDown[GLFW_KEY_S] || io.KeysDown[GLFW_KEY_DOWN]) eye -= dir * frameTime * 2.0f;
+			if (io.KeysDown[GLFW_KEY_A] || io.KeysDown[GLFW_KEY_LEFT]) eye -= glm::normalize(glm::cross(dir, up)) * frameTime * 2.0f;
+			if (io.KeysDown[GLFW_KEY_D] || io.KeysDown[GLFW_KEY_RIGHT]) eye += glm::normalize(glm::cross(dir, up)) * frameTime * 2.0f;
+			if (io.KeysDown[GLFW_KEY_E]) eye += up * frameTime * 2.0f;
+			if (io.KeysDown[GLFW_KEY_Q]) eye -= up * frameTime * 2.0f;
 			if (io.KeysDown[GLFW_KEY_ESCAPE]) PostQuitMessage(0);
 
+			// mouse rotate
+			if (io.MouseDown[0]) cameraYaw += io.MouseDelta.x / 3.0f;
+			if (io.MouseDown[0]) cameraPitch -= io.MouseDelta.y / 3.0f;
+			if (cameraPitch >= +90) cameraPitch = +89;
+			if (cameraPitch <= -90) cameraPitch = -89;
+
+			// set new camera direction
+			dir = glm::normalize(glm::vec3(
+				cos(glm::radians(cameraPitch)) * cos(glm::radians(cameraYaw)),
+				sin(glm::radians(cameraPitch)),
+				cos(glm::radians(cameraPitch)) * sin(glm::radians(cameraYaw))
+			));
+
 			// create matrices
-			glm::mat4 modelMat = glm::rotate(glm::mat4(1.0f), newTime, glm::vec3(1.0f, 0.5f, 0.1f));
+			glm::mat4 modelMat = glm::rotate(glm::mat4(1.0f), 0.0f, glm::vec3(1.0f, 0.5f, 0.1f));
 			glm::mat4 viewMat = glm::lookAt(eye, eye + dir, up);
 			glm::mat4 projMat = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);
 
