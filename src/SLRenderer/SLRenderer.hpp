@@ -290,7 +290,8 @@ public:
 	virtual const char* GetDescription() const = 0;
 };
 
-// global create SL Renderer
+// global create SLRenderer
 ISLRenderer* CreateSLRenderer();
-// global destroy SL Renderer
+
+// global destroy SLRenderer
 void DestroySLRenderer(ISLRenderer* renderer);

@@ -53,6 +53,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_gl2_app", "apps\rend
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "windows_app", "apps\windows_app\windows_app.vcxproj", "{E782F27A-F963-4507-9D63-85CDAE78BDD9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SLProgressor", "SLProgressor", "{F127F00C-14D7-4741-A751-B822929172D5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SLProgressor", "libs\SLProgressor\SLProgressor\SLProgressor.vcxitems", "{B78E608A-FD09-40AE-BB20-71F82ADE03E2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SLProgressor_OMP", "libs\SLProgressor\SLProgressor_OMP\SLProgressor_OMP.vcxproj", "{0C866EFE-2417-4FC1-8EB4-8C57D868E516}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SLProgressor_ST", "libs\SLProgressor\SLProgressor_ST\SLProgressor_ST.vcxproj", "{011619D4-3706-4432-83C6-9AB227E5AD5F}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		apps\SharedScene\SharedScene.vcxitems*{1f99c092-1ddf-43e9-a3ff-ad9d396c67db}*SharedItemsImports = 4
@@ -61,6 +69,7 @@ Global
 		apps\SharedScene\SharedScene.vcxitems*{50de4bfa-0167-4e2f-a870-2e34992ecd41}*SharedItemsImports = 4
 		apps\SharedScene\SharedScene.vcxitems*{574cb5d2-daf5-4de9-85ed-73391ce096bf}*SharedItemsImports = 4
 		apps\SharedScene\SharedScene.vcxitems*{ab8309d6-69c5-4986-9912-d3be7d1f3e14}*SharedItemsImports = 9
+		libs\SLProgressor\SLProgressor\SLProgressor.vcxitems*{b78e608a-fd09-40ae-bb20-71f82ade03e2}*SharedItemsImports = 9
 		libs\SLRenderer\SLRenderer\SLRenderer.vcxitems*{c7448e0b-d670-4feb-afce-4dad1da64b13}*SharedItemsImports = 9
 		apps\SharedScene\SharedScene.vcxitems*{e782f27a-f963-4507-9d63-85cdae78bdd9}*SharedItemsImports = 4
 	EndGlobalSection
@@ -223,6 +232,22 @@ Global
 		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x64.Build.0 = Release|x64
 		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x86.ActiveCfg = Release|Win32
 		{E782F27A-F963-4507-9D63-85CDAE78BDD9}.Release|x86.Build.0 = Release|Win32
+		{0C866EFE-2417-4FC1-8EB4-8C57D868E516}.Debug|x64.ActiveCfg = Debug|x64
+		{0C866EFE-2417-4FC1-8EB4-8C57D868E516}.Debug|x64.Build.0 = Debug|x64
+		{0C866EFE-2417-4FC1-8EB4-8C57D868E516}.Debug|x86.ActiveCfg = Debug|Win32
+		{0C866EFE-2417-4FC1-8EB4-8C57D868E516}.Debug|x86.Build.0 = Debug|Win32
+		{0C866EFE-2417-4FC1-8EB4-8C57D868E516}.Release|x64.ActiveCfg = Release|x64
+		{0C866EFE-2417-4FC1-8EB4-8C57D868E516}.Release|x64.Build.0 = Release|x64
+		{0C866EFE-2417-4FC1-8EB4-8C57D868E516}.Release|x86.ActiveCfg = Release|Win32
+		{0C866EFE-2417-4FC1-8EB4-8C57D868E516}.Release|x86.Build.0 = Release|Win32
+		{011619D4-3706-4432-83C6-9AB227E5AD5F}.Debug|x64.ActiveCfg = Debug|x64
+		{011619D4-3706-4432-83C6-9AB227E5AD5F}.Debug|x64.Build.0 = Debug|x64
+		{011619D4-3706-4432-83C6-9AB227E5AD5F}.Debug|x86.ActiveCfg = Debug|Win32
+		{011619D4-3706-4432-83C6-9AB227E5AD5F}.Debug|x86.Build.0 = Debug|Win32
+		{011619D4-3706-4432-83C6-9AB227E5AD5F}.Release|x64.ActiveCfg = Release|x64
+		{011619D4-3706-4432-83C6-9AB227E5AD5F}.Release|x64.Build.0 = Release|x64
+		{011619D4-3706-4432-83C6-9AB227E5AD5F}.Release|x86.ActiveCfg = Release|Win32
+		{011619D4-3706-4432-83C6-9AB227E5AD5F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -251,6 +276,10 @@ Global
 		{6D74A513-4E75-4182-ACAF-3BA58B63343E} = {89AA82B6-A4F2-4F55-AF46-B613E3841397}
 		{50DE4BFA-0167-4E2F-A870-2E34992ECD41} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
 		{E782F27A-F963-4507-9D63-85CDAE78BDD9} = {1C884535-E6C0-4443-9758-FCDAC22D9FFC}
+		{F127F00C-14D7-4741-A751-B822929172D5} = {89AA82B6-A4F2-4F55-AF46-B613E3841397}
+		{B78E608A-FD09-40AE-BB20-71F82ADE03E2} = {F127F00C-14D7-4741-A751-B822929172D5}
+		{0C866EFE-2417-4FC1-8EB4-8C57D868E516} = {F127F00C-14D7-4741-A751-B822929172D5}
+		{011619D4-3706-4432-83C6-9AB227E5AD5F} = {F127F00C-14D7-4741-A751-B822929172D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88118672-05E8-4C89-92C8-E3CB6E9192DC}
