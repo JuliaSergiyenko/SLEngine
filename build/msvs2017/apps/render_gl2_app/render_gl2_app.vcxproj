@@ -167,13 +167,13 @@
     <ClInclude Include="imgui_impl_opengl2.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\glfw\glfw.vcxproj">
+    <ProjectReference Include="..\..\deps\glfw\glfw.vcxproj">
       <Project>{cde7fc66-a90e-4475-9840-2d1b0f412b40}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\libs\imgui\imgui.vcxproj">
+    <ProjectReference Include="..\..\deps\imgui\imgui.vcxproj">
       <Project>{6d74a513-4e75-4182-acaf-3ba58b63343e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.vcxproj">
+    <ProjectReference Include="..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.vcxproj">
       <Project>{f0d7c786-a9bb-46d9-a3c4-1fa99aa8a169}</Project>
     </ProjectReference>
   </ItemGroup>

@@ -177,19 +177,19 @@
     <ClCompile Include="render_gles3_app.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\glfw\glfw.vcxproj">
-      <Project>{cde7fc66-a90e-4475-9840-2d1b0f412b40}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\imgui\imgui.vcxproj">
-      <Project>{6d74a513-4e75-4182-acaf-3ba58b63343e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.vcxproj">
-      <Project>{d970d931-879b-4d76-a6b7-084c6b0394f6}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="imgui_impl_glfw.h" />
     <ClInclude Include="imgui_impl_opengles3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\deps\glfw\glfw.vcxproj">
+      <Project>{cde7fc66-a90e-4475-9840-2d1b0f412b40}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\deps\imgui\imgui.vcxproj">
+      <Project>{6d74a513-4e75-4182-acaf-3ba58b63343e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\SLRenderer\SLRenderer_GLES3\SLRenderer_GLES3.vcxproj">
+      <Project>{d970d931-879b-4d76-a6b7-084c6b0394f6}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

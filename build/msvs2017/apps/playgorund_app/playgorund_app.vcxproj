@@ -154,8 +154,8 @@
     <ClCompile Include="playgorund_app.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\SLProgressor\SLProgressor_ST\SLProgressor_ST.vcxproj">
-      <Project>{011619d4-3706-4432-83c6-9ab227e5ad5f}</Project>
+    <ProjectReference Include="..\..\src\SLProgressor\SLProgressor_OMP\SLProgressor_OMP.vcxproj">
+      <Project>{0c866efe-2417-4fc1-8eb4-8c57d868e516}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
