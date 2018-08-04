@@ -154,13 +154,13 @@
     <ClCompile Include="bullet3_test_app.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\bullet3\BulletCollision\BulletCollision.vcxproj">
+    <ProjectReference Include="..\..\deps\bullet3\BulletCollision\BulletCollision.vcxproj">
       <Project>{58f04703-6759-442c-81de-b237e5a4ea93}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\libs\bullet3\BulletDynamics\BulletDynamics.vcxproj">
+    <ProjectReference Include="..\..\deps\bullet3\BulletDynamics\BulletDynamics.vcxproj">
       <Project>{721206e3-0570-4968-ba5f-7c1786091e22}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\libs\bullet3\LinearMath\LinearMath.vcxproj">
+    <ProjectReference Include="..\..\deps\bullet3\LinearMath\LinearMath.vcxproj">
       <Project>{e6ffa0da-a226-433e-a83c-fad573d01995}</Project>
     </ProjectReference>
   </ItemGroup>

@@ -162,7 +162,7 @@
     <ClCompile Include="glfw_test_app.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\glfw\glfw.vcxproj">
+    <ProjectReference Include="..\..\deps\glfw\glfw.vcxproj">
       <Project>{cde7fc66-a90e-4475-9840-2d1b0f412b40}</Project>
     </ProjectReference>
   </ItemGroup>
