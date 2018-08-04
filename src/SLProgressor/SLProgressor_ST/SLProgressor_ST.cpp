@@ -86,7 +86,7 @@ namespace SLP_ST
 	// GetDescription
 	const char* SLProgressor_ST::GetDescription()
 	{
-		return "Multi-threaded progressor by OpenMP";
+		return "Simple single-threaded progressor";
 	}
 }
 
