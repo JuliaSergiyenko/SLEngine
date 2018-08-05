@@ -288,6 +288,7 @@ public:
 
 	// get description
 	virtual const char* GetDescription() const = 0;
+	virtual const char* GetStatString() = 0;
 };
 
 // global create SLRenderer

@@ -478,6 +478,21 @@ namespace SLR_GLES2 {
 	{
 		return mDescription.c_str();
 	}
+
+	// GetStatString
+	const char* SLRenderer_GLES2::GetStatString()
+	{
+		sprintf_s(mStatString, "T:%i,B:%i,IB:%i,Mesh:%i,Mod:%i,C:%i,RS:%i",
+			mTexture2Ds.size(),
+			mBuffers.size(),
+			mIndexBuffers.size(),
+			mMeshes.size(),
+			mModels.size(),
+			mCameras.size(),
+			mRenderScenes.size()
+		);
+		return mStatString;
+	}
 }
 
 // global create SL Renderer

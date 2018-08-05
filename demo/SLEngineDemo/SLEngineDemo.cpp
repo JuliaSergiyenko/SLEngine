@@ -135,6 +135,7 @@ void SLEngineDemo::Update()
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 	ImGui::Text("mCameraEye: (%.3f,%.3f,%.3f)", mCameraEye.x, mCameraEye.y, mCameraEye.z);
 	ImGui::Text("mCameraDir: (%.3f,%.3f,%.3f)", mCameraDir.x, mCameraDir.y, mCameraDir.z);
+	ImGui::Text(renderer->GetStatString());
 	ImGui::End();
 	ImGui::EndFrame();
 

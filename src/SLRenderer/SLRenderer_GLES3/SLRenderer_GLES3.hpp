@@ -28,6 +28,9 @@ namespace SLR_GLES3 {
 		std::string mGLVersion;
 		std::string mGLSLVersion;
 		std::string mDescription;
+
+		// stat string
+		char mStatString[1024];
 	private:
 		// helper function
 		void CreateDescription();
@@ -82,5 +85,6 @@ namespace SLR_GLES3 {
 
 		// get description
 		virtual const char* GetDescription() const;
+		virtual const char* GetStatString();
 	};
 }

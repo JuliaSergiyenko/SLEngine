@@ -417,6 +417,21 @@ namespace SLR_GL4 {
 	{
 		return mDescription.c_str();
 	}
+
+	// GetStatString
+	const char* SLRenderer_GL4::GetStatString()
+	{
+		sprintf_s(mStatString, "T:%i,B:%i,IB:%i,Mesh:%i,Mod:%i,C:%i,RS:%i",
+			mTexture2Ds.size(),
+			mBuffers.size(),
+			mIndexBuffers.size(),
+			mMeshes.size(),
+			mModels.size(),
+			mCameras.size(),
+			mRenderScenes.size()
+		);
+		return mStatString;
+	}
 }
 
 // global create SL Renderer
