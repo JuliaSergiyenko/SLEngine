@@ -95,7 +95,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\demo\SLEngineDemo;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\demo\SLEngineDemo;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -115,7 +115,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\demo\SLEngineDemo;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\demo\SLEngineDemo;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

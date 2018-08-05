@@ -95,7 +95,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\demo\SLEngineDemo;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\demo\SLEngineDemo;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -110,7 +110,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\demo\SLEngineDemo;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\demo\SLEngineDemo;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
