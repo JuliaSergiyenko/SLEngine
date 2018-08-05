@@ -284,7 +284,7 @@ public:
 	virtual void Render() = 0;
 
 	// delete resource
-	virtual void DeleteResources() = 0;
+	virtual void FreeResources() = 0;
 
 	// get description
 	virtual const char* GetDescription() const = 0;

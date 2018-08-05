@@ -78,7 +78,7 @@ namespace SLR_GL4 {
 		virtual void Render();
 
 		// delete resource
-		virtual void DeleteResources();
+		virtual void FreeResources();
 
 		// get description
 		virtual const char* GetDescription() const;

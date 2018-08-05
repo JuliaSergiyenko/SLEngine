@@ -20,9 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\SLEngine.hpp" />
+    <ClInclude Include="..\..\..\..\src\SLStaticMeshes.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\SLEngine.cpp" />
+    <ClCompile Include="..\..\..\..\src\SLStaticMeshes.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

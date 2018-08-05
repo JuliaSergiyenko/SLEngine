@@ -1,7 +1,6 @@
 #include <Windows.h>
 #include <GL/GL.h>
 #include <GL/wglext.h>
-#include <chrono>
 #include "glcore2.hpp"
 
 // ImGui
@@ -9,25 +8,16 @@
 #include "imgui_impl_win32.h"
 #include "imgui_impl_opengl2.h"
 
-// SharedScene
-#include "SharedScene.hpp"
-
-// define buttons codes
-#define GLFW_KEY_W      0x57
-#define GLFW_KEY_A      0x41
-#define GLFW_KEY_S      0x53
-#define GLFW_KEY_D      0x44
-#define GLFW_KEY_E      0x45
-#define GLFW_KEY_Q      0x51
-#define GLFW_KEY_UP     VK_UP
-#define GLFW_KEY_DOWN   VK_DOWN
-#define GLFW_KEY_LEFT   VK_LEFT
-#define GLFW_KEY_RIGHT  VK_RIGHT
-#define GLFW_KEY_ESCAPE VK_ESCAPE
+// engine demo
+#include <SLEngineDemo.hpp>
+#include <direct.h>
 
 // CreateWinGLContext
 HGLRC CreateWinGLContext(HDC hDC, int majorVersion, int minorVersion)
 {
+	// set working directory
+	_chdir("../../../..");
+
 	// resulting context
 	HGLRC context = NULL;
 
@@ -157,24 +147,9 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	ImGui_ImplOpenGL2_Init();
 	ImGui::StyleColorsDark();
 
-	// create scene
-	ISLRenderer* renderer = CreateSLRenderer();
-	ISLModel* model = nullptr;
-	ISLCamera* camera = nullptr;
-	CreateScene(renderer, &model, &camera);
-
-	// camera position
-	glm::vec3 eye = glm::vec3(0.0f, 0.0f, 3.0f);
-	glm::vec3 dir = glm::vec3(0.0f, 0.0f, -1.0f);
-	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-
-	// get start time
-	auto startTimeStamp = std::chrono::high_resolution_clock::now();
-	auto currTimeStamp = std::chrono::high_resolution_clock::now();
-
-	// camera angles
-	float cameraPitch = 0.0f;
-	float cameraYaw = -90.0f;
+	// cretae engine demo
+	SLEngineDemo* engineDemo = new SLEngineDemo();
+	engineDemo->Init();
 
 	// main loop
 	MSG msg = { 0 };
@@ -188,68 +163,16 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		} 
 		else
 		{
-			// get client window rect
-			RECT rect = { 0 };
-			GetWindowRect(hWnd, &rect);
-			int width = rect.right - rect.left;
-			int height = rect.bottom - rect.top;
-
-			// get current time
-			auto prevTimeStamp = currTimeStamp;
-			currTimeStamp = std::chrono::high_resolution_clock::now();
-			float newTime = std::chrono::duration_cast<std::chrono::microseconds>(currTimeStamp - startTimeStamp).count() * std::pow(10.0f, -6.0f);
-			float frameTime = std::chrono::duration_cast<std::chrono::microseconds>(currTimeStamp - prevTimeStamp).count() * std::pow(10.0f, -6.0f);
-			float frameRate = 1.0f / frameTime;
-
-			// camera move 
-			if (io.KeysDown[GLFW_KEY_W] || io.KeysDown[GLFW_KEY_UP]) eye += dir * frameTime * 2.0f;
-			if (io.KeysDown[GLFW_KEY_S] || io.KeysDown[GLFW_KEY_DOWN]) eye -= dir * frameTime * 2.0f;
-			if (io.KeysDown[GLFW_KEY_A] || io.KeysDown[GLFW_KEY_LEFT]) eye -= glm::normalize(glm::cross(dir, up)) * frameTime * 2.0f;
-			if (io.KeysDown[GLFW_KEY_D] || io.KeysDown[GLFW_KEY_RIGHT]) eye += glm::normalize(glm::cross(dir, up)) * frameTime * 2.0f;
-			if (io.KeysDown[GLFW_KEY_E]) eye += up * frameTime * 2.0f;
-			if (io.KeysDown[GLFW_KEY_Q]) eye -= up * frameTime * 2.0f;
-			if (io.KeysDown[GLFW_KEY_ESCAPE]) PostQuitMessage(0);
-
-			// mouse rotate
-			if (io.MouseDown[0]) cameraYaw += io.MouseDelta.x / 3.0f;
-			if (io.MouseDown[0]) cameraPitch -= io.MouseDelta.y / 3.0f;
-			if (cameraPitch >= +90) cameraPitch = +89;
-			if (cameraPitch <= -90) cameraPitch = -89;
-
-			// set new camera direction
-			dir = glm::normalize(glm::vec3(
-				cos(glm::radians(cameraPitch)) * cos(glm::radians(cameraYaw)),
-				sin(glm::radians(cameraPitch)),
-				cos(glm::radians(cameraPitch)) * sin(glm::radians(cameraYaw))
-			));
-
-			// create matrices
-			glm::mat4 modelMat = glm::rotate(glm::mat4(1.0f), 0.0f, glm::vec3(1.0f, 0.5f, 0.1f));
-			glm::mat4 viewMat = glm::lookAt(eye, eye + dir, up);
-			glm::mat4 projMat = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);
-
-			// set camera matrices
-			model->SetTransform(glm::value_ptr(modelMat));
-			camera->SetTransform(glm::value_ptr(viewMat));
-			camera->SetProjection(glm::value_ptr(projMat));
-			camera->SetViewport(width, height);
-
-			// Start the Dear ImGui frame
+			// ImGui new frame
 			ImGui_ImplWin32_NewFrame();
-			ImGui::NewFrame();
-			ImGui::SetNextWindowPos(ImVec2(0, 0));
-			ImGui::Begin("Renderer info");
-			ImGui::Text(renderer->GetDescription());
-			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / frameRate, frameRate);
-			ImGui::Text("Application run time %.3f s", newTime);
-			ImGui::Text("Eye: (%.3f,%.3f,%.3f)", eye.x, eye.y, eye.z);
-			ImGui::Text("Dir: (%.3f,%.3f,%.3f)", dir.x, dir.y, dir.z);
-			ImGui::End();
-			ImGui::EndFrame();
 
-			// render
-			ImGui::Render();
-			renderer->Render();
+			// update engine
+			engineDemo->Update();
+
+			// check should close
+			if (engineDemo->GetShouldClose())
+				PostQuitMessage(0);
+
 			ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 
 			// swap buffers
@@ -257,9 +180,9 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		}
 	}
 
-	// destroy SLRenderer
-	DeleteRenderScene(renderer);
-	DestroySLRenderer(renderer);
+	// delete engine
+	engineDemo->ShutDown();
+	delete engineDemo;
 
 	// ImGui shutdown
 	ImGui_ImplOpenGL2_Shutdown();

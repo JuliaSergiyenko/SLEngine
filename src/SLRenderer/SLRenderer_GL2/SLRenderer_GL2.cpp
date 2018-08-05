@@ -449,8 +449,8 @@ namespace SLR_GL2 {
 		}
 	}
 
-	// DeleteResources
-	void SLRenderer_GL2::DeleteResources()
+	// FreeResources
+	void SLRenderer_GL2::FreeResources()
 	{
 		// delete shaders
 		mShaderManager.DeleteShaders();

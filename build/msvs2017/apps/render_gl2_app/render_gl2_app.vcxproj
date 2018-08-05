@@ -55,9 +55,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="Shared">
-    <Import Project="..\SharedScene\SharedScene.vcxitems" Label="Shared" />
-  </ImportGroup>
+  <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -97,7 +95,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\demo\SLEngineDemo;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -111,7 +109,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SharedScene;..\..\..\..\src;..\..\..\..\demo\SLEngineDemo;..\..\..\..\deps\glm;..\..\..\..\deps\khronos;..\..\..\..\deps\glfw\include;..\..\..\..\deps\stb;..\..\..\..\deps\imgui;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -167,11 +165,20 @@
     <ClInclude Include="imgui_impl_opengl2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\demo\SLEngineDemo\SLEngineDemo.vcxproj">
+      <Project>{278480d6-6d18-4636-8ff6-b084748815c4}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\deps\glfw\glfw.vcxproj">
       <Project>{cde7fc66-a90e-4475-9840-2d1b0f412b40}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\deps\imgui\imgui.vcxproj">
       <Project>{6d74a513-4e75-4182-acaf-3ba58b63343e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\SLEngine\SLEngine.vcxproj">
+      <Project>{cc71e3ff-9a56-46b1-a1d3-b4b0c0cf3b52}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\SLProgressor\SLProgressor_OMP\SLProgressor_OMP.vcxproj">
+      <Project>{0c866efe-2417-4fc1-8eb4-8c57d868e516}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\src\SLRenderer\SLRenderer_GL2\SLRenderer_GL2.vcxproj">
       <Project>{f0d7c786-a9bb-46d9-a3c4-1fa99aa8a169}</Project>

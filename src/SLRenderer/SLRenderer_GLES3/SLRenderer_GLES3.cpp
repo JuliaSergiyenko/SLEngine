@@ -386,8 +386,8 @@ namespace SLR_GLES3 {
 		}
 	}
 
-	// DeleteResources
-	void SLRenderer_GLES3::DeleteResources()
+	// FreeResources
+	void SLRenderer_GLES3::FreeResources()
 	{
 		// delete shaders
 		mShaderManager.DeleteShaders();

@@ -27,6 +27,7 @@ static GLuint g_VboHandle = 0, g_ElementsHandle = 0;
 // vertex shader
 static const GLchar* cVSShaderSource = R"(
 
+#version 100
 precision mediump float;
 
 // attributes
@@ -57,6 +58,7 @@ void main()
 // fragment shader
 static const GLchar* cFSShaderSource = R"(
 
+#version 100
 precision mediump float;
 
 // inputs

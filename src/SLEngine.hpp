@@ -1,5 +1,6 @@
 #pragma once
 
+#include "SLStaticMeshes.hpp"
 #include "SLRenderer/SLRenderer.hpp"
 #include "SLProgressor/SLProgressor.hpp"
 
@@ -14,4 +15,8 @@ public:
 	// constructor and destructor
 	SLEngine();
 	~SLEngine();
+
+	// engine getters
+	ISLRenderer* GetRenderer();
+	ISLProgressor* GetProgressor();
 };

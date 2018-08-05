@@ -448,8 +448,8 @@ namespace SLR_GLES2 {
 		}
 	}
 
-	// DeleteResources
-	void SLRenderer_GLES2::DeleteResources()
+	// FreeResources
+	void SLRenderer_GLES2::FreeResources()
 	{
 		// delete shaders
 		mShaderManager.DeleteShaders();

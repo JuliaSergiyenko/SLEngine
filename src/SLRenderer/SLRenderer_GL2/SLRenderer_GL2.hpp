@@ -78,7 +78,7 @@ namespace SLR_GL2 {
 		virtual void Render();
 
 		// delete resource
-		virtual void DeleteResources();
+		virtual void FreeResources();
 
 		// get description
 		virtual const char* GetDescription() const;

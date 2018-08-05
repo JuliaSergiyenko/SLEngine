@@ -387,8 +387,8 @@ namespace SLR_GL3 {
 		}
 	}
 
-	// DeleteResources
-	void SLRenderer_GL3::DeleteResources()
+	// FreeResources
+	void SLRenderer_GL3::FreeResources()
 	{
 		// delete shaders
 		mShaderManager.DeleteShaders();
