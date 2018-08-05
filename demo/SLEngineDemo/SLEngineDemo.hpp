@@ -9,12 +9,11 @@
 // SLEngineDemo
 class SLEngineDemo
 {
-public:
+private:
 	// engine
 	SLEngine * mEngine = nullptr;
 
 	// render onjects
-	ISLModel* mModel = nullptr;
 	ISLCamera* mCamera = nullptr;
 
 	// camera position
@@ -28,6 +27,10 @@ public:
 
 	// should close
 	bool mShouldClose = false;
+
+	// InitDemo
+	void InitDemo();
+	void InitSponza();
 public:
 	// constructor and destructor
 	SLEngineDemo();

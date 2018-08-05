@@ -296,6 +296,7 @@ namespace SLR_GL2 {
 		// clear buffer
 		GL_CHECK(glClearColor(1.0f / 255.0f, 36.0f / 255, 86.0f / 255.0f, 1.0f));
 		GL_CHECK(glClearDepth(1.0));
+		GL_CHECK(glEnable(GL_DEPTH_TEST));
 		GL_CHECK(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
 		// iterate by all meshes
@@ -483,7 +484,7 @@ namespace SLR_GL2 {
 	// GetStatString
 	const char* SLRenderer_GL2::GetStatString()
 	{
-		sprintf_s(mStatString, "T:%i,B:%i,IB:%i,Mesh:%i,Mod:%i,C:%i,RS:%i",
+		sprintf_s(mStatString, sizeof(mStatString), "T:%zd,B:%zd,IB:%zd,Mesh:%zd,Mod:%zd,C:%zd,RS:%zd",
 			mTexture2Ds.size(),
 			mBuffers.size(),
 			mIndexBuffers.size(),

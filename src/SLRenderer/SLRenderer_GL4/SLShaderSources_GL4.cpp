@@ -54,7 +54,8 @@ layout (location = 0) out vec4 fragColor;
 // main
 void main()
 {
-	fragColor = texture2D(sBaseTexture, vTexCoord.xy) * vColor;
+	//fragColor = texture2D(sBaseTexture, vTexCoord.xy) * vColor;
+	fragColor = vec4(vTexCoord.xy, 1.0, 1.0);
 }
 
 )";

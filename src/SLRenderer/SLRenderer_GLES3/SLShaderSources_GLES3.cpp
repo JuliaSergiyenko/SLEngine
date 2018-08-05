@@ -56,7 +56,8 @@ out vec4 fragColor;
 // main
 void main()
 {
-	fragColor = texture(sBaseTexture, vTexCoord.xy) * vColor;
+	//fragColor = texture(sBaseTexture, vTexCoord.xy) * vColor;
+	fragColor = vec4(vTexCoord.xy, 1.0, 1.0);
 }
 
 )";
