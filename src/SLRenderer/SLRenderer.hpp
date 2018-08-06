@@ -90,7 +90,7 @@ public:
 	virtual ISLRenderer* GetRenderer() const = 0;
 
 	// update data
-	virtual void UpdateData(float* data, uint32_t size) = 0;
+	virtual void UpdateData(void* data, uint32_t size) = 0;
 
 	// get buffer size
 	virtual uint32_t GetSize() const = 0;

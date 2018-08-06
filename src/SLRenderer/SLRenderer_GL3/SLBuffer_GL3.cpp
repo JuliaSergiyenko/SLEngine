@@ -24,7 +24,7 @@ namespace SLR_GL3
 	}
 
 	// UpdateData
-	void SLBuffer_GL3::UpdateData(float* data, uint32_t size)
+	void SLBuffer_GL3::UpdateData(void* data, uint32_t size)
 	{
 		// store settings
 		mSize = size;

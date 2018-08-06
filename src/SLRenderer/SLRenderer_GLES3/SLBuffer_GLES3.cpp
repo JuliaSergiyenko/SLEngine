@@ -24,7 +24,7 @@ namespace SLR_GLES3
 	}
 
 	// UpdateData
-	void SLBuffer_GLES3::UpdateData(float* data, uint32_t size)
+	void SLBuffer_GLES3::UpdateData(void* data, uint32_t size)
 	{
 		// store settings
 		mSize = size;

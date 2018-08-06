@@ -24,7 +24,7 @@ namespace SLR_GL3 {
 		virtual ISLRenderer* GetRenderer() const;
 
 		// update data
-		virtual void UpdateData(float* data, uint32_t size);
+		virtual void UpdateData(void* data, uint32_t size);
 
 		// get buffer size
 		virtual uint32_t GetSize() const;
