@@ -33,7 +33,7 @@ namespace SLR_GL2 {
 	void SLShaderManager_GL2::CreateShaders()
 	{
 		// create all shaders
-		mShader_PositionColor.CreateShader(cVSShaderSource_PositionColorTexCoords, cFSShaderSource_PositionColorTexCoords);
+		mShader_PositionColor.CreateShader(cVSShaderSource_PositionColorNormalTexCoords, cFSShaderSource_PositionColorNormalTexCoords);
 	}
 
 	void SLShaderManager_GL2::DeleteShaders()

@@ -4,7 +4,7 @@
 namespace SLR_GLES3
 {
 	// vertex // shader with position, color and tex coords
-	extern const char* cVSShaderSource_PositionColorTexCoords;
+	extern const char* cVSShaderSource_PositionColorNormalTexCoords;
 	// fragment // shader with position, color and tex coords
-	extern const char* cFSShaderSource_PositionColorTexCoords;
+	extern const char* cFSShaderSource_PositionColorNormalTexCoords;
 }

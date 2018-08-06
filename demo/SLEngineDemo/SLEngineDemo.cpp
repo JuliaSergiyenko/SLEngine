@@ -109,53 +109,82 @@ void SLEngineDemo::InitSponza()
 	std::vector<tinyobj::shape_t> shapes;
 	std::vector<tinyobj::material_t> materials;
 	std::string err;
-	if (tinyobj::LoadObj(&attribs, &shapes, &materials, &err, "data/sponza/sponza.obj", "data/sponza/", true))
-		std::cout << err << std::endl;
+	tinyobj::LoadObj(&attribs, &shapes, &materials, &err, "data/A380/A380.obj", "data/A380/", true);
+	std::cout << err << std::endl;
 
 	// allocate buffers
-	std::vector<float> vecVertexBuffer(attribs.vertices.size());
-	std::vector<float> vecNormaldBuffer(attribs.normals.size());;
-	std::vector<float> vecTexCoordBuffer(attribs.texcoords.size());
-	for (tinyobj::shape_t& shape : shapes)
-	//for (int i = 0; i < shapes.size(); i++)
-	//for (int i = 0; i < 50; i++)
-	{	
-		//tinyobj::shape_t& shape = shapes[i];
-		std::cout << shape.name << std::endl;
+	std::vector<float> vecVertexBuffer = {};
+	std::vector<float> vecNormaldBuffer = {};
+	std::vector<float> vecTexCoordBuffer = {};
+	for (int i = 0; i < shapes.size(); i++)
+	//for (int i = 0; i < 1; i++)
+	{
+		tinyobj::shape_t& shape = shapes[i];
+
+		// create mesh
+		ISLMesh* mesh = renderer->CreateMesh();
+		mesh->SetPrimitiveType(SL_PRIMITIVE_TYPE_TRIANGLE);
+		mesh->SetPrimitiveCount((uint32_t)shape.mesh.num_face_vertices.size());
+		//materials[0].name
 
 		// create buffers
 		for (tinyobj::index_t& index : shape.mesh.indices)
 		{
-			vecVertexBuffer.push_back(attribs.vertices[3 * index.vertex_index + 0]);
-			vecVertexBuffer.push_back(attribs.vertices[3 * index.vertex_index + 1]);
-			vecVertexBuffer.push_back(attribs.vertices[3 * index.vertex_index + 2]);
-			vecNormaldBuffer.push_back(attribs.normals[3 * index.normal_index + 0]);
-			vecNormaldBuffer.push_back(attribs.normals[3 * index.normal_index + 1]);
-			vecNormaldBuffer.push_back(attribs.normals[3 * index.normal_index + 2]);
-			vecTexCoordBuffer.push_back(attribs.texcoords[2 * index.texcoord_index + 0]);
-			vecTexCoordBuffer.push_back(attribs.texcoords[2 * index.texcoord_index + 1]);
+			// if vertex exists
+			if (index.vertex_index >= 0)
+			{
+				vecVertexBuffer.push_back(attribs.vertices[3 * index.vertex_index + 0]);
+				vecVertexBuffer.push_back(attribs.vertices[3 * index.vertex_index + 1]);
+				vecVertexBuffer.push_back(attribs.vertices[3 * index.vertex_index + 2]);
+			}
+
+			// if normal exists
+			if (index.normal_index >= 0)
+			{
+				vecNormaldBuffer.push_back(attribs.normals[3 * index.normal_index + 0]);
+				vecNormaldBuffer.push_back(attribs.normals[3 * index.normal_index + 1]);
+				vecNormaldBuffer.push_back(attribs.normals[3 * index.normal_index + 2]);
+			}
+
+			// if texCoords exists
+			if (index.texcoord_index >= 0)
+			{
+				vecTexCoordBuffer.push_back(attribs.texcoords[2 * index.texcoord_index + 0]);
+				vecTexCoordBuffer.push_back(attribs.texcoords[2 * index.texcoord_index + 1]);
+			}
 		}
-		// create render buffers
-		ISLBuffer* bufferVertex = renderer->CreateBuffer();
-		bufferVertex->UpdateData(vecVertexBuffer.data(), (uint32_t)vecVertexBuffer.size() * sizeof(float));
-		ISLBuffer* bufferNormal = renderer->CreateBuffer();
-		bufferNormal->UpdateData(vecNormaldBuffer.data(), (uint32_t)vecNormaldBuffer.size() * sizeof(float));
-		ISLBuffer* bufferTexCoord = renderer->CreateBuffer();
-		bufferTexCoord->UpdateData(vecTexCoordBuffer.data(), (uint32_t)vecTexCoordBuffer.size() * sizeof(float));
+
+		// if Vertex buffer not empty
+		if (!vecVertexBuffer.empty())
+		{
+			ISLBuffer* bufferVertex = renderer->CreateBuffer();
+			bufferVertex->UpdateData(vecVertexBuffer.data(), (uint32_t)vecVertexBuffer.size() * sizeof(float));
+			mesh->SetPositionBuffer(bufferVertex);
+		}
+
+		// if Normal buffer not empty
+		if (!vecNormaldBuffer.empty())
+		{
+			ISLBuffer* bufferNormal = renderer->CreateBuffer();
+			bufferNormal->UpdateData(vecNormaldBuffer.data(), (uint32_t)vecNormaldBuffer.size() * sizeof(float));
+			mesh->SetNormalBuffer(bufferNormal);
+		}
+
+		// if TexCoords buffer not empty
+		if (!vecTexCoordBuffer.empty()) 
+		{
+			ISLBuffer* bufferTexCoord = renderer->CreateBuffer();
+			bufferTexCoord->UpdateData(vecTexCoordBuffer.data(), (uint32_t)vecTexCoordBuffer.size() * sizeof(float));
+			mesh->SetTexCoordBuffer(bufferTexCoord);
+		}
+
+		std::cout << shape.name << std::endl;
 
 		// clear vector buffers
-		vecVertexBuffer.clear();
-		vecNormaldBuffer.clear();
-		vecTexCoordBuffer.clear();
-
-		// create mesh
-		ISLMesh* mesh = renderer->CreateMesh();
-		mesh->SetPositionBuffer(bufferVertex);
-		mesh->SetNormalBuffer(bufferNormal);
-		mesh->SetTexCoordBuffer(bufferTexCoord);
-		mesh->SetPrimitiveType(SL_PRIMITIVE_TYPE_TRIANGLE);
-		mesh->SetPrimitiveCount((uint32_t)shape.mesh.num_face_vertices.size());
-
+		vecVertexBuffer = {};
+		vecNormaldBuffer = {};
+		vecTexCoordBuffer = {};
+		
 		// create model
 		ISLModel* model = renderer->CreateModel();
 		model->AddMesh(mesh);
@@ -182,14 +211,13 @@ void SLEngineDemo::Update()
 	ISLProgressor* progressor = mEngine->GetProgressor();
 	ImGuiIO& io = ImGui::GetIO();
 
-	// camera move 
-	float speed = 200.0f;
-	if (io.KeysDown[GLFW_KEY_W] || io.KeysDown[GLFW_KEY_UP]) mCameraEye += mCameraDir / io.Framerate * speed;
-	if (io.KeysDown[GLFW_KEY_S] || io.KeysDown[GLFW_KEY_DOWN]) mCameraEye -= mCameraDir / io.Framerate * speed;
-	if (io.KeysDown[GLFW_KEY_A] || io.KeysDown[GLFW_KEY_LEFT]) mCameraEye -= glm::normalize(glm::cross(mCameraDir, mCameraUp)) / io.Framerate * speed;
-	if (io.KeysDown[GLFW_KEY_D] || io.KeysDown[GLFW_KEY_RIGHT]) mCameraEye += glm::normalize(glm::cross(mCameraDir, mCameraUp)) / io.Framerate * speed;
-	if (io.KeysDown[GLFW_KEY_E]) mCameraEye += mCameraUp / io.Framerate * 200.0f;
-	if (io.KeysDown[GLFW_KEY_Q]) mCameraEye -= mCameraUp / io.Framerate * 200.0f;
+	// camera move
+	if (io.KeysDown[GLFW_KEY_W] || io.KeysDown[GLFW_KEY_UP]) mCameraEye += (mCameraDir * mCameraSpeed / io.Framerate);
+	if (io.KeysDown[GLFW_KEY_S] || io.KeysDown[GLFW_KEY_DOWN]) mCameraEye -= (mCameraDir * mCameraSpeed / io.Framerate);
+	if (io.KeysDown[GLFW_KEY_A] || io.KeysDown[GLFW_KEY_LEFT]) mCameraEye -= (glm::normalize(glm::cross(mCameraDir, mCameraUp)) * mCameraSpeed / io.Framerate);
+	if (io.KeysDown[GLFW_KEY_D] || io.KeysDown[GLFW_KEY_RIGHT]) mCameraEye += (glm::normalize(glm::cross(mCameraDir, mCameraUp)) * mCameraSpeed / io.Framerate);
+	if (io.KeysDown[GLFW_KEY_E]) mCameraEye += (mCameraUp * mCameraSpeed / io.Framerate);
+	if (io.KeysDown[GLFW_KEY_Q]) mCameraEye -= (mCameraUp * mCameraSpeed / io.Framerate);
 	if (io.KeysDown[GLFW_KEY_ESCAPE]) mShouldClose = true;
 
 	// mouse rotate
@@ -228,6 +256,7 @@ void SLEngineDemo::Update()
 	ImGui::Text("mCameraEye: (%.3f,%.3f,%.3f)", mCameraEye.x, mCameraEye.y, mCameraEye.z);
 	ImGui::Text("mCameraDir: (%.3f,%.3f,%.3f)", mCameraDir.x, mCameraDir.y, mCameraDir.z);
 	ImGui::Text(renderer->GetStatString());
+	ImGui::DragFloat("Camera speed", &mCameraSpeed, 10.0f, 10.0f, 1000.0f);
 	ImGui::End();
 	ImGui::EndFrame();
 
