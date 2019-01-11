@@ -79,6 +79,11 @@ namespace SLR_GL3
 		mGLDetailTextureUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "sDetailTexture"));
 		mGLNormalTextureUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "sNormalTexture"));
 
+		// set texture location
+		GL_CHECK(glUniform1i(mGLBaseTextureUniformLoc, cSLTextureUnit_Base));
+		GL_CHECK(glUniform1i(mGLDetailTextureUniformLoc, cSLTextureUnit_Detail));
+		GL_CHECK(glUniform1i(mGLNormalTextureUniformLoc, cSLTextureUnit_Normal));
+
 		// get uniforms location
 		mGLModelMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uModelMat"));
 		mGLViewMatUniformLoc = GL_CHECK(glGetUniformLocation(mGLProgram, "uViewMat"));
