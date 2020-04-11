@@ -110,8 +110,9 @@ void SLEngineDemo::InitSponza()
 	std::vector<tinyobj::material_t> materials;
 	std::string warn;
 	std::string err;
-	tinyobj::LoadObj(&attribs, &shapes, &materials, &warn, &err, "data/A380/A380.obj", "data/A380/", true);
-	//tinyobj::LoadObj(&attribs, &shapes, &materials, &err, "data/sponza/sponza.obj", "data/sponza/", true);
+	//tinyobj::LoadObj(&attribs, &shapes, &materials, &warn, &err, "data/A380/A380.obj", "data/A380/", true);
+	tinyobj::LoadObj(&attribs, &shapes, &materials, &warn, &err, "data/sponza/sponza.obj", "data/sponza/", true);
+	std::cout << warn << std::endl;
 	std::cout << err << std::endl;
 
 	// allocate buffers
